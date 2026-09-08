@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://wennstrom.fi',
+  site: 'https://xn--wennstrm-t4a.fi',
 });

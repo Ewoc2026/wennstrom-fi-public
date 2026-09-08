@@ -1,0 +1,282 @@
+---
+import promptText from '../content/syvatutkimus-prompt-v0.6.md?raw';
+
+const version = 'v0.6';
+const updated = '9.9.2026';
+---
+
+<!doctype html>
+<html lang="fi">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Yleiskäyttöinen syvätutkimusprompti yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen ja tutkimusketjun näkyväksi tekemiseen."
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>Syvätutkimusprompti {version} — wennström.fi</title>
+	</head>
+	<body>
+		<main>
+			<nav aria-label="Murupolku"><a href="/">wennström.fi</a> / Syvätutkimusprompti</nav>
+
+			<header>
+				<p class="kicker">Työkalu</p>
+				<h1>Syvätutkimusprompti</h1>
+				<p class="lead">
+					Prompti auttaa tutkimaan yhtä kiistanalaista historiallista, uskonnollista tai muuta
+					tosiasiaväitettä mahdollisimman lähdekriittisesti. Tarkoitus ei ole vain pyytää
+					tekoälyä ratkaisemaan, onko väite totta, vaan tehdä näkyväksi tarkistettava tie
+					johtopäätökseen.
+				</p>
+			</header>
+
+			<section aria-labelledby="asetukset">
+				<h2 id="asetukset">Muuta nämä kolme asetusta</h2>
+				<div class="settings">
+					<p><strong>TUTKITTAVA KOHDE</strong> = mitä yhteisöä, tapahtumaa tai muuta kohdetta väite koskee</p>
+					<p><strong>TUTKITTAVA VÄITE</strong> = yksi mahdollisimman selkeä väite</p>
+					<p><strong>TUTKIMUKSEN KIELI</strong> = esimerkiksi suomi</p>
+				</div>
+			</section>
+
+			<section aria-labelledby="promptti">
+				<div class="section-heading">
+					<div>
+						<h2 id="promptti">SYVÄTUTKIMUSPROMPTI {version}</h2>
+						<p>Kopioi prompti kokonaan ja muuta vain asetukset.</p>
+					</div>
+					<button id="copy-prompt" type="button">Kopioi prompti</button>
+				</div>
+				<p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+				<pre id="prompt-text" tabindex="0">{promptText}</pre>
+			</section>
+
+			<section aria-labelledby="kaytto">
+				<h2 id="kaytto">Käyttö</h2>
+				<ul>
+					<li>Anna prompti tekoälylle sellaisenaan ja muuta vain alun kolme asetusta.</li>
+					<li>Käytä mahdollisuuksien mukaan verkkohakua tai mallin research-/syvätutkimustilaa.</li>
+					<li>Jos tekoäly ei pääse lähteisiin, sen kuuluu sanoa se eikä esittää tutkimusta tehdyksi.</li>
+					<li>Tarkista lopuksi itse ainakin promptin vaatimat tärkeimmät lähteet ja niiden rajaukset.</li>
+				</ul>
+			</section>
+
+			<aside>
+				<h2>Mitä prompti ei tee</h2>
+				<p>
+					Prompti ei tee tekoälystä erehtymätöntä. Sen tarkoitus on vähentää lähdevirheitä,
+					paljastaa tarkistamattomat kohdat ja ennen kaikkea tehdä tutkimus käyttäjän itsensä
+					tarkistettavaksi.
+				</p>
+			</aside>
+
+			<footer>
+				<p>Versio {version} · päivitetty {updated}</p>
+			</footer>
+		</main>
+
+		<script>
+			const button = document.querySelector('#copy-prompt');
+			const prompt = document.querySelector('#prompt-text');
+			const status = document.querySelector('#copy-status');
+
+			button?.addEventListener('click', async () => {
+				if (!(prompt instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+
+				try {
+					await navigator.clipboard.writeText(prompt.textContent ?? '');
+					status.textContent = 'Prompti kopioitu.';
+				} catch {
+					status.textContent = 'Kopiointi ei onnistunut automaattisesti. Valitse promptti käsin.';
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style>
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		background: #f5f3ee;
+		color: #23231f;
+	}
+
+	:global(body) {
+		margin: 0;
+	}
+
+	main {
+		width: min(900px, calc(100% - 32px));
+		margin: 0 auto;
+		padding: 32px 0 56px;
+	}
+
+	nav,
+	footer {
+		font-size: 0.9rem;
+		color: #66645c;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	header {
+		padding: 64px 0 40px;
+		border-bottom: 1px solid #d8d4ca;
+	}
+
+	.kicker {
+		margin: 0 0 8px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.78rem;
+		font-weight: 700;
+	}
+
+	h1,
+	h2,
+	p {
+		text-wrap: pretty;
+	}
+
+	h1 {
+		font-size: clamp(2.4rem, 7vw, 4.8rem);
+		line-height: 0.98;
+		letter-spacing: -0.045em;
+		margin: 0;
+	}
+
+	.lead {
+		max-width: 700px;
+		font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+		line-height: 1.55;
+		margin: 28px 0 0;
+	}
+
+	section,
+	aside {
+		padding: 36px 0;
+		border-bottom: 1px solid #d8d4ca;
+	}
+
+	h2 {
+		font-size: 1.35rem;
+		margin: 0 0 16px;
+	}
+
+	.settings {
+		background: #ebe7dd;
+		border-radius: 14px;
+		padding: 18px 20px;
+	}
+
+	.settings p {
+		margin: 0;
+		line-height: 1.55;
+	}
+
+	.settings p + p {
+		margin-top: 10px;
+	}
+
+	.section-heading {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 12px;
+	}
+
+	.section-heading h2,
+	.section-heading p {
+		margin-bottom: 0;
+	}
+
+	button {
+		appearance: none;
+		border: 1px solid #23231f;
+		border-radius: 999px;
+		background: #23231f;
+		color: #fff;
+		padding: 10px 16px;
+		font: inherit;
+		font-weight: 700;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	button:hover,
+	button:focus-visible {
+		background: #fff;
+		color: #23231f;
+	}
+
+	.copy-status {
+		min-height: 1.4em;
+		margin: 0 0 8px;
+		font-size: 0.9rem;
+		color: #66645c;
+	}
+
+	pre {
+		margin: 0;
+		padding: 22px;
+		max-height: 68vh;
+		overflow: auto;
+		white-space: pre-wrap;
+		word-break: break-word;
+		font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+		font-size: 0.9rem;
+		line-height: 1.55;
+		background: #fff;
+		border: 1px solid #d8d4ca;
+		border-radius: 14px;
+	}
+
+	ul {
+		padding-left: 1.25rem;
+		line-height: 1.65;
+	}
+
+	aside p {
+		max-width: 700px;
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+
+	footer {
+		padding-top: 24px;
+	}
+
+	@media (max-width: 640px) {
+		main {
+			width: min(100% - 24px, 900px);
+			padding-top: 20px;
+		}
+
+		header {
+			padding-top: 44px;
+		}
+
+		.section-heading {
+			align-items: stretch;
+			flex-direction: column;
+		}
+
+		button {
+			align-self: flex-start;
+		}
+
+		pre {
+			max-height: 62vh;
+			font-size: 0.82rem;
+		}
+	}
+</style>

@@ -12,7 +12,7 @@ const updated = '9.9.2026';
 		<meta name="viewport" content="width=device-width" />
 		<meta
 			name="description"
-			content="Yleiskäyttöinen syvätutkimusprompti yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen ja tutkimusketjun näkyväksi tekemiseen."
+			content="Syvätutkimusohje eli prompti yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen tekoälyn avulla."
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>Syvätutkimusprompti {version} — wennström.fi</title>
@@ -25,51 +25,192 @@ const updated = '9.9.2026';
 				<p class="kicker">Työkalu</p>
 				<h1>Syvätutkimusprompti</h1>
 				<p class="lead">
-					Prompti auttaa tutkimaan yhtä kiistanalaista historiallista, uskonnollista tai muuta
-					tosiasiaväitettä mahdollisimman lähdekriittisesti. Tarkoitus ei ole vain pyytää
-					tekoälyä ratkaisemaan, onko väite totta, vaan tehdä näkyväksi tarkistettava tie
-					johtopäätökseen.
+					Tämä on tekoälylle annettava pitkä tutkimusohje eli prompti. Sen avulla voit tutkia
+					yhden kiistanalaisen historiallisen, uskonnollisen tai muun tosiasiaväitteen
+					mahdollisimman lähdekriittisesti.
+				</p>
+				<p class="intro">
+					Tavoitteena ei ole vain saada tekoälyltä vastausta siihen, onko väite totta. Ohje pyytää
+					sitä etsimään lähteitä, vertailemaan vastakkaista näyttöä, jäljittämään lähdeketjuja
+					ja näyttämään, mihin lopullinen arvio perustuu.
 				</p>
 			</header>
 
-			<section aria-labelledby="asetukset">
-				<h2 id="asetukset">Muuta nämä kolme asetusta</h2>
-				<div class="settings">
-					<p><strong>TUTKITTAVA KOHDE</strong> = mitä yhteisöä, tapahtumaa tai muuta kohdetta väite koskee</p>
-					<p><strong>TUTKITTAVA VÄITE</strong> = yksi mahdollisimman selkeä väite</p>
-					<p><strong>TUTKIMUKSEN KIELI</strong> = esimerkiksi suomi</p>
+			<section aria-labelledby="aloita">
+				<h2 id="aloita">Aloita tästä</h2>
+
+				<div class="path">
+					<h3>Jos tiedät jo, mitä haluat tutkia</h3>
+					<p>Täytä tutkimusohjeen alusta kolme asetusta:</p>
+					<div class="settings">
+						<p><strong>TUTKITTAVA KOHDE</strong><span>Mitä yhteisöä, tapahtumaa, henkilöä tai muuta kohdetta väite koskee.</span></p>
+						<p><strong>TUTKITTAVA VÄITE</strong><span>Yksi mahdollisimman selkeä väite.</span></p>
+						<p><strong>TUTKIMUKSEN KIELI</strong><span>Millä kielellä haluat tutkimusvastauksen. Lähteiden ei tarvitse olla samalla kielellä.</span></p>
+					</div>
+					<p>Sen jälkeen kopioi koko tutkimusohje tekoälylle.</p>
+				</div>
+
+				<div class="path">
+					<h3>Jos väite on vielä epämääräinen</h3>
+					<p>Voit aloittaa tavallisella keskustelulla tekoälyn kanssa.</p>
+					<p>
+						Anna sille alkuperäinen väite sellaisena kuin kohtasit sen ja pyydä apua sen
+						rajaamiseen yhdeksi tutkittavaksi väitteeksi.
+					</p>
+					<p>
+						Pidä alkuperäinen väite kuitenkin näkyvissä. Tarkoitus ei ole muuttaa sitä huomaamatta
+						helpommin puolustettavaksi tai kumottavaksi versioksi.
+					</p>
+					<p>Kun tutkittava kohde ja väite ovat selvät, siirry varsinaiseen tutkimusohjeeseen.</p>
 				</div>
 			</section>
 
-			<section aria-labelledby="promptti">
+			<section aria-labelledby="ennen">
+				<h2 id="ennen">Ennen kuin käynnistät tutkimuksen</h2>
+				<p class="key-question"><strong>Tärkein kysymys:</strong> pääseekö käyttämäsi tekoäly hakemaan ja avaamaan lähteitä?</p>
+				<p>
+					Varsinainen lähdetutkimus edellyttää, että tekoäly pystyy pääsemään tarvittaviin
+					lähteisiin ja tarkistamaan niiden sisältöä.
+				</p>
+				<p>
+					Jos verkkopääsyä tai muuta pääsyä lähteisiin ei ole, tekoäly voi silti eritellä
+					väitettä, auttaa sen rajaamisessa ja tehdä tutkimussuunnitelman. Sen ei kuitenkaan
+					pidä esittää tehneensä varsinaista lähdetutkimusta.
+				</p>
+
+				<div class="capability">
+					<h3>Välttämätöntä varsinaiseen lähdetutkimukseen</h3>
+					<ul>
+						<li>tekoäly pystyy hakemaan lähteitä verkosta tai muusta käytettävissä olevasta aineistosta</li>
+						<li>se pystyy avaamaan ja lukemaan lähteiden sisältöä</li>
+						<li>se pystyy tekemään useita hakuja saman tehtävän aikana</li>
+						<li>se pystyy käsittelemään pitkän tutkimusohjeen loppuun asti</li>
+					</ul>
+				</div>
+
+				<div class="capability secondary">
+					<h3>Hyödyllistä, mutta ei välttämätöntä</h3>
+					<p>
+						Joissakin palveluissa on tavallista keskustelua perusteellisempi tutkimustila tai
+						työskentelytapa. Niistä voidaan käyttää esimerkiksi nimiä <em>deep research</em> tai
+						<em>agentti</em>. Tällainen tila voi auttaa pitkän ja monivaiheisen tutkimuksen
+						tekemisessä, mutta sitä ei tarvita, jos tekoäly pystyy muuten hakemaan ja avaamaan
+						lähteitä sekä tekemään useita hakuja.
+					</p>
+					<p>
+						Joissakin palveluissa voi myös valita tavallista perusteellisemman päättelytason. Sen
+						nimi voi olla esimerkiksi <em>reasoning</em> tai <em>thinking</em>. Jos tällainen valinta
+						on tarjolla, sitä kannattaa yleensä käyttää tällaisessa tehtävässä. Sen puuttuminen ei
+						estä tutkimusta.
+					</p>
+				</div>
+
+				<p class="note"><strong>Tärkeä ero:</strong> perusteellisempi päättely ei korvaa verkkopääsyä. Tekoäly ei voi tarkistaa lähdettä, johon se ei pääse.</p>
+
+				<details>
+					<summary>Mitä nämä erot käytännössä tarkoittavat?</summary>
+					<div class="details-body">
+						<p><strong>Mallin kyvykkyys</strong> vaikuttaa siihen, kuinka hyvin se ymmärtää pitkää tehtävää, vertaa lähteitä ja huomaa ristiriitoja.</p>
+						<p><strong>Perusteellisempi päättely</strong> voi joissakin palveluissa antaa mallille enemmän laskenta- ja päättelyresursseja vaikean tehtävän käsittelyyn.</p>
+						<p><strong>Verkkopääsy</strong> ratkaisee sen, voiko tekoäly hakea ajankohtaisia lähteitä.</p>
+						<p><strong>Lähteiden avaaminen</strong> on eri asia kuin hakutulosten löytäminen. Maksumuurit, PDF-tiedostot, skannatut asiakirjat ja arkistoaineistot voivat jäädä osittain tai kokonaan lukematta.</p>
+						<p><strong>Tutkimustila</strong> voi antaa mallille enemmän aikaa tai työkaluja monivaiheiseen hakuun, mutta sekään ei takaa oikeaa lopputulosta.</p>
+						<p>Palvelujen nimet ja ominaisuudet vaihtelevat. Sinun ei tarvitse tuntea termejä <em>deep research</em>, <em>agentti</em>, <em>reasoning</em> tai <em>thinking</em> teknisesti. Olennaista on tietää, pääseekö tekoäly lähteisiin ja pystyykö se työskentelemään tehtävän kanssa riittävän perusteellisesti.</p>
+						<p>Jos et tiedä, mitä ominaisuuksia käyttämässäsi palvelussa on, tarkista ne käyttöliittymästä tai palvelun ohjeista.</p>
+					</div>
+				</details>
+			</section>
+
+			<section aria-labelledby="prompti">
 				<div class="section-heading">
 					<div>
-						<h2 id="promptti">SYVÄTUTKIMUSPROMPTI {version}</h2>
-						<p>Kopioi prompti kokonaan ja muuta vain asetukset.</p>
+						<h2 id="prompti">SYVÄTUTKIMUSPROMPTI {version}</h2>
+						<p>Muuta vain alun kolme asetusta ja kopioi sitten koko ohje tekoälylle.</p>
+						<p class="prompt-note">Ohje on tarkoituksella pitkä: siinä määritellään tutkimuksen tarkistusvaiheita, ei vain sitä, mitä aihetta tekoälyn pitäisi tutkia.</p>
+						<p class="return-note">Kun tutkimus valmistuu, <a href="#tarkista">palaa vielä tämän sivun kohtaan “Tarkista tutkimus”</a>.</p>
 					</div>
-					<button id="copy-prompt" type="button">Kopioi prompti</button>
+					<button id="copy-prompt" type="button">Kopioi tutkimusohje</button>
 				</div>
 				<p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
 				<pre id="prompt-text" tabindex="0">{promptText}</pre>
 			</section>
 
-			<section aria-labelledby="kaytto">
-				<h2 id="kaytto">Käyttö</h2>
+			<section id="tarkista" aria-labelledby="tarkista-heading">
+				<h2 id="tarkista-heading">Tarkista tutkimus</h2>
+				<p>Pitkä ja vakuuttavan näköinen vastaus ei vielä tarkoita, että tutkimus olisi kunnossa.</p>
+				<p>Tarkista ainakin:</p>
 				<ul>
-					<li>Anna prompti tekoälylle sellaisenaan ja muuta vain alun kolme asetusta.</li>
-					<li>Käytä mahdollisuuksien mukaan verkkohakua tai mallin research-/syvätutkimustilaa.</li>
-					<li>Jos tekoäly ei pääse lähteisiin, sen kuuluu sanoa se eikä esittää tutkimusta tehdyksi.</li>
-					<li>Tarkista lopuksi itse ainakin promptin vaatimat tärkeimmät lähteet ja niiden rajaukset.</li>
+					<li>avautuvatko tärkeimmät lähteet</li>
+					<li>löytyykö niistä todella se tieto, jonka tekoäly sanoo löytyvän</li>
+					<li>näkyykö vastauksessa selvästi, mitä ei pystytty tarkistamaan</li>
+					<li>onko vastakkaista näyttöä käsitelty</li>
+					<li>vaikuttavatko johtopäätökset vastaavan sitä, mitä lähteistä todella käy ilmi</li>
+				</ul>
+				<p>Sinun ei tarvitse itse pystyä tarkistamaan koko tutkimusta asiantuntijan tavoin.</p>
+				<p>Aloita tärkeimmistä lähteistä ja muutamasta tutkimuksen kannalta ratkaisevasta väitteestä. Tutkimusohje pyytää tekoälyä valitsemaan lopuksi muutaman tärkeimmän lähteen juuri tätä tarkistusta varten.</p>
+
+				<details>
+					<summary>Miksi tämä tarkistus on tärkeä?</summary>
+					<div class="details-body">
+						<p>Tekoäly voi tehdä virheen myös silloin, kun sille annettu ohje on hyvä.</p>
+						<p>Se voi esimerkiksi:</p>
+						<ul>
+							<li>tulkita lähdettä väärin</li>
+							<li>käyttää oikeaa lähdettä sellaisen asian todistamiseen, jota se ei oikeastaan osoita</li>
+							<li>sekoittaa toisiinsa kaksi eri lukua</li>
+							<li>antaa liian vahvan johtopäätöksen</li>
+							<li>väittää tarkistaneensa jotakin, jonka se on nähnyt vain toisen lähteen kuvauksena</li>
+						</ul>
+						<p>Tutkimusohjeen tarkoitus on vähentää näitä virheitä ja tehdä ne helpommin havaittaviksi. Se ei poista niitä kokonaan.</p>
+					</div>
+				</details>
+			</section>
+
+			<section aria-labelledby="miksi-pitka">
+				<h2 id="miksi-pitka">Miksi tutkimusohje on näin pitkä?</h2>
+				<p>Tekoälylle voisi kirjoittaa vain: “Tutki, onko tämä väite totta.”</p>
+				<p>Silloin suuri osa siitä, miten tutkimus tehdään, jäisi tekoälyn itsensä päätettäväksi.</p>
+				<p>Tässä ohjeessa määritellään erikseen muun muassa:</p>
+				<ul>
+					<li>miten väite rajataan</li>
+					<li>millaisia lähteitä eri kysymyksiin kannattaa käyttää</li>
+					<li>miten lähdeketjua seurataan kohti alkuperäislähdettä</li>
+					<li>miten väitettä tukevaa ja vastustavaa näyttöä etsitään</li>
+					<li>miten ristiriitaisia lukuja verrataan</li>
+					<li>miten tarkistamattomat lähteet erotetaan tarkistetuista</li>
+					<li>miten johtopäätöksen logiikka tarkistetaan</li>
+					<li>miten epävarmuus tuodaan näkyviin</li>
+				</ul>
+				<p>Ohjeen pituuden tarkoitus ei siis ole saada tekoälyä kirjoittamaan pitkä vastaus. Tarkoitus on vähentää tilanteita, joissa se oikaisee tutkimuksen olennaisten vaiheiden yli.</p>
+
+				<details>
+					<summary>Mitä pitkä ohje ei silti takaa?</summary>
+					<div class="details-body">
+						<p>Tekoälylle annettu ohje ei ole tietokoneohjelma.</p>
+						<p>Malli voi jättää jonkin kohdan huomiotta, tulkita sen väärin tai toteuttaa sen vain pinnallisesti.</p>
+						<p>Siksi tutkimuksen laatua ei voi päätellä siitä, että tekoäly sai pitkän ja yksityiskohtaisen ohjeen. Lopputulos pitää edelleen arvioida lähteiden ja perustelujen perusteella.</p>
+					</div>
+				</details>
+			</section>
+
+			<section aria-labelledby="aukko">
+				<h2 id="aukko">Jos tutkimukseen jäi aukko</h2>
+				<p>Koko tutkimusta ei yleensä tarvitse aloittaa alusta.</p>
+				<p>Voit jatkaa samassa keskustelussa esimerkiksi näin:</p>
+				<ul class="examples">
+					<li>“Tarkista lähde 3 uudelleen ja kerro, mitä siinä todella sanotaan.”</li>
+					<li>“Etsi tämän väitteen alkuperäislähde.”</li>
+					<li>“Selvitä, miksi nämä kaksi lukua poikkeavat toisistaan.”</li>
+					<li>“Etsi nyt mahdollisimman vahvaa näyttöä tätä johtopäätöstä vastaan.”</li>
+					<li>“Tarkista, seuraako tämä johtopäätös todella esitetyistä lähteistä.”</li>
 				</ul>
 			</section>
 
-			<aside>
-				<h2>Mitä prompti ei tee</h2>
-				<p>
-					Prompti ei tee tekoälystä erehtymätöntä. Sen tarkoitus on vähentää lähdevirheitä,
-					paljastaa tarkistamattomat kohdat ja ennen kaikkea tehdä tutkimus käyttäjän itsensä
-					tarkistettavaksi.
-				</p>
+			<aside aria-labelledby="rajat">
+				<h2 id="rajat">Mitä tämä työkalu ei tee</h2>
+				<p>Tutkimusohje ei tee tekoälystä erehtymätöntä.</p>
+				<p>Se ei myöskään anna tekoälylle pääsyä sellaisiin lähteisiin tai työkaluihin, joita sen käyttämässä palvelussa ei ole.</p>
+				<p>Sen tarkoitus on vähentää tavallisia lähde- ja päättelyvirheitä, näyttää epävarmuudet ja jättää käyttäjälle mahdollisimman selvä reitti tutkimuksen tärkeimpien kohtien tarkistamiseen.</p>
 			</aside>
 
 			<footer>
@@ -87,9 +228,9 @@ const updated = '9.9.2026';
 
 				try {
 					await navigator.clipboard.writeText(prompt.textContent ?? '');
-					status.textContent = 'Prompti kopioitu.';
+					status.textContent = 'Tutkimusohje kopioitu.';
 				} catch {
-					status.textContent = 'Kopiointi ei onnistunut automaattisesti. Valitse promptti käsin.';
+					status.textContent = 'Kopiointi ei onnistunut automaattisesti. Valitse tutkimusohje käsin.';
 				}
 			});
 		</script>
@@ -102,6 +243,7 @@ const updated = '9.9.2026';
 	}
 
 	:global(html) {
+		scroll-behavior: smooth;
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 		background: #f5f3ee;
 		color: #23231f;
@@ -125,6 +267,7 @@ const updated = '9.9.2026';
 
 	a {
 		color: inherit;
+		text-underline-offset: 0.16em;
 	}
 
 	header {
@@ -142,6 +285,7 @@ const updated = '9.9.2026';
 
 	h1,
 	h2,
+	h3,
 	p {
 		text-wrap: pretty;
 	}
@@ -153,50 +297,156 @@ const updated = '9.9.2026';
 		margin: 0;
 	}
 
+	h2 {
+		font-size: 1.4rem;
+		margin: 0 0 18px;
+	}
+
+	h3 {
+		font-size: 1.05rem;
+		margin: 0 0 10px;
+	}
+
 	.lead {
-		max-width: 700px;
+		max-width: 720px;
 		font-size: clamp(1.1rem, 2.5vw, 1.35rem);
 		line-height: 1.55;
 		margin: 28px 0 0;
 	}
 
+	.intro {
+		max-width: 720px;
+		line-height: 1.65;
+		margin: 18px 0 0;
+	}
+
 	section,
 	aside {
-		padding: 36px 0;
+		padding: 38px 0;
 		border-bottom: 1px solid #d8d4ca;
 	}
 
-	h2 {
-		font-size: 1.35rem;
-		margin: 0 0 16px;
+	section > p,
+	aside > p,
+	.path > p,
+	.capability > p,
+	.details-body p {
+		max-width: 720px;
+		line-height: 1.65;
+	}
+
+	.path + .path {
+		margin-top: 32px;
+		padding-top: 28px;
+		border-top: 1px solid #d8d4ca;
 	}
 
 	.settings {
+		max-width: 760px;
 		background: #ebe7dd;
 		border-radius: 14px;
 		padding: 18px 20px;
+		margin: 16px 0;
 	}
 
 	.settings p {
+		display: grid;
+		gap: 3px;
 		margin: 0;
 		line-height: 1.55;
 	}
 
 	.settings p + p {
-		margin-top: 10px;
+		margin-top: 13px;
+	}
+
+	.settings span {
+		font-weight: 400;
+	}
+
+	.key-question {
+		font-size: 1.08rem;
+	}
+
+	.capability {
+		max-width: 760px;
+		margin: 24px 0 0;
+		padding: 18px 20px;
+		border: 1px solid #c9c4b8;
+		border-radius: 14px;
+		background: #fff;
+	}
+
+	.capability.secondary {
+		background: #ebe7dd;
+	}
+
+	.capability ul {
+		margin-bottom: 0;
+	}
+
+	.note,
+	.prompt-note,
+	.return-note {
+		max-width: 720px;
+	}
+
+	.note {
+		margin-top: 24px;
+	}
+
+	details {
+		max-width: 760px;
+		margin-top: 24px;
+		border-top: 1px solid #d8d4ca;
+		border-bottom: 1px solid #d8d4ca;
+	}
+
+	summary {
+		cursor: pointer;
+		padding: 14px 2px;
+		font-weight: 700;
+	}
+
+	summary:hover,
+	summary:focus-visible {
+		text-decoration: underline;
+		text-underline-offset: 0.16em;
+	}
+
+	.details-body {
+		padding: 0 2px 16px;
+	}
+
+	.details-body p:first-child,
+	.details-body ul:first-child {
+		margin-top: 0;
 	}
 
 	.section-heading {
 		display: flex;
 		align-items: end;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 24px;
 		margin-bottom: 12px;
 	}
 
-	.section-heading h2,
+	.section-heading > div {
+		min-width: 0;
+	}
+
+	.section-heading h2 {
+		margin-bottom: 14px;
+	}
+
 	.section-heading p {
+		margin-top: 8px;
 		margin-bottom: 0;
+		line-height: 1.55;
+	}
+
+	.return-note {
+		font-weight: 700;
 	}
 
 	button {
@@ -205,7 +455,7 @@ const updated = '9.9.2026';
 		border-radius: 999px;
 		background: #23231f;
 		color: #fff;
-		padding: 10px 16px;
+		padding: 11px 17px;
 		font: inherit;
 		font-weight: 700;
 		cursor: pointer;
@@ -245,14 +495,28 @@ const updated = '9.9.2026';
 		line-height: 1.65;
 	}
 
-	aside p {
-		max-width: 700px;
-		line-height: 1.6;
+	.examples li + li {
+		margin-top: 7px;
+	}
+
+	aside {
+		background: #ebe7dd;
+		margin-inline: -20px;
+		padding-inline: 20px;
+		border-radius: 14px;
+		border-bottom: 0;
+	}
+
+	aside p:last-child {
 		margin-bottom: 0;
 	}
 
 	footer {
 		padding-top: 24px;
+	}
+
+	#tarkista {
+		scroll-margin-top: 24px;
 	}
 
 	@media (max-width: 640px) {
@@ -263,6 +527,12 @@ const updated = '9.9.2026';
 
 		header {
 			padding-top: 44px;
+		}
+
+		section,
+		aside {
+			padding-top: 32px;
+			padding-bottom: 32px;
 		}
 
 		.section-heading {
@@ -277,6 +547,11 @@ const updated = '9.9.2026';
 		pre {
 			max-height: 62vh;
 			font-size: 0.82rem;
+		}
+
+		aside {
+			margin-inline: -8px;
+			padding-inline: 16px;
 		}
 	}
 </style>

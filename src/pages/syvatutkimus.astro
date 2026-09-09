@@ -36,17 +36,29 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 
 			<section aria-labelledby="aloita">
 				<h2 id="aloita">Aloita tästä</h2>
+				<p>Täytä nämä kolme kohtaa. Ohje päivittyy niiden perusteella automaattisesti.</p>
 
-				<div class="path">
-					<h3>Jos tiedät jo, mitä haluat tutkia</h3>
-					<p>Täytä ohjeen alusta kolme asetusta:</p>
-					<div class="settings">
-						<p><strong>TUTKITTAVA KOHDE</strong><span>Mitä yhteisöä, tapahtumaa, henkilöä tai muuta kohdetta väite koskee.</span></p>
-						<p><strong>TUTKITTAVA VÄITE</strong><span>Yksi mahdollisimman selkeä väite.</span></p>
-						<p><strong>TUTKIMUKSEN KIELI</strong><span>Millä kielellä haluat tutkimusvastauksen. Lähteiden ei tarvitse olla samalla kielellä.</span></p>
-					</div>
-					<p>Sen jälkeen kopioi koko ohje tekoälylle.</p>
+				<div class="settings">
+					<label class="field" for="research-subject">
+						<span class="field-label">TUTKITTAVA KOHDE</span>
+						<span class="field-help">Mitä yhteisöä, tapahtumaa, henkilöä tai muuta kohdetta väite koskee.</span>
+						<input id="research-subject" type="text" autocomplete="off" />
+					</label>
+
+					<label class="field" for="research-claim">
+						<span class="field-label">TUTKITTAVA VÄITE</span>
+						<span class="field-help">Yksi mahdollisimman selkeä väite.</span>
+						<textarea id="research-claim" rows="3"></textarea>
+					</label>
+
+					<label class="field" for="research-language">
+						<span class="field-label">TUTKIMUKSEN KIELI</span>
+						<span class="field-help">Millä kielellä haluat tutkimusvastauksen. Lähteiden ei tarvitse olla samalla kielellä.</span>
+						<input id="research-language" type="text" value="suomi" autocomplete="off" />
+					</label>
 				</div>
+
+				<p class="form-note">Kun kaikki kolme kohtaa ovat täynnä, voit kopioida valmiiksi täytetyn ohjeen alempaa.</p>
 			</section>
 
 			<section aria-labelledby="ennen">
@@ -81,10 +93,10 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 				<div class="section-heading">
 					<div>
 						<h2 id="ohje">SYVÄTUTKIMUSOHJE {version}</h2>
-						<p>Muuta vain alun kolme asetusta ja kopioi sitten koko ohje tekoälylle.</p>
+						<p>Yllä täyttämäsi asetukset lisätään tähän ohjeeseen automaattisesti.</p>
 						<p class="return-note">Kun tutkimus valmistuu, <a href="#tarkista">palaa vielä tämän sivun kohtaan “Tarkista tutkimus”</a>.</p>
 					</div>
-					<button id="copy-guide" type="button">Kopioi ohje</button>
+					<button id="copy-guide" type="button" disabled>Kopioi ohje</button>
 				</div>
 				<p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
 				<pre id="guide-text" tabindex="0">{guideText}</pre>
@@ -150,17 +162,59 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 			const button = document.querySelector('#copy-guide');
 			const guide = document.querySelector('#guide-text');
 			const status = document.querySelector('#copy-status');
+			const subject = document.querySelector('#research-subject');
+			const claim = document.querySelector('#research-claim');
+			const language = document.querySelector('#research-language');
 
-			button?.addEventListener('click', async () => {
-				if (!(guide instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+			if (
+				button instanceof HTMLButtonElement &&
+				guide instanceof HTMLElement &&
+				status instanceof HTMLElement &&
+				subject instanceof HTMLInputElement &&
+				claim instanceof HTMLTextAreaElement &&
+				language instanceof HTMLInputElement
+			) {
+				const template = guide.textContent ?? '';
 
-				try {
-					await navigator.clipboard.writeText(guide.textContent ?? '');
-					status.textContent = 'Ohje kopioitu.';
-				} catch {
-					status.textContent = 'Kopiointi ei onnistunut automaattisesti. Valitse ohje käsin.';
-				}
-			});
+				const buildGuide = () => {
+					let text = template;
+					const subjectValue = subject.value.trim();
+					const claimValue = claim.value.trim();
+					const languageValue = language.value.trim();
+
+					if (subjectValue) {
+						text = text.replace(/^TUTKITTAVA KOHDE = .*$/m, `TUTKITTAVA KOHDE = ${subjectValue}`);
+					}
+					if (claimValue) {
+						text = text.replace(/^TUTKITTAVA VÄITE = .*$/m, `TUTKITTAVA VÄITE = ${claimValue}`);
+					}
+					if (languageValue) {
+						text = text.replace(/^TUTKIMUKSEN KIELI = .*$/m, `TUTKIMUKSEN KIELI = ${languageValue}`);
+					}
+
+					return text;
+				};
+
+				const updateGuide = () => {
+					guide.textContent = buildGuide();
+					button.disabled = !subject.value.trim() || !claim.value.trim() || !language.value.trim();
+					status.textContent = '';
+				};
+
+				subject.addEventListener('input', updateGuide);
+				claim.addEventListener('input', updateGuide);
+				language.addEventListener('input', updateGuide);
+				updateGuide();
+
+				button.addEventListener('click', async () => {
+					try {
+						await navigator.clipboard.writeText(buildGuide());
+						status.textContent = 'Ohje kopioitu.';
+					} catch {
+						status.textContent = 'Kopiointi ei onnistunut automaattisesti. Valitse ohje käsin.';
+					}
+				});
+			}
 		</script>
 	</body>
 </html>
@@ -255,7 +309,6 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 
 	section > p,
 	aside > p,
-	.path > p,
 	.capability > p,
 	.details-body p {
 		max-width: 720px;
@@ -266,23 +319,53 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 		max-width: 760px;
 		background: #ebe7dd;
 		border-radius: 14px;
-		padding: 18px 20px;
+		padding: 20px;
 		margin: 16px 0;
 	}
 
-	.settings p {
+	.field {
 		display: grid;
-		gap: 3px;
-		margin: 0;
-		line-height: 1.55;
+		gap: 6px;
 	}
 
-	.settings p + p {
-		margin-top: 13px;
+	.field + .field {
+		margin-top: 18px;
 	}
 
-	.settings span {
-		font-weight: 400;
+	.field-label {
+		font-weight: 700;
+	}
+
+	.field-help {
+		font-size: 0.92rem;
+		line-height: 1.45;
+		color: #55534d;
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		border: 1px solid #aaa59a;
+		border-radius: 9px;
+		background: #fff;
+		color: #23231f;
+		padding: 10px 11px;
+		font: inherit;
+		line-height: 1.45;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	input:focus-visible,
+	textarea:focus-visible {
+		outline: 2px solid #23231f;
+		outline-offset: 2px;
+	}
+
+	.form-note {
+		margin-bottom: 0;
 	}
 
 	.key-question {
@@ -380,10 +463,15 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 		white-space: nowrap;
 	}
 
-	button:hover,
-	button:focus-visible {
+	button:hover:not(:disabled),
+	button:focus-visible:not(:disabled) {
 		background: #fff;
 		color: #23231f;
+	}
+
+	button:disabled {
+		cursor: not-allowed;
+		opacity: 0.42;
 	}
 
 	.copy-status {

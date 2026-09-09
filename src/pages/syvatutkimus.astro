@@ -16,12 +16,10 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 			content="Syvätutkimusohje yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen tekoälyn avulla."
 		/>
 		<meta name="generator" content={Astro.generator} />
-		<title>Syvätutkimusohje {version} — wennström.fi</title>
+		<title>Syvätutkimusohje {version}</title>
 	</head>
 	<body>
 		<main>
-			<nav aria-label="Murupolku"><a href="/">wennström.fi</a> / Syvätutkimusohje</nav>
-
 			<header>
 				<p class="kicker">Työkalu</p>
 				<h1>Syvätutkimusohje</h1>
@@ -48,16 +46,6 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 						<p><strong>TUTKIMUKSEN KIELI</strong><span>Millä kielellä haluat tutkimusvastauksen. Lähteiden ei tarvitse olla samalla kielellä.</span></p>
 					</div>
 					<p>Sen jälkeen kopioi koko ohje tekoälylle.</p>
-				</div>
-
-				<div class="path">
-					<h3>Jos väite on vielä epämääräinen</h3>
-					<p>
-						Anna tekoälylle alkuperäinen väite sellaisena kuin kohtasit sen ja pyydä apua sen
-						rajaamiseen yhdeksi tutkittavaksi väitteeksi. Pidä alkuperäinen väite näkyvissä,
-						jotta sitä ei huomaamatta muuteta helpommin puolustettavaksi tai kumottavaksi.
-					</p>
-					<p>Kun tutkittava kohde ja väite ovat selvät, siirry varsinaiseen ohjeeseen.</p>
 				</div>
 			</section>
 
@@ -199,7 +187,6 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 		padding: 32px 0 56px;
 	}
 
-	nav,
 	footer {
 		font-size: 0.9rem;
 		color: #66645c;
@@ -273,12 +260,6 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 	.details-body p {
 		max-width: 720px;
 		line-height: 1.65;
-	}
-
-	.path + .path {
-		margin-top: 28px;
-		padding-top: 24px;
-		border-top: 1px solid #d8d4ca;
 	}
 
 	.settings {

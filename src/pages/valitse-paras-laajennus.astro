@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="fi">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Keskusteluesimerkki ChatGPT-keskustelujen Markdown-vientiin sopivan selainlaajennuksen valinnasta." />
+		<title>Valitse paras laajennus</title>
+	</head>
+	<body>
+		<main>
+			<header>
+				<h1>Valitse paras laajennus</h1>
+				<p class="note">Keskustelu on julkaistu sellaisenaan. Tekstiä ei ole muokattu.</p>
+			</header>
+
+			<section class="turn">
+				<p class="speaker">Käyttäjä</p>
+				<div class="message">
+					<p>Tarvitsen Brave-laajennuksen jolla saan talletettua kokonaisen ChatGPT-keskustelun markdown-tiedostoksi. Miten saan sinut etsimään vaihtoehtoja ja valitsemaan minulle niistä parhaan? En halua luoda jonkinlaista tiliä laajennuksen käyttämiseksi.</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">ChatGPT</p>
+				<div class="message">
+					<p>Saat minut tekemään tämän parhaiten antamalla tehtävän nimenomaan <strong>vertailu- ja valintatehtävänä</strong>, ei pelkkänä hakuna. Sinun ei tarvitse itse tietää laajennusten nimiä.</p>
+					<p>Voisit kirjoittaa minulle esimerkiksi näin:</p>
+					<blockquote>
+					<p>Etsi tällä hetkellä toimivia Brave/Chromium-laajennuksia, joilla voi tallentaa kokonaisen ChatGPT-keskustelun paikalliseksi Markdown-tiedostoksi.</p>
+					<p>Vaatimukset:</p>
+					<ul>
+					<li>käytän Bravea Ubuntu 26.04:ssa</li>
+					<li>koko keskustelu pitää saada mukaan, ei vain näkyvää osaa</li>
+					<li>tulostiedoston pitää olla oikeaa Markdownia (.md)</li>
+					<li>en halua luoda käyttäjätiliä laajennuksen tai palvelun käyttöä varten</li>
+					<li>en halua, että keskustelu pitää ensin lähettää johonkin pilvipalveluun</li>
+					<li>paikallinen tallennus on etusijalla</li>
+					<li>pitkien ChatGPT-keskustelujen pitää toimia mahdollisimman luotettavasti</li>
+					<li>koodilohkojen, otsikoiden, luetteloiden ja linkkien pitäisi säilyä järkevästi</li>
+					</ul>
+					<p>Etsi vähintään 3–5 realistista vaihtoehtoa. Tarkista niiden nykyinen saatavuus, päivitystilanne, käyttöoikeudet, mahdollinen avoin lähdekoodi/GitHub-repo, tilivaatimukset ja tunnetut rajoitukset.</p>
+					<p>Älä vain listaa niitä, vaan tutki ne riittävän tarkasti ja <strong>valitse lopuksi yksi, jota suosittelet minulle ensisijaiseksi</strong>. Kerro myös, miksi se voittaa toiseksi parhaan vaihtoehdon.</p>
+					<p>Vältä vanhentuneita laajennuksia ja sellaisia, joiden tietosuojasta tai toiminnasta ei saa riittävää selvyyttä. Jos Chrome Web Store -kuvaus ja GitHub-lähdekoodi ovat ristiriidassa, tutki asia tarkemmin.</p>
+					<p>Käytä ajantasaisia verkkolähteitä.</p>
+					</blockquote>
+					<p>Tuossa on yksi kohta, jonka itse lisäisin sinun tapauksessasi vielä erityisesti:</p>
+					<blockquote>
+					<p><strong>Arvioi myös, selviääkö laajennus erittäin pitkistä ChatGPT-keskusteluista eikä vain muutaman viestin keskusteluista.</strong></p>
+					</blockquote>
+					<p>Se on tärkeä, koska juuri siinä tällaiset työkalut alkavat erottua toisistaan. ChatGPT:n käyttöliittymä lataa pitkiä keskusteluja dynaamisesti, joten &quot;Export Markdown&quot; -painike ei vielä tarkoita, että se todella nappaa esimerkiksi satojen viestien säikeen ehjänä.</p>
+					<p>Minä tutkisin ehdokkaista ainakin nämä asiat:</p>
+					<ul>
+					<li><strong>tilipakko:</strong> suora hylkäys, jos käyttö edellyttää rekisteröitymistä</li>
+					<li><strong>paikallisuus:</strong> syntyykö <code>.md</code> suoraan selaimessa</li>
+					<li><strong>oikeudet:</strong> tarvitseeko laajennus oikeuksia kaikkeen selaushistoriaan vai vain <code>chatgpt.com</code>-sivuun</li>
+					<li><strong>Markdownin laatu:</strong> käyttäjä/assistant-erottelu, otsikot, koodi, listat, linkit</li>
+					<li><strong>pitkät keskustelut:</strong> osaako se hakea myös vielä lataamatta olevat viestit</li>
+					<li><strong>ylläpito:</strong> viimeisimmät päivitykset ja ChatGPT:n nykyisen käyttöliittymän tuki</li>
+					<li><strong>lähdekoodi:</strong> avoimuus on tässä selvä plussa, koska laajennus pääsee lukemaan koko keskustelusi</li>
+					<li><strong>ylimääräinen toiminnallisuus:</strong> mieluummin pieni vientilaajennus kuin valtava &quot;AI productivity suite&quot;</li>
+					<li><strong>ulos pääseminen:</strong> tavallinen <code>.md</code>, ei omaa suljettua tiedostomuotoa.</li>
+					</ul>
+					<p>Ja yksi olennainen rajaus: <strong>en valitsisi automaattisesti Chrome Web Storen tähtimäärän perusteella</strong>. Näissä laajennuksissa vanhat arvostelut voivat koskea ChatGPT:n käyttöliittymän versiota, jota ei enää ole olemassa.</p>
+					<p>Jos haluat, voit sanoa minulle nyt vain:</p>
+					<p><strong>&quot;Tee tuo haku ja vertailu nyt.&quot;</strong></p>
+					<p>Silloin otan yllä olevat ehdot lähtöehdoiksi ja etsin sinulle yhden ensisijaisen vaihtoehdon sekä järkevän varavaihtoehdon.</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">Käyttäjä</p>
+				<div class="message">
+					<p>Tee tuo haku ja vertailu nyt</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">ChatGPT</p>
+				<div class="message">
+					<p>Teen tämän käytännön valintana, en laajennuslistana. Pudotan heti pois vaihtoehdot, jotka vaativat tilin, vievät keskustelun pilveen tai joiden nykyisestä toimivuudesta/tietosuojasta ei saa riittävää selvyyttä. Pitkien säikeiden toimivuus painaa arvioinnissa paljon.</p>
+					<p>Yksi ero on jo noussut ratkaisevaksi: parhaat ehdokkaat eivät yritä vain kopioida ruudulla näkyvää DOMia. Ainakin yksi hakee koko keskustelurakenteen ChatGPT:n omasta istunnosta ja toinen rekonstruoi varsinaisen keskusteluhaaran; tämä on juuri oikea suunta sinun pitkille säikeillesi.</p>
+					<p>Vertailu on nyt käytännössä valmis. Päädyin eri ykköseen kuin mitä pelkän avoimen lähdekoodin perusteella olisin valinnut: sinun käyttötapauksessasi pitkäaikainen toimivuusnäyttö ja nykyisen ChatGPT:n tuki painavat enemmän kuin se, että lähdekoodi olisi helposti auditoitavissa.</p>
+					<p>Tutkin vaihtoehdot nimenomaan sinun ehdoillasi ja painotin pitkien keskustelujen täydellistä vientiä. Valitsisin nyt ensisijaisesti tämän:</p>
+					<h2>1. Valintani: ChatGPT Exporter - ChatGPT to PDF, MD, and more</h2>
+					<p>Tekijä: Mark / chatgptexporter.com<br />
+					Chrome Web Store -ID: <code>ilmdofdhpnhffldihboadndccenlnfll</code></p>
+					<p><a href="https://chromewebstore.google.com/detail/chatgpt-exporter-chatgpt/ilmdofdhpnhffldihboadndccenlnfll?utm_source=chatgpt.com">Avaa ChatGPT Exporter Chrome Web Storessa</a></p>
+					<p>Tähän päädyin useasta syystä.</p>
+					<p><strong>Markdown-vienti ei vaadi tiliä.</strong> Chrome Web Storen nykyinen kuvaus sanoo tämän suoraan: Markdown, Text, CSV ja JSON toimivat kirjautumatta; vain PDF-vienti vaatii kirjautumisen. (<a href="https://chromewebstore.google.com/detail/chatgpt-exporter-chatgpt/ilmdofdhpnhffldihboadndccenlnfll?hl=en-GB&amp;utm_source=chatgpt.com">Chrome Web Store</a>)</p>
+					<p><strong>Markdown käsitellään paikallisesti selaimessa.</strong> Kehittäjän tietosuojakäytäntö erottaa PDF:n muista formaateista: PDF kulkee heidän palvelimensa kautta, mutta Markdown/Text/JSON/CSV käsitellään kokonaan selaimessa eikä keskustelusisältöä lähetetä heidän palvelimelleen. (<a href="https://www.chatgptexporter.com/en/privacy?utm_source=chatgpt.com">ChatGPT Exporter</a>)</p>
+					<p><strong>Brave on nimenomaisesti tuettu.</strong> Kehittäjä mainitsee Chrome Web Storessa Braven sekä muut Chromium-selaimet. Brave puolestaan vahvistaa itse tukevansa lähes kaikkia Chromium-yhteensopivia Chrome Web Store -laajennuksia. (<a href="https://chromewebstore.google.com/detail/chatgpt-exporter-chatgpt/ilmdofdhpnhffldihboadndccenlnfll?utm_source=chatgpt.com">Chrome Web Store</a>)</p>
+					<p><strong>Se on tällä hetkellä aktiivisesti ylläpidetty eikä kokeellinen pikkuprojekti.</strong> Versio 6.10.0 on päivitetty 11.-12.8.2026, käyttäjiä on noin 200 000 ja Chrome Web Storessa noin 2 500 arviota keskiarvolla noin 4,9/5. Laajennus on ollut olemassa vuodesta 2023. (<a href="https://chrome-stats.com/d/ilmdofdhpnhffldihboadndccenlnfll?utm_source=chatgpt.com">Chrome-Stats</a>)</p>
+					<p>Ja sinun kannaltasi olennaista: nykyinen versio käsittelee muutakin kuin pelkkää ruudulla näkyvää tekstiä. Se ilmoittaa tukevansa mm. Canvas-sisältöä, kaavoja, koodilohkoja, taulukoita, Deep Research -lähteitä ja Web Search -lähteitä sekä käyttävänsä ChatGPT:n API-tietoja osassa poimintaa. (<a href="https://chromewebstore.google.com/detail/chatgpt-exporter-chatgpt/ilmdofdhpnhffldihboadndccenlnfll">Chrome Web Store</a>)</p>
+					<h3>Miksi en valinnut avoimen lähdekoodin vaihtoehtoa ykköseksi?</h3>
+					<p>Tämä oli vertailun kiinnostavin kohta.</p>
+					<p><strong>SurajKhonden ChatGPT Exporter</strong> on teknisesti erittäin houkutteleva. Se hakee koko keskustelun ChatGPT:n omasta sisäisestä conversation-rajapinnasta nykyisen kirjautumisistunnon avulla. Tekijä ilmoittaa sen käsittelevän 10 tai 10 000 viestin keskusteluja, ja mukana on lisäksi scroll-capture-varatapa virtualisoitujen keskustelujen keräämiseksi. Koodi on pieni, Manifest V3 -pohjainen, ilman analytiikkaa tai palvelinta. (<a href="https://github.com/SurajKhonde/chatgpt-exporter/blob/main/ReadMe.md?utm_source=chatgpt.com">GitHub</a>)</p>
+					<p><a href="https://github.com/SurajKhonde/chatgpt-exporter?utm_source=chatgpt.com">SurajKhonde/chatgpt-exporter GitHubissa</a></p>
+					<p>Se olisi minun <strong>kakkosvalintani</strong> ja itse asiassa arkkitehtuuriltaan ehkä juuri sinun pitkille keskusteluillesi kaikkein kiinnostavin.</p>
+					<p>Mutta siinä on kaksi käytännön heikkoutta: käyttäjäkunta on hyvin pieni, ja sen tärkein toimintatapa riippuu ChatGPT:n dokumentoimattomasta sisäisestä rajapinnasta. Tekijä itsekin toteaa, että endpoint voi muuttua milloin tahansa. (<a href="https://github.com/SurajKhonde/chatgpt-exporter">GitHub</a>)</p>
+					<p>Siksi en tekisi siitä ensimmäistä työkalua, jonka varaan alat rakentaa keskusteluarkistoa.</p>
+					<h2>Muut vakavasti otettavat</h2>
+					<p><strong>otaliptus / ChatGPT Exporter</strong> on mielestäni paras puhtaasti paikallinen varavaihtoehto. Se ei käytä ulkoista palvelua eikä tiliä ja osaa nimenomaisesti käsitellä pitkiä virtualisoituja keskusteluja vierittämällä sivua ja yhdistämällä löytyvät viestit. Sen käyttöoikeudet ovat myös järkevän suppeat: <code>activeTab</code>, <code>downloads</code>, <code>scripting</code> sekä ChatGPT-domainit. (<a href="https://github.com/Hakkush-07/chatgpt-exporter?utm_source=chatgpt.com">GitHub</a>)</p>
+					<p>Sen heikkoutena on pieni käyttäjäkunta ja viimeisin Web Store -päivitys 9.5.2026. (<a href="https://chrome-stats.com/d/abkeekobciebpedokcanajekcnhkbhmk?hl=es&amp;utm_source=chatgpt.com">Chrome-Stats</a>)</p>
+					<p><strong>GPTChatDownloader</strong> on aivan tuore, päivitetty 9.9.2026. Se ei vaadi tiliä paikalliseen vientiin ja pyrkii rekonstruoimaan varsinaisen keskusteluhaaran oikein myös muokkausten, regenerointien ja haarautumisten yhteydessä. (<a href="https://chromewebstore.google.com/detail/gptchatdownloader/objkcakdcilfaphifjfcgfamlnnbinjc?utm_source=chatgpt.com">Chrome Web Store</a>)</p>
+					<p>En kuitenkaan valitsisi sitä sinulle ensimmäiseksi. Sen valinnainen GitHub-integraatio tarkoittaa myös <code>github.com</code>- ja <code>api.github.com</code>-host-oikeuksia. Ne voivat olla perusteltuja sille toiminnolle, mutta pelkkään paikalliseen <code>.md</code>-vientiin ne ovat sinulle tarpeettomia. Lisäksi laajennus on vasta muutaman päivän ikäinen ja käyttäjiä on toistaiseksi hyvin vähän. (<a href="https://chrome-stats.com/d/objkcakdcilfaphifjfcgfamlnnbinjc?utm_source=chatgpt.com">Chrome-Stats</a>)</p>
+					<p><strong>jsh9 / ChatGPT to Markdown</strong> on avoin ja Markdown-muunnos näyttää teknisesti huolelliselta: taulukot, sisäkkäiset listat, koodi ja KaTeX ovat tuettuja. (<a href="https://github.com/jsh9/chatgpt-to-markdown?utm_source=chatgpt.com">GitHub</a>) Mutta Web Store -versio on edelleen 0.1.0, viimeksi päivitetty lokakuussa 2025, eikä sen dokumentaatiossa ole samanlaista selvää ratkaisua erittäin pitkien virtualisoitujen keskustelujen täydelliseen keräämiseen. Web Store -arvosana on lisäksi vain 2,6/5 viidestä arviosta. (<a href="https://chromewebstore.google.com/detail/chatgpt-to-markdown/ajogklnjecgpjfalkokkencdlbnhiohb?utm_source=chatgpt.com">Chrome Web Store</a>)</p>
+					<h2>Mitä tekisin sinun koneellasi</h2>
+					<p>Asentaisin siis <strong>ChatGPT Exporterin, ID <code>ilmdofdhpnhffldihboadndccenlnfll</code></strong> suoraan Chrome Web Storesta Braveen.</p>
+					<p>En tekisi sille tiliä. En käyttäisi PDF-vientiä. Käyttäisin vain <strong>Markdown → paikallinen tiedosto</strong> -reittiä.</p>
+					<p>Ensimmäinen testi kannattaa tehdä jollakin sinun todella pitkällä säikeelläsi. Sen jälkeen tarkistaisin <code>.md</code>:stä kolme asiaa:</p>
+					<ol>
+					<li>aivan ensimmäinen käyttäjäviesti,</li>
+					<li>jokin helposti tunnistettava kohta keskustelun keskeltä,</li>
+					<li>aivan viimeinen viesti.</li>
+					</ol>
+					<p>Tämä on tärkeämpi testi kuin se, että tiedosto vain näyttää isolta. Virtualisointivirhe voi tuottaa täysin siistin Markdown-tiedoston, josta puuttuu esimerkiksi ensimmäiset 60 % keskustelusta.</p>
+					<p><strong>Jos tuo testi epäonnistuu</strong>, en alkaisi taistella laajennuksen asetusten kanssa pitkään, vaan siirtyisin suoraan SurajKhonden avoimeen versioon. Sen API + scroll-capture -kaksoisratkaisu on nimenomaan suunniteltu kyseiseen ongelmaan. (<a href="https://github.com/SurajKhonde/chatgpt-exporter/blob/main/ReadMe.md?utm_source=chatgpt.com">GitHub</a>)</p>
+					<p>Yksi varaus ykkösvalinnastani on hyvä sanoa ääneen: se <strong>ei ole avoimen lähdekoodin vaihtoehto</strong>, ja kehittäjän yleinen verkkopalvelun tietosuojapolitiikka sisältää myös tavallista verkkoseurantaa ja tilitoimintoja. Tämä ei näytä koskevan paikallisen Markdown-viennin keskustelusisältöä, mutta avoimuudessa SurajKhonden vaihtoehto voittaa sen selvästi. (<a href="https://www.chatgptexporter.com/en/privacy?utm_source=chatgpt.com">ChatGPT Exporter</a>)</p>
+					<p>Minun järjestykseni sinun käyttötarkoitukseesi on siis: <strong>ensin vakiintunut ChatGPT Exporter; jos yksikin pitkä keskustelu jää vajaaksi, vaihto SurajKhonden Exporteriin.</strong></p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">Käyttäjä</p>
+				<div class="message">
+					<p>Jos mikään valmisvaihtoehto ei jostain syystä sovi minulle, niin voinko tehdä itse laajennuksen tähän tarkoitukseen käyttäen sen tekemiseeen joko sinua tai Codexia? Jos kyllä, niin miten iso työ se olisi?</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">ChatGPT</p>
+				<div class="message">
+					<p>Kyllä. Tämä olisi itse asiassa varsin sopiva oma pieni selainlaajennusprojekti, koska tavoite voidaan rajata hyvin tiukasti: “avaa nykyinen ChatGPT-keskustelu → poimi kaikki viestit → muodosta Markdown → tallenna paikallisesti”. Suurin työ ei ole itse <code>.md</code>-tiedoston tekeminen vaan pitkien ja dynaamisesti ladattujen keskustelujen luotettava kerääminen.</p>
+					<p>Kyllä - ja jos valmiit laajennukset eivät osu kunnolla, oman tekeminen olisi täysin realistista. Tässä tapauksessa puhutaan ennemmin <strong>pienestä selainlaajennuksesta kuin varsinaisesta ohjelmistoprojektista</strong>.</p>
+					<p>Brave tukee lähes kaikkia Chromium-yhteensopivia laajennuksia, joten tekisimme tavallisen Manifest V3 -Chrome-laajennuksen. (<a href="https://support.brave.com/hc/en-us/articles/360017909112-How-can-I-add-extensions-to-Brave?utm_source=chatgpt.com">Brave Support</a>)</p>
+					<p>Minä jakaisin työn kolmeen tasoon:</p>
+					<ul>
+					<li><strong>Minimiversio:</strong> painike → nykyisen keskustelun viestit → Markdown → <code>.md</code>-tiedosto. Tämä olisi pieni projekti, ehkä noin 150-300 riviä varsinaista koodia.</li>
+					<li><strong>Sinulle käyttökelpoinen versio:</strong> käsittelee pitkät keskustelut, vierittää tarvittaessa koko säikeen läpi, estää kaksoiskappaleet, säilyttää käyttäjä/ChatGPT-roolit, otsikot, listat, koodilohkot ja linkit sekä muodostaa järkevän tiedostonimen. Puhuisin ehkä noin 400-800 rivin kokoluokasta.</li>
+					<li><strong>Todella robusti versio:</strong> lisäksi haarautuneet/regeneroidut vastaukset, Canvasit, lähdeviitteet, Deep Research -rakenteet, kuvat/liitteet, vaihtoehtoinen keräysmenetelmä jos ChatGPT:n DOM muuttuu sekä automaattisia regressiotestejä. Tästä alkaa jo tulla oikea ylläpidettävä ohjelmistoprojekti.</li>
+					</ul>
+					<p>Itse laajennuksen runko on yksinkertainen. Manifest V3:ssa voidaan käyttää käyttäjän aktiiviselle välilehdelle tilapäisen oikeuden antavaa <code>activeTab</code>-oikeutta ja injektoida keräyskoodi vasta silloin, kun painat laajennuksen nappia. Silloin laajennukselle ei tarvitsisi antaa oikeutta lukea kaikkea selaamistasi jatkuvasti. Chromen dokumentaatio tukee juuri tällaista <code>activeTab</code> + <code>scripting</code> -mallia. (<a href="https://developer.chrome.com/docs/extensions/reference/api/scripting?utm_source=chatgpt.com">Chrome for Developers</a>)</p>
+					<p>Lopuksi <code>.md</code> voidaan antaa selaimen <code>downloads</code>-rajapinnalle paikallisesti tallennettavaksi. (<a href="https://developer.chrome.com/docs/extensions/reference/api/downloads?utm_source=chatgpt.com">Chrome for Developers</a>)</p>
+					<p>Arkkitehtuuri voisi siis olla jotakuinkin:</p>
+					<pre><code class="language-text">toolbar-painike
+      ↓
+tarkista että ollaan chatgpt.com-keskustelussa
+      ↓
+content script
+      ↓
+kerää koko keskustelu
+      ↓
+normalisoi viestit
+      ↓
+muunna Markdowniksi
+      ↓
+tarkista eheys
+      ↓
+tallenna keskustelu.md
+</code></pre>
+					<h3>Vaikein osa: mistä koko keskustelu otetaan?</h3>
+					<p>Tässä tekisin tietoisesti toisin kuin moni pieni vientilaajennus.</p>
+					<p>En rakentaisi ensimmäistä versiota ChatGPT:n dokumentoimattoman sisäisen API-endpointin varaan. Se voisi olla teknisesti elegantti, mutta OpenAI voi muuttaa sen ilman ennakkovaroitusta.</p>
+					<p>Ensimmäinen versio käyttäisi mieluummin <strong>DOM + hallittu vieritys + deduplikointi</strong> -menetelmää:</p>
+					<ol>
+					<li>Selvitetään tällä hetkellä näkyvät keskusteluviestit.</li>
+					<li>Tallennetaan jokaisesta tunniste/fingerprint.</li>
+					<li>Vieritetään hallitusti kohti keskustelun alkua tai loppua.</li>
+					<li>Odotetaan virtualisoitujen elementtien latautumista.</li>
+					<li>Kerätään uudet viestit.</li>
+					<li>Toistetaan, kunnes mitään uutta ei enää löydy.</li>
+					<li>Järjestetään viestit.</li>
+					<li>Tarkistetaan, ettei keskusteluun jää ilmeisiä aukkoja.</li>
+					</ol>
+					<p>Sen jälkeen voisimme halutessamme rakentaa <strong>toisen keräysmoottorin</strong> sisäisen keskustelurakenteen varaan. Jos toinen menetelmä joskus hajoaa, toinen jää käyttöön.</p>
+					<p>Tuollainen kaksinkertainen strategia kiinnostaisi minua paljon enemmän kuin yhden keinon varaan rakennettu exporter.</p>
+					<h3>Yksi iso etu omassa laajennuksessa</h3>
+					<p>Voisimme määritellä Markdown-formaatin juuri sinun käyttötarkoituksesi mukaan.</p>
+					<p>Esimerkiksi:</p>
+					<pre><code class="language-markdown">---
+title: &quot;Aforismipaja jatkuu&quot;
+source: &quot;ChatGPT&quot;
+exported: 2026-09-20
+conversation_url: &quot;...&quot;
+---
+
+# Aforismipaja jatkuu
+
+## User
+
+Taidan julkaista tuon nyt...
+
+## Assistant
+
+...
+
+## User
+
+vaihdoin sittenkin...
+</code></pre>
+					<p>Tai vielä arkistointikelpoisemmin:</p>
+					<pre><code class="language-markdown">&lt;!-- message: 001 --&gt;
+### USER
+
+...
+
+&lt;!-- message: 002 --&gt;
+### ASSISTANT
+
+...
+</code></pre>
+					<p>Voisimme säilyttää lisäksi aikaleimat, viestien järjestysnumerot ja mahdollisesti alkuperäiset viesti-ID:t, jos ne ovat turvallisesti saatavissa. Silloin tiedostoa voisi myöhemmin käsitellä koneellisesti ilman, että Markdown muuttuu epämiellyttäväksi ihmiselle.</p>
+					<h3>Tiliä tai Chrome Web Storea ei tarvita</h3>
+					<p>Henkilökohtaiseen käyttöön sitä ei tarvitse edes julkaista.</p>
+					<p>Hakemistossa olisi esimerkiksi:</p>
+					<pre><code class="language-text">chatgpt-markdown-exporter/
+├── manifest.json
+├── background.js
+├── capture.js
+├── markdown.js
+├── popup.html
+├── popup.js
+└── icons/
+</code></pre>
+					<p>Sen voisi ladata Braveen Developer Modessa unpacked-laajennuksena. Chromiumin oma dokumentaatio tukee tätä kehitysmallia nimenomaan henkilökohtaiseen käyttöön. (<a href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?utm_source=chatgpt.com">Chrome for Developers</a>)</p>
+					<p>Koska käytät Linuxia, Brave tukee myös ulkopuolisten laajennusten asentamista Developer Moden kautta. (<a href="https://support.brave.com/hc/en-us/articles/360017914832-Why-am-I-seeing-the-message-extensions-disabled-by-Brave?utm_source=chatgpt.com">Brave Support</a>)</p>
+					<h3>Minä vai Codex?</h3>
+					<p>Tähän käyttäisin todennäköisesti <strong>meitä molempia eri rooleissa</strong>.</p>
+					<p>Minun kanssani kannattaa ensin määritellä:</p>
+					<ul>
+					<li>mikä tarkalleen pitää säilyttää</li>
+					<li>Markdown-formaatti</li>
+					<li>miten haarautuneet keskustelut käsitellään</li>
+					<li>mitä &quot;koko keskustelu&quot; tarkoittaa</li>
+					<li>miten tiedoston eheys tarkistetaan</li>
+					<li>mitä oikeuksia laajennukselle sallitaan.</li>
+					</ul>
+					<p>Sen jälkeen Codex sopii erittäin hyvin varsinaiseen repo-työskentelyyn: tiedostojen luontiin, refaktorointiin, testien tekemiseen ja muutosten iterointiin. Chrome on nykyään jopa dokumentoinut AI-agenttien käyttämistä unpacked-laajennusten asentamiseen ja testaamiseen DevTools-ympäristössä. (<a href="https://developer.chrome.com/docs/devtools/agents/extensions?utm_source=chatgpt.com">Chrome for Developers</a>)</p>
+					<p>Ja laittaisin tämän <strong>GitHub-repoon heti alusta asti</strong>, koska tämä on juuri sellainen pieni työkalu, joka alkaa helposti elää ChatGPT:n käyttöliittymän muuttuessa.</p>
+					<p>Minusta järkevin eteneminen olisi kuitenkin ensin <strong>testata tuo valmis ChatGPT Exporter yhdellä sinun pahimmista pitkistä keskusteluistasi</strong>. Jos se tekee täydellisen ja hyvän Markdownin, omaa laajennusta ei ole mitään syytä rakentaa.</p>
+					<p>Jos se epäonnistuu, silloin meillä on samalla valmis testitapaus, jonka perusteella oman laajennuksen ensimmäinen vaatimus voidaan ilmaista hyvin konkreettisesti:</p>
+					<blockquote>
+					<p><em>Tämän säikeen pitää tulla ulos täydellisenä.</em></p>
+					</blockquote>
+					<p>Siinä vaiheessa projekti olisi jo varsin hyvin rajattu.</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">Käyttäjä</p>
+				<div class="message">
+					<p>&quot;pahimmista pitkistä keskusteluistasi&quot; ?!!!!</p>
+				</div>
+			</section>
+
+			<section class="turn">
+				<p class="speaker">ChatGPT</p>
+				<div class="message">
+					<p>😄 Huono sanavalinta.</p>
+					<p>Tarkoitin <strong>teknisesti hankalimpia eli pisimpiä ja rakenteeltaan monimutkaisimpia keskustelujasi</strong> — en missään nimessä sisällöllisesti “pahimpia”.</p>
+					<p>Parempi muotoilu olisi ollut:</p>
+					<blockquote>
+					<p>“Testataan sitä yhdellä pisimmistä ja teknisesti vaativimmista keskusteluistasi.”</p>
+					</blockquote>
+					<p>Siis sellaisella, jossa on paljon viestejä, mahdollisesti haaroja, pitkiä vastauksia, koodia, tiedostoja tai muuta, mikä saa exporter-laajennuksen oikeasti hikoilemaan.</p>
+					<p>“Pahimmista” kuulosti siltä kuin olisin selaillut arkistoasi ja tehnyt moraalisen laatuluokituksen. 😄</p>
+				</div>
+			</section>
+
+		</main>
+	</body>
+</html>
+
+<style>
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		background: #f5f3ee;
+		color: #23231f;
+	}
+
+	:global(body) {
+		margin: 0;
+	}
+
+	main {
+		width: min(760px, calc(100% - 32px));
+		margin: 0 auto;
+		padding: 64px 0;
+	}
+
+	header {
+		padding-bottom: 32px;
+		border-bottom: 1px solid #d8d4ca;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2.2rem, 6vw, 4.2rem);
+		line-height: 1;
+		letter-spacing: -0.04em;
+	}
+
+	.note {
+		margin: 20px 0 0;
+		color: #66645c;
+		line-height: 1.5;
+	}
+
+	.turn {
+		padding: 32px 0;
+		border-bottom: 1px solid #d8d4ca;
+	}
+
+	.speaker {
+		margin: 0 0 12px;
+		font-size: 0.82rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.message {
+		padding-left: 20px;
+		border-left: 3px solid #9d998f;
+	}
+
+	.message :global(p),
+	.message :global(li) {
+		line-height: 1.68;
+		text-wrap: pretty;
+	}
+
+	.message :global(p) {
+		margin: 0;
+	}
+
+	.message :global(p + p) {
+		margin-top: 1em;
+	}
+
+	.message :global(h2),
+	.message :global(h3) {
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.message :global(h2) {
+		margin: 1.7em 0 0.65em;
+		font-size: 1.45rem;
+	}
+
+	.message :global(h3) {
+		margin: 1.5em 0 0.6em;
+		font-size: 1.15rem;
+	}
+
+	.message :global(ul),
+	.message :global(ol) {
+		margin: 1em 0;
+		padding-left: 1.5em;
+	}
+
+	.message :global(li + li) {
+		margin-top: 0.35em;
+	}
+
+	.message :global(blockquote) {
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 2px solid #c4c0b6;
+		color: #4f4e48;
+	}
+
+	.message :global(a) {
+		color: inherit;
+		text-underline-offset: 0.14em;
+		overflow-wrap: anywhere;
+	}
+
+	.message :global(code) {
+		padding: 0.1em 0.3em;
+		border-radius: 3px;
+		background: #e9e6df;
+		font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+		font-size: 0.9em;
+	}
+
+	.message :global(pre) {
+		overflow-x: auto;
+		margin: 1em 0;
+		padding: 16px;
+		border: 1px solid #d8d4ca;
+		background: #ebe8e1;
+	}
+
+	.message :global(pre code) {
+		padding: 0;
+		background: transparent;
+		font-size: 0.85rem;
+		line-height: 1.55;
+	}
+
+	.message > :first-child {
+		margin-top: 0;
+	}
+
+	.message > :last-child {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 640px) {
+		main {
+			width: min(100% - 24px, 760px);
+			padding: 40px 0;
+		}
+
+		.turn {
+			padding: 26px 0;
+		}
+
+		.message {
+			padding-left: 14px;
+		}
+	}
+</style>

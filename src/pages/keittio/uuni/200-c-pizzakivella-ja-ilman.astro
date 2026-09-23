@@ -1,0 +1,153 @@
+---
+import '../../../styles/keittio.css';
+
+const chart = '/images/keittio/uuni/uuni-200c-pizzakivi.svg';
+const chartAlt = 'Neljän uuni-ilma-anturin keskilämpötila kylmäkäynnistyksestä: ilman pizzakiveä 200 °C saavutettiin noin 12 minuutissa ja ensimmäinen huippu oli 221,1 °C. Pizzakiven ja pellin kanssa 200 °C saavutettiin 30 minuutissa 50 sekunnissa ja myöhempi vaihtelu oli pienempää. Kivikokeen keskiarvo jäi koko 72 minuutin ajan alle 210 °C:n.';
+---
+
+<!doctype html>
+<html lang="fi">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Neljällä lämpöanturilla tehty vertailu siitä, miten 200 °C:een asetettu Electrolux-uuni käyttäytyy kylmäkäynnistyksessä pizzakiven kanssa ja ilman sitä." />
+		<title>Mitä uunin 200 °C tarkoittaa? Pizzakiven vaikutus lämpötilaan · wennström.fi</title>
+	</head>
+	<body>
+		<main class="measurement-page">
+			<nav class="breadcrumbs reading-width" aria-label="Murupolku">
+				<ol><li><a href="/">Etusivu</a></li><li><a href="/keittio/">Keittiö</a></li><li aria-current="page">Uunimittaus</li></ol>
+			</nav>
+			<article>
+				<header class="reading-width">
+					<p class="kicker">Keittiö · Mittaukset</p>
+					<h1>Mitä uunin 200 °C tarkoittaa? Pizzakiven vaikutus lämpötilaan</h1>
+					<p class="lead">Uunin lämpötilansäätimeen asetettu 200 °C ei tarkoita, että uuni-ilma pysyisi jatkuvasti 200 asteessa.</p>
+					<p>Electrolux-uunin lämpötilaa mitattiin neljällä K-tyypin anturilla ensin ilman pizzakiveä ja seuraavana päivänä noin 4,6 kg:n pizzakiven kanssa. Molemmissa kokeissa uuni käynnistettiin kylmänä, asetuksena oli 200 °C ylä-/alalämmöllä ja kiertoilma oli pois päältä.</p>
+				</header>
+
+				<figure aria-labelledby="kuvaajan-kuvaus">
+					<img class="chart" src={chart} width="1046" height="612" alt={chartAlt} />
+					<figcaption id="kuvaajan-kuvaus" class="reading-width">Kuva 1. Neljän uuni-ilma-anturin keskilämpötila viiden sekunnin välein. Käyrää ei ole silotettu. Kivikokeen aika on nollattu varsinaisen kylmäkäynnistyksen alkuun. Sininen käyrä: ilman pizzakiveä. Oranssi: pizzakivi ja pelti. Katkoviiva: 200 °C:n asetus.</figcaption>
+					<details class="chart-zoom">
+						<summary>Suurenna kuvaaja</summary>
+						<p class="note">Vieritä suurennettua kuvaa vaakasuunnassa. Näppäimistöllä: siirry kuva-alueelle sarkaimella ja käytä nuolinäppäimiä. <a href={chart}>Avaa pelkkä kuvaaja</a>.</p>
+						<div class="chart-scroll" tabindex="0" role="region" aria-label="Suurennettu kuvaaja, vieritettävissä vaakasuunnassa">
+							<img src={chart} width="1046" height="612" alt={chartAlt} loading="lazy" />
+						</div>
+					</details>
+				</figure>
+
+				<div class="reading-width">
+					<section aria-labelledby="havainnot">
+						<h2 id="havainnot">Mitä kuvaajassa näkyy?</h2>
+						<h3>Ilman pizzakiveä uuni lämpeni nopeasti ja ylitti asetuksen</h3>
+						<p>Neljän anturin keskiarvo saavutti 200 °C:n tason noin 12 minuutissa. Ensimmäisen lämmitysjakson huippu tuli kohdassa 13 min 45 s ja oli noin 221,1 °C.</p>
+						<p>Sen jälkeen lämpötila alkoi sahata termostaatin ohjaamana asetuksen molemmin puolin. Myöhemmän vakiintuneen jakson sykli oli noin 9,4–9,5 minuuttia.</p>
+						<h3>Pizzakiven ja pellin kanssa lämpeneminen oli hitaampaa</h3>
+						<p>Kun noin 4,6 kg:n pizzakivi oli pellillä uunin alimmalla tasolla, kuvaajaan merkitty lämpösyklin huippu jäi noin 195,8 °C:een noin 24½ minuutin kohdalla.</p>
+						<p>Neljän anturin keskiarvo saavutti 200 °C vasta kohdassa 30 min 50 s. Koko 72 minuutin mittauksen aikana keskiarvo ei noussut 210 °C:een.</p>
+						<h3>Myöhempien vertailujaksojen keskilämpötila oli lähes sama</h3>
+						<p>Ilman pizzakiveä kolmen kokonaisen vakaan syklin keskilämpötila oli noin 203,5 °C. Pizzakiven kanssa yhden myöhäisen kokonaisen syklin keskilämpötila oli myös noin 203,5 °C. Tuossa syklissä neljän anturin keskiarvo vaihteli noin 198,1–207,8 °C:n välillä.</p>
+						<p>Vertailu koskee näitä eripituisia jaksoja. Kivellisen uunin lopullista lämpötasapainoa ei tällä kokeella osoitettu.</p>
+					</section>
+
+					<section aria-labelledby="luvut">
+						<h2 id="luvut">Keskeiset luvut</h2>
+						<p class="note">Lämpötilat ovat neljän uuni-ilma-anturin keskiarvoja. Ne eivät kuvaa kiven tai ruoan lämpötilaa.</p>
+						<div class="numbers">
+							<div>
+								<h3>Ilman pizzakiveä</h3>
+								<dl>
+									<div><dt>200 °C saavutettiin</dt><dd>Noin 12 min</dd></div>
+									<div><dt>Ensimmäisen ylityksen huippu</dt><dd>Noin 221,1 °C · 13 min 45 s</dd></div>
+									<div><dt>Myöhemmän vakaan jakson sykli</dt><dd>Noin 9,4–9,5 min</dd></div>
+									<div><dt>Kolmen vakaan syklin keskilämpötila</dt><dd>Noin 203,5 °C</dd></div>
+								</dl>
+							</div>
+							<div>
+								<h3>Pizzakivi ja pelti alimmalla tasolla</h3>
+								<dl>
+									<div><dt>200 °C saavutettiin</dt><dd>30 min 50 s</dd></div>
+									<div><dt>Kuvaajaan merkitty lämpösyklin huippu</dt><dd>Noin 195,8 °C · noin 24½ min</dd></div>
+									<div><dt>Koko 72 minuutin mittaus</dt><dd>Keskiarvo pysyi alle 210 °C:n</dd></div>
+									<div><dt>Myöhäisen kokonaisen syklin vaihteluväli</dt><dd>Noin 198,1–207,8 °C</dd></div>
+									<div><dt>Saman syklin keskilämpötila</dt><dd>Noin 203,5 °C</dd></div>
+								</dl>
+							</div>
+						</div>
+					</section>
+
+					<section aria-labelledby="naytto">
+						<h2 id="naytto">Mitattu, tulkittu ja vielä avoin</h2>
+						<div class="evidence">
+							<h3>Mitattu</h3>
+							<p>Samalla 200 °C:n asetuksella uuni-ilman lämpökäyrät olivat hyvin erilaiset. Ilman kiveä ensimmäinen suuri ylitys nousi noin 221 °C:een. Kiven ja pellin kanssa kuvaajaan merkitty lämpösyklin huippu jäi alle 200 °C:n ja lämpeneminen jatkui huomattavasti pidempään.</p>
+							<p>Myöhemmässä vaiheessa kivellisen uunin lämpötilavaihtelu oli selvästi pienempää.</p>
+						</div>
+						<div class="evidence">
+							<h3>Tulkinta</h3>
+							<p>Noin 4,6 kg:n pizzakivi ja sitä kantava pelti lisäävät uunin lämpökapasiteettia huomattavasti. Tämä tarjoaa yksinkertaisen selityksen sekä hitaammalle lämpenemiselle että uuni-ilman pienemmälle lämpötilavaihtelulle.</p>
+							<p>Mittaus ei kuitenkaan erota pizzakiven ja sen alla olevan pellin vaikutuksia toisistaan.</p>
+							<p>Kivikokeen käyrä viittaa siihen, ettei uuni ollut 72 minuutin kohdalla täysin lämpötasapainossa. Kivellisen uunin lopullista tasapainotilaa ei siksi pidä käsitellä tarkasti mitattuna.</p>
+						</div>
+						<div class="evidence">
+							<h3>Vielä avoin</h3>
+							<p>Tämä mittaus ei vielä kerro:</p>
+							<ul>
+								<li>miten uuni käyttäytyy esimerkiksi 190 °C:ssa</li>
+								<li>mitä tapahtuu, kun noin 30 minuuttia esilämmitettyyn kivelliseen uuniin lisätään oikea ruokakuorma</li>
+								<li>kuinka paljon lämpötila vaihtelee uunin eri tasoilla tai etu-, taka- ja sivusuunnassa</li>
+								<li>miten pizzakiven toinen sijoitus vaikuttaisi</li>
+								<li>kuinka suuri osa havaitusta vaikutuksesta kuuluu kivelle ja kuinka suuri sen alla olevalle pellille.</li>
+							</ul>
+						</div>
+					</section>
+
+					<section aria-labelledby="reseptikehitys">
+						<h2 id="reseptikehitys">Miksi tällä on väliä ruoanlaitossa?</h2>
+						<p>Pelkkä reseptimerkintä <strong>”200 °C”</strong> on tämän mittauksen valossa puutteellinen kuvaus paisto-olosuhteista. Samassa uunissa ensimmäiset 30 minuuttia käyttäytyivät aivan eri tavalla sen mukaan, oliko raskas pizzakivi pelteineen mukana.</p>
+						<p>Reseptikehityksen kannalta olennaisia kirjattavia asioita ovat:</p>
+						<ul>
+							<li>asetettu lämpötila</li>
+							<li>lämmitystapa</li>
+							<li>pizzakiven käyttö ja sijoitus</li>
+							<li>käytetty uunitaso</li>
+							<li>esilämmityksen kesto tai muu lähtötila</li>
+							<li>toteutunut paistoaika</li>
+							<li>ruoan sisälämpötila tai muu päätepiste silloin, kun sitä mitataan.</li>
+						</ul>
+						<p>Vanhaa onnistunutta reseptiä ei silti pidä kirjoittaa jälkikäteen uusiksi uuden uunimittauksen perusteella. Uusi tieto vaikuttaa seuraavan kokeen suunnitteluun, ei menneen kokeen historiaan.</p>
+					</section>
+
+					<section aria-labelledby="jarjestely">
+						<h2 id="jarjestely">Mittausjärjestely</h2>
+						<p>Uuni on 50 cm leveä Electrolux-liesiuuni. Mittauksissa käytettiin seuraavaa järjestelyä:</p>
+						<ul>
+							<li>asetus 200 °C, ylä-/alalämpö, kiertoilma pois</li>
+							<li>kylmäkäynnistys molemmissa kokeissa</li>
+							<li>TASI TA612C -nelikanavamittari</li>
+							<li>neljä 30 AWG:n K-tyypin paljasliitoksista uuni-ilma-anturia</li>
+							<li>käytännön näyteväli 5 sekuntia</li>
+							<li>anturien kärjet suunnilleen samalla korkeudella, noin 17–18 cm uunin pohjasta</li>
+							<li>pizzakivi noin 4,6 kg, koko noin 36 × 29,5 × 1,5 cm</li>
+							<li>kivikokeessa kivi pellillä alimmalla tasolla.</li>
+						</ul>
+						<p>Ensimmäisessä, ilman pizzakiveä tehdyssä kokeessa T1–T4-antureiden tarkkoja fyysisiä paikkoja ei merkitty. Siksi mittaukset palvelevat uunin lämpösyklin ja kokonaiskäyttäytymisen tarkastelua, eivät uunin paikkakohtaista lämpökarttaa.</p>
+					</section>
+
+					<section aria-labelledby="seuraava">
+						<h2 id="seuraava">Seuraava kysymys</h2>
+						<p>Tavallisessa ruoanlaitossa yli tunnin esilämmitys vain täydellisen lämpötasapainon saavuttamiseksi ei ole tämän kokeen käytännön tavoite. Kiinnostavampi seuraava kysymys on:</p>
+						<p class="question">Mitä tapahtuu, kun noin 30 minuuttia lämmitettyyn kivelliseen uuniin laitetaan oikea ruoka?</p>
+						<p>Siinä vaiheessa voidaan mitata samassa kokeessa sekä uuni-ilmaa että ruoan sisälämpötilan kehitystä.</p>
+					</section>
+				</div>
+			</article>
+			<footer class="reading-width">
+				<p>Tulokset ja alkuperäinen kuvaaja ovat sivuston tekijän toimittamasta mittausaineistosta. Codex jäsensi luonnoksen verkkosivuksi ja tarkisti keskeisiä lukuarvoja toimitetusta vertailudatasta. Codex ei tehnyt fyysisiä mittauksia eikä varmistanut mittalaitteiston kalibrointia.</p>
+				<p><a href="/keittio/">Takaisin keittiöön</a></p>
+			</footer>
+		</main>
+	</body>
+</html>

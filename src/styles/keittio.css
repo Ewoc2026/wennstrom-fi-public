@@ -1,0 +1,76 @@
+/* The kitchen pages share the existing site's typography, colours and spacing. */
+* { box-sizing: border-box; }
+html {
+	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+	background: #f5f3ee;
+	color: #23231f;
+}
+body { margin: 0; }
+main {
+	width: min(760px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 48px 0;
+}
+main.measurement-page { width: min(1048px, calc(100% - 32px)); }
+.reading-width { max-width: 760px; margin-inline: auto; }
+a { color: inherit; text-underline-offset: 0.16em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid #23231f; outline-offset: 4px; }
+.breadcrumbs { font-size: 0.94rem; margin-bottom: 36px; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.breadcrumbs li + li::before { content: '/'; margin-right: 8px; color: #66645c; }
+.breadcrumbs li + li { margin-top: 0; }
+header { padding-bottom: 28px; }
+.kicker {
+	margin: 0 0 12px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+h1, h2, h3 { text-wrap: pretty; }
+h1 {
+	font-size: clamp(1.9rem, 4.5vw, 3rem);
+	font-weight: 600;
+	letter-spacing: -0.035em;
+	line-height: 1.12;
+	margin: 0;
+}
+h2 { font-size: 1.45rem; line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 20px; }
+h3 { font-size: 1.1rem; line-height: 1.4; margin: 28px 0 12px; }
+p, li, dd { line-height: 1.68; text-wrap: pretty; }
+p { margin: 0 0 16px; }
+.lead { font-size: 1.15rem; line-height: 1.6; margin: 24px 0 16px; }
+.note, figcaption, footer { color: #66645c; font-size: 0.94rem; }
+section { padding: 32px 0; border-top: 1px solid #d8d4ca; }
+section > :last-child { margin-bottom: 0; }
+ul { padding-left: 1.4em; }
+li + li { margin-top: 0.4em; }
+figure { margin: 0 0 36px; }
+.chart { display: block; width: 100%; height: auto; background: #fff; }
+figcaption { line-height: 1.6; margin-top: 16px; }
+.chart-zoom { margin-top: 18px; border-block: 1px solid #d8d4ca; }
+summary { cursor: pointer; font-weight: 600; padding: 14px 2px; }
+.chart-zoom .note { margin: 0 2px 14px; }
+.chart-scroll { overflow-x: auto; margin-bottom: 18px; background: #fff; }
+.chart-scroll img { display: block; width: max(1048px, 150%); max-width: none; height: auto; }
+.numbers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.numbers h3 { margin-top: 0; }
+dl { margin: 0; }
+dl > div { padding: 12px 0; border-top: 1px solid #d8d4ca; }
+dt { font-size: 0.94rem; line-height: 1.5; }
+dd { margin: 4px 0 0; font-weight: 600; }
+.evidence { padding-left: 20px; border-left: 3px solid #9d998f; }
+.evidence + .evidence { margin-top: 28px; }
+.evidence h3 { margin-top: 0; }
+.evidence > :last-child { margin-bottom: 0; }
+.question { font-size: 1.1rem; font-weight: 600; }
+footer { border-top: 1px solid #d8d4ca; padding-top: 24px; margin-top: 8px; }
+footer p:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+	main, main.measurement-page { width: calc(100% - 24px); padding: 28px 0 40px; }
+	.breadcrumbs { margin-bottom: 28px; }
+	section { padding: 26px 0; }
+	.numbers { grid-template-columns: 1fr; gap: 28px; }
+	.evidence { padding-left: 14px; }
+}

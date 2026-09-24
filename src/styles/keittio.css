@@ -64,7 +64,6 @@ dd { margin: 4px 0 0; font-weight: 600; }
 .evidence + .evidence { margin-top: 28px; }
 .evidence h3 { margin-top: 0; }
 .evidence > :last-child { margin-bottom: 0; }
-.question { font-size: 1.1rem; font-weight: 600; }
 footer { border-top: 1px solid #d8d4ca; padding-top: 24px; margin-top: 8px; }
 footer p:last-child { margin-bottom: 0; }
 @media (max-width: 640px) {

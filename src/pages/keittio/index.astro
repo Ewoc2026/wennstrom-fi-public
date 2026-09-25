@@ -1,16 +1,12 @@
 ---
+import PageLayout from '../../layouts/PageLayout.astro';
 import '../../styles/keittio.css';
 ---
 
-<!doctype html>
-<html lang="fi">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Keittiön mittauksia, kokeita ja havaintoja reseptikehityksen tueksi. Ensimmäisenä vertailussa uunin 200 °C pizzakiven kanssa ja ilman." />
-		<title>Keittiö · wennström.fi</title>
-	</head>
-	<body>
+<PageLayout
+	title="Keittiö · wennström.fi"
+	description="Keittiön mittauksia, kokeita ja havaintoja reseptikehityksen tueksi. Ensimmäisenä vertailussa uunin 200 °C pizzakiven kanssa ja ilman."
+>
 		<main>
 			<nav class="breadcrumbs" aria-label="Murupolku">
 				<ol><li><a href="/">Etusivu</a></li><li aria-current="page">Keittiö</li></ol>
@@ -29,5 +25,4 @@ import '../../styles/keittio.css';
 				<p>Codex toteutti tämän osion ja jäsensi sen esittelytekstit sivuston tekijän toimittaman aineiston pohjalta.</p>
 			</footer>
 		</main>
-	</body>
-</html>
+	</PageLayout>

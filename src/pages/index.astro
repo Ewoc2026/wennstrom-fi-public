@@ -1,12 +1,11 @@
-<!doctype html>
-<html lang="fi">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="wennström.fi." />
-		<title>wennström.fi</title>
-	</head>
-	<body>
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+	title="wennström.fi"
+	description="Keskusteluesimerkkejä tekoälyn käytöstä, syvätutkimusohje sekä keittiön mittauksia ja kokeita."
+>
 		<main>
 			<h1>Mahdollisuuksien viidakossa</h1>
 			<p><a href="./viela/">Vielä – yksi sana, jota en pyytänyt.</a></p>
@@ -23,8 +22,7 @@
 				<h2 id="keittio-heading"><a href="./keittio/">Keittiö <span aria-hidden="true">→</span></a></h2>
 			</section>
 		</main>
-	</body>
-</html>
+	</PageLayout>
 
 <style>
 	:global(*) { box-sizing: border-box; }

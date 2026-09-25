@@ -1,4 +1,5 @@
 ---
+import PageLayout from '../layouts/PageLayout.astro';
 import sourceText from '../content/syvatutkimus-prompt-v0.6.md?raw';
 
 const version = 'v0.6';
@@ -6,19 +7,10 @@ const updated = '9.9.2026';
 const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIMUSOHJE v0.6');
 ---
 
-<!doctype html>
-<html lang="fi">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta
-			name="description"
-			content="Syvätutkimusohje yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen tekoälyn avulla."
-		/>
-		<meta name="generator" content={Astro.generator} />
-		<title>Syvätutkimusohje {version}</title>
-	</head>
-	<body>
+<PageLayout
+	title={`Syvätutkimusohje ${version}`}
+	description="Syvätutkimusohje yhden kiistanalaisen tosiasiaväitteen lähdekriittiseen tutkimiseen tekoälyn avulla."
+>
 		<main>
 			<header>
 				<p class="kicker">Työkalu</p>
@@ -229,8 +221,7 @@ const guideText = sourceText.replace(/^SYVÄTUTKIMUSPROMPTI v0\.6/, 'SYVÄTUTKIM
 				});
 			}
 		</script>
-	</body>
-</html>
+	</PageLayout>
 
 <style>
 	:global(*) {

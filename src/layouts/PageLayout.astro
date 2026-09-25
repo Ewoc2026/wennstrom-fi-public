@@ -1,0 +1,32 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+if (!title?.trim() || !description?.trim()) {
+	throw new Error(`Page title and description are required: ${Astro.url.pathname}`);
+}
+if (!Astro.site) {
+	throw new Error('Set the production site URL in astro.config.mjs.');
+}
+
+// Use the configured production origin, never the preview host or query string.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fi">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical.href} />
+		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

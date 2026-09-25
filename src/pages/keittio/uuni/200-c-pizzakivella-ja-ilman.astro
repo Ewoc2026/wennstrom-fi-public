@@ -1,19 +1,15 @@
 ---
+import PageLayout from '../../../layouts/PageLayout.astro';
 import '../../../styles/keittio.css';
 
 const chart = '/images/keittio/uuni/uuni-200c-pizzakivi.svg';
 const chartAlt = 'Neljän uuni-ilma-anturin keskilämpötila kylmäkäynnistyksestä: ilman pizzakiveä 200 °C saavutettiin noin 12 minuutissa ja ensimmäinen huippu oli 221 °C. Pizzakiven ja pellin kanssa 200 °C saavutettiin 30 minuutissa 50 sekunnissa ja myöhempi vaihtelu oli pienempää. Kivikokeen keskiarvo jäi koko 72 minuutin ajan alle 210 °C:n.';
 ---
 
-<!doctype html>
-<html lang="fi">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Neljällä lämpöanturilla tehty vertailu siitä, miten 200 °C:een asetettu Electrolux-uuni käyttäytyy kylmäkäynnistyksessä pizzakiven kanssa ja ilman sitä." />
-		<title>Mitä uunin 200 °C tarkoittaa? Pizzakiven vaikutus lämpötilaan · wennström.fi</title>
-	</head>
-	<body>
+<PageLayout
+	title="Mitä uunin 200 °C tarkoittaa? Pizzakiven vaikutus lämpötilaan · wennström.fi"
+	description="Neljällä lämpöanturilla tehty vertailu siitä, miten 200 °C:een asetettu Electrolux-uuni käyttäytyy kylmäkäynnistyksessä pizzakiven kanssa ja ilman sitä."
+>
 		<main class="measurement-page">
 			<nav class="breadcrumbs reading-width" aria-label="Murupolku">
 				<ol><li><a href="/">Etusivu</a></li><li><a href="/keittio/">Keittiö</a></li><li aria-current="page">Uunimittaus</li></ol>
@@ -142,5 +138,4 @@ const chartAlt = 'Neljän uuni-ilma-anturin keskilämpötila kylmäkäynnistykse
 				<p><a href="/keittio/">Takaisin keittiöön</a></p>
 			</footer>
 		</main>
-	</body>
-</html>
+	</PageLayout>

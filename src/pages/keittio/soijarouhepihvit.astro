@@ -1,0 +1,34 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { Content } from '../../content/recipes/soijarouhepihvit.md';
+import '../../styles/keittio.css';
+import '../../styles/resepti.css';
+---
+
+<PageLayout
+  title="Soijarouhepihvit · wennström.fi"
+  description="Ohje yhdeksälle uunissa paistettavalle soijarouhepihville. Ainekset, työvaiheet, kaksinkertainen erä sekä testaamattomia muunteluideoita."
+>
+  <main class="recipe-page">
+    <nav class="breadcrumbs" aria-label="Murupolku">
+      <ol>
+        <li><a href="/">Etusivu</a></li>
+        <li><a href="/keittio/">Keittiö</a></li>
+        <li aria-current="page">Soijarouhepihvit</li>
+      </ol>
+    </nav>
+    <nav class="recipe-jumps" aria-label="Reseptin osiot">
+      <ul>
+        <li><a href="#ainekset">Ainekset</a></li>
+        <li><a href="#valmistus">Valmistus</a></li>
+        <li><a href="#pohdintoja">Pohdintoja</a></li>
+      </ul>
+    </nav>
+    <article class="recipe-content" aria-labelledby="soijarouhepihvit">
+      <Content />
+    </article>
+    <footer>
+      <p><a href="/keittio/">Takaisin Keittiöön</a></p>
+    </footer>
+  </main>
+</PageLayout>

@@ -1,0 +1,52 @@
+/* Only imported by recipe pages. The shared kitchen stylesheet stays unchanged. */
+.recipe-page .breadcrumbs { margin-bottom: 20px; }
+.recipe-page .recipe-jumps { margin-bottom: 32px; }
+.recipe-page .recipe-jumps ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.recipe-page .recipe-jumps li { margin: 0; }
+.recipe-page .recipe-jumps a { display: inline-block; padding-block: 8px; }
+.recipe-content { overflow-wrap: break-word; }
+.recipe-content > h1 { margin-bottom: 24px; }
+.recipe-content > h2 {
+  border-top: 1px solid #d8d4ca;
+  padding-top: 32px;
+  margin: 36px 0 20px;
+}
+.recipe-content :is(h2, h3, h4) { scroll-margin-top: 24px; }
+.recipe-content h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 28px 0 12px;
+  text-wrap: pretty;
+}
+.recipe-content > ul:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+.recipe-content > ul:first-of-type > li { margin: 0; }
+.recipe-content > ul:first-of-type > li > p { margin: 0; }
+.recipe-content > ul:first-of-type strong { white-space: nowrap; }
+.recipe-page > footer { margin-top: 40px; }
+@media (max-width: 640px) {
+  .recipe-page .recipe-jumps { margin-bottom: 28px; }
+  .recipe-content > h2 { padding-top: 26px; }
+  .recipe-content > ul:first-of-type { grid-template-columns: 1fr; }
+}
+@media print {
+  .recipe-page .breadcrumbs, .recipe-page .recipe-jumps,
+  .recipe-page > footer { display: none; }
+  main.recipe-page { width: 100%; margin: 0; padding: 0; }
+  .recipe-content { font-size: 11pt; }
+  .recipe-content :is(h1, h2, h3, h4) { break-after: avoid; }
+  .recipe-content p { orphans: 3; widows: 3; }
+}

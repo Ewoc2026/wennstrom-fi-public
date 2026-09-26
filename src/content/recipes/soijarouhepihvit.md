@@ -1,7 +1,7 @@
 # Soijarouhepihvit
 
 
-**9 pihviä n. 930 gramman raa’asta pihvimassasta.**
+**9 pihviä reilun 950 gramman raa’asta pihvimassasta.**
 
 **Paistetun pihvin paino on noin 80 % raa’an painosta.**
 

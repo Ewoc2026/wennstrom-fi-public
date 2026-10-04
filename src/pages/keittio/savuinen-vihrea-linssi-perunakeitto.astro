@@ -1,0 +1,35 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { Content } from '../../content/recipes/savuinen-vihrea-linssi-perunakeitto.md';
+import '../../styles/keittio.css';
+import '../../styles/resepti.css';
+---
+
+<PageLayout
+  title="Savuinen vihreä linssi–perunakeitto · wennström.fi"
+  description="Ohje noin neljälle annokselle savuista vihreää linssi–perunakeittoa. Ainekset, valmistus, jäähdytys ja uudelleenlämmitys sekä pohdintoja."
+>
+  <main class="recipe-page">
+    <nav class="breadcrumbs" aria-label="Murupolku">
+      <ol>
+        <li><a href="/">Etusivu</a></li>
+        <li><a href="/keittio/">Keittiö</a></li>
+        <li aria-current="page">Savuinen vihreä linssi–perunakeitto</li>
+      </ol>
+    </nav>
+    <nav class="recipe-jumps" aria-label="Reseptin osiot">
+      <ul>
+        <li><a href="#ainekset">Ainekset</a></li>
+        <li><a href="#valmistus">Valmistus</a></li>
+        <li><a href="#pohdintoja">Pohdintoja</a></li>
+      </ul>
+    </nav>
+    <article class="recipe-content" aria-labelledby="savuinen-vihreä-linssiperunakeitto">
+      <Content />
+    </article>
+    <footer>
+      <p><a href="/keittio/">Takaisin Keittiöön</a></p>
+      <p>Codex toteutti tämän sivun hyväksytystä julkaisutekstistä.</p>
+    </footer>
+  </main>
+</PageLayout>

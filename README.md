@@ -12,6 +12,7 @@ Sivusto sisältää keskusteluesimerkkejä, syvätutkimusohjeen ja Keittiö-osio
 
 - `/keittio/` — mittauksia, kokeita ja havaintoja reseptikehityksen tueksi
 - `/keittio/uuni/200-c-pizzakivella-ja-ilman/` — uunin 200 °C:n kylmäkäynnistysvertailu
+- `/keittio/soijarouhe-makaronilaatikko/` — Soijarouhe–makaronilaatikko; hyväksytty reseptiteksti yhteisessä reseptisivupohjassa
 
 Mittaussivu käyttää alkuperäistä SVG-kuvaajaa. Sen voi suurentaa sivulla tai avata erikseen. Mittausdataa sisältävä CSV ei kuulu julkaistaviin tiedostoihin.
 

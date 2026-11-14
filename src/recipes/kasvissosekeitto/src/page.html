@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fi" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Joustava kasvissosekeitto: valitse kasvikset ja määrä, sovita vesi ja maustaminen. Omat määrät säilyvät ja valmistusohje mukautuu.">
+<title>Kasvissosekeitto · dynaaminen resepti 0.3.4</title>
+<style id="soup-style">/*__SOUP_CSS__*/</style>
+</head>
+<body>
+<a class="skip" href="#valmis-ohje">Siirry valmistusohjeeseen</a>
+<div class="wrap">
+<header>
+ <div class="top"><span class="eyebrow">Joustava resepti / arjen keittiö</span><span class="version">Kokeiluversio 0.3.4</span></div>
+ <h1>Kasvissosekeitto</h1>
+ <p class="intro">Valitse pääkasvis ja sen määrä. Sovita ehdotus kaupan valikoimaan ja jääkaapin sisältöön. Grammamäärät ja ajat ovat suuntaviivoja — ruokaa saa tehdä oman tuntuman mukaan.</p>
+ <div class="principle"><span class="dot" aria-hidden="true"></span><p><strong>Oma määrä pysyy. Ehdotus mukautuu.</strong> Itse kirjoittamasi kasvis-, valkosipulimurska- ja vesimäärät eivät muutu muiden valintojen mukana. Kasvispainot tarkoittavat kuorittuja ja puhdistettuja aineksia.</p></div>
+ <div class="toolbar">
+  <a class="btn btn-primary" href="#valmis-ohje">Valmistusohje ↓</a>
+  <button class="btn" type="button" id="save" disabled>Tallenna valinnat</button>
+  <button class="btn" type="button" id="undo" disabled>Kumoa muutos</button>
+  <button class="link-btn last" type="button" id="reset" disabled>Aloita alusta</button>
+ </div>
+</header>
+<noscript>Muuntaminen tarvitsee JavaScriptin. Alla voit lukea tämän tiedoston valmistusohjeen ilman sitä. Tallennus ja valintojen muuttaminen eivät ole käytettävissä.</noscript>
+<main>
+ <div id="invalid-status" class="invalid-status no-print" role="alert"></div>
+ <div class="layout no-print">
+  <div class="controls" id="controls" role="region" aria-label="Reseptin valinnat"></div>
+  <aside class="sticky" aria-label="Valintojen yhteenveto">
+   <div class="card summary"><span class="eyebrow">Tämä keitto</span><div id="summary"></div><a class="btn btn-primary" href="#valmis-ohje">Näytä koko valmistusohje ↓</a></div>
+   <div id="notices"></div>
+   <p class="small save-note">Ei automaattista tallennusta. <strong>Tallenna valinnat</strong> lataa uuden HTML-tiedoston, joka sisältää myös muistiinpanosi ja avautuu samoilla valinnoilla. Pelkkä selaimen sulkeminen ei tallenna muutoksia.</p>
+  </aside>
+ </div>
+ <article class="card recipe" id="valmis-ohje" tabindex="-1" aria-label="Valittu resepti"><!--__STATIC_RECIPE__--></article>
+</main>
+<details class="no-print">
+ <summary>Mihin ehdotukset perustuvat?</summary>
+ <p><strong>Keittomalli antaa lähtöehdotuksen, ei tarkkaa ihannetta tai kaikkien yhdistelmien toimivuustakuuta.</strong> Määräehdotusta ei tarvitse täyttää. Voit jättää B-korin tyhjäksi tai antaa perunalle, sipulille ja valkosipulimurskalle määräksi nolla.</p>
+ <p>B-korin lähtöehdotus on porkkanalla noin 45 %, kukkakaalilla 40 %, valkokaalilla 50 %, lantulla 55 % ja bataatilla 55 % pääkasviksen painosta. Luvut ovat suunnitteluarvioita, eivät kokeella vahvistettuja korvaussuhteita. Palsternakkaa, juuriselleriä, naurista ja täydentävää bataattia ehdotetaan maltillisemmin; omaa määrääsi ei rajoiteta makusuosituksilla.</p>
+ <p>Uudet B-korin kasvikset jakavat suositeltua määrää, mutta kolmannelle kasvikselle ehdotetaan aina pieni käyttökelpoinen määrä (tavallisessa erässä noin 100 g). Se voi kasvattaa keittoerää, eikä käyttäjän itse valitsemia määriä pienennetä.</p>
+ <p>Sipulia ehdotetaan noin 18 % A- ja B-korin yhteispainosta. Valkosipulimurskalle ehdotetaan karkeasti 3 tl A- ja B-korin kiloa kohti ja määrä pyöristetään käytännölliseksi lusikkamääräksi. Perunan ehdotus on ilman bataattia noin 22–27 % samasta pohjasta, hieman suurempi kaalien osuuden kasvaessa. Bataatti jo itsessään sakeuttaa: sen osuuden kasvaessa perunan määräsuositusta vähennetään, tarvittaessa nollaan. Kasvismäärät pyöristetään tavallisesti 25 grammaan. Itse syöttämäsi määrät säilyvät sellaisinaan.</p>
+ <p>Aloitusveden ehdotus on tavallisesti noin 6 dl kasviskiloa kohti. Kun vähintään noin 40 % A- ja B-korin painosta on kukka- tai valkokaalia, ehdotus on noin 5 dl/kg. Muulloin bataatin ollessa vähintään 30 % kasvispohjasta ehdotus on noin 5,5 dl/kg. Vesi pyöristetään puoleen desilitraan. Tämä karkea porras on säilytetty versiosta 0.2; se ei ole fysikaalinen raja tai tarkka nesteentarpeen malli. Oma vesimäärä ohittaa ehdotuksen. Vettä saa ja pitää lisätä tarvittaessa jo kypsennyksen aikana. Bataatti pehmenee usein muita juureksia nopeammin: se voidaan ruskistaa lyhyesti ja lisätä myöhemmin, jos keitossa on myös hitaammin kypsyviä juureksia.</p>
+ <p>Yrtit, savupaprika, valkosipulimurska, sinappi, etikka ja öljy esitetään tavallisina keittiömittoina (tl = 5 ml, rkl = 15 ml) tai hyvin pienissä määrissä ripauksena tai tippoina. Laakerinlehti annetaan kappaleina ja poistetaan ennen soseuttamista. Suola ja mustapippuri lisätään oman maun mukaan. Jos käytät kasvislientä, fondia tai muita suolaisia aineksia, huomioi niiden suola. Maustelinjojen määrät ovat pyöristettyjä lähtöehdotuksia.</p>
+ <p><strong>Valmistuskokeen havainto:</strong> porkkana–lanttupohjainen, yrttinen keitto oli tekijänsä mielestä maultaan ja rakenteeltaan onnistunut. Saanto oli noin 1 600 g; vettä käytettiin 700 g ennen mahdollista lisävettä. Herbes de Provence paransi makua. Kaikkien kasvisten toteutuneita painoja ja yrttimäärää ei vahvistettu. Myös kukkakaali–porkkana–juurisellerikeitto ilman perunaa ja savuisen paahteinen maustelinja onnistuivat kotikokeessa: runsaasti makua ja sopiva rakenne. Käyttäjä poikkesi määrissä ja ajoissa vapaasti; tarkkaa toteumaa ei rekonstruoitu. Bataatti on uusi, kokeilematon valinta.</p>
+ <h2 class="method-subtitle">Taustalähteet</h2>
+ <p>Lähteet tukevat yksittäisiä valmistus- ja tuotehuomioita. Niistä ei ole johdettu tämän mallin kasvisryhmien laskentasuhteita tai uusia maustemääriä.</p>
+ <ul>
+  <li><a href="https://www.k-ruoka.fi/reseptit/kukkakaalikeitto" target="_blank" rel="noopener noreferrer">K-Ruoka: kukkakaalikeitto</a> — kukkakaalin lisääminen perunaa myöhemmin.</li>
+  <li><a href="https://www.valkoliekki.fi/" target="_blank" rel="noopener noreferrer">Valkoliekki: tuotetiedot</a> — käytetty murska sisältää valmistajan mukaan 70 % valkosipulia. Tarkista aina oman pakkauksesi tiedot.</li>
+  <li><a href="https://www.martat.fi/ruoka/ruoanvalmistus/ruoka-aineiden-mitat-ja-painot/" target="_blank" rel="noopener noreferrer">Martat: mitat ja painot</a> — mittalusikat ja tilavuusmittojen likimääräisyys.</li>
+ </ul>
+</details>
+<details class="no-print">
+ <summary>Käyttö, tallentaminen ja yksityisyys</summary>
+ <p>Voit muuttaa määrää numerokentässä ja vahvistaa sen Enterillä tai siirtymällä seuraavaan kenttään. <strong>Oma määrä</strong> säilyy. <strong>Palauta ehdotus</strong> ottaa laskennan takaisin käyttöön kyseiselle ainekselle. Viimeisimmän muutoksen voi kumota.</p>
+ <p><strong>Tallenna valinnat</strong> tekee itsenäisen HTML-tiedoston. Avaa se selaimessa: valinnat ja muistiinpanot ovat mukana myös ilman verkkoyhteyttä. <strong>Kopioi ohje</strong> kopioi samat määrät, mausteet, vaiheet ja muistiinpanot tekstinä. Jos selain estää automaattisen kopioinnin, teksti avautuu käsin kopioitavaksi.</p>
+ <p>Tämä reseptisovellus ei lähetä valintoja tai muistiinpanoja verkkoon, eikä käytä evästeitä, selaimen pysyvää tallennusta, analytiikkaa tai ulkoisia kirjastoja. Verkkosivulla julkaistuna sivun lataaminen on tavallinen verkkopyyntö. Mahdollinen ympäröivä sivusto ja sen palvelin toimivat erikseen; tämä kuvaus koskee vain reseptisovellusta.</p>
+ <p>Muistiinpanot ovat tavallista tekstiä. Ne kulkevat tallennuksen, kopioinnin ja tulosteen mukana. Tarkista ne ennen ohjeen jakamista. Lähdelinkit avautuvat ulkopuolisille sivuille vain painettaessa.</p>
+</details>
+<footer class="no-print">Dynaaminen kasvissosekeitto · versio 0.3.4. Oma määrä pysyy; todellinen maku, kypsyys ja rakenne ratkaisevat. Malli ei laske aterian ravitsemuksellista täydellisyyttä eikä varmista erityisruokavalioita.</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="live-status" class="sr-only" role="status" aria-live="polite"></div>
+<dialog class="copy-dialog" id="copy-dialog" aria-labelledby="copy-title"><h2 id="copy-title">Kopioi valmistusohje</h2><p>Selain ei sallinut automaattista kopiointia. Valitse teksti ja kopioi tavalliseen tapaan. Mukana ovat myös mahdolliset omat muistiinpanosi.</p><textarea id="copy-text" readonly aria-label="Resepti tekstinä"></textarea><div class="toolbar"><button type="button" class="btn btn-primary" id="select-text">Valitse kaikki</button><button type="button" class="btn" id="close-copy">Sulje</button></div></dialog>
+<script type="application/json" id="initial-state">null</script>
+<script id="soup-model">/*__SOUP_MODEL__*/</script>
+<script id="soup-app">/*__SOUP_APP__*/</script>
+</body>
+</html>

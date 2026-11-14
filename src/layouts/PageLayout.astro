@@ -2,9 +2,10 @@
 interface Props {
 	title: string;
 	description: string;
+	htmlClass?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, htmlClass } = Astro.props;
 if (!title?.trim() || !description?.trim()) {
 	throw new Error(`Page title and description are required: ${Astro.url.pathname}`);
 }
@@ -17,7 +18,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="fi">
+<html lang="fi" class={htmlClass}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -25,6 +26,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical.href} />
 		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+		<slot name="head" />
 	</head>
 	<body>
 		<slot />

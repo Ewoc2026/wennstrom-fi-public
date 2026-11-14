@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="fi" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Joustava kasvissosekeitto: valitse kasvikset ja määrä, sovita vesi ja maustaminen. Omat määrät säilyvät ja valmistusohje mukautuu.">
+<title>Kasvissosekeitto · dynaaminen resepti 0.3.4</title>
+<style id="soup-style">
+:root{--bg:#f4f3ed;--paper:#fffefa;--ink:#233b30;--muted:#56675d;--line:#d7ded3;--green:#2d5c43;--pale:#e9eee4;--own:#77502b;--own-bg:#f5ebdb;--note:#f7f0df;--red:#a12d24;--shadow:0 8px 24px #233b3008}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:1rem}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button,a,input,select,summary{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}a{color:var(--green);text-underline-offset:3px}h1,h2,h3,p{margin:0}button,input,select,summary,a{outline-offset:4px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #9b642c}input,select{max-width:100%;border:1px solid #aab8ac;border-radius:9px;background:white;color:var(--ink);min-height:45px;padding:.55rem .7rem}input:invalid:not(:focus){border-color:var(--red)}input[type=number]{width:110px;font-variant-numeric:tabular-nums}label{display:block;font-size:.85rem;font-weight:650;margin-bottom:.35rem}select{width:100%}.wrap{max-width:1140px;margin:auto;padding:26px 28px 48px}.eyebrow{font-size:.72rem;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.version{font-size:.76rem;border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem;white-space:nowrap}h1{font:500 clamp(2rem,4vw,3.15rem)/1.12 Georgia,"Times New Roman",serif;letter-spacing:-.03em}.intro{max-width:770px;color:var(--muted);margin:.8rem 0 1.2rem;font-size:1.02rem}.principle{display:flex;align-items:flex-start;gap:10px;max-width:840px;padding:12px 16px;border-left:3px solid var(--green);background:var(--pale);border-radius:0 8px 8px 0;font-size:.9rem}.principle p{flex:1}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;margin-top:7px;flex-shrink:0}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:18px 0 24px}.btn{border:1px solid var(--line);border-radius:9px;background:var(--paper);color:var(--ink);min-height:44px;padding:.55rem .85rem;font-size:.9rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{border-color:var(--green);background:var(--pale)}.btn-primary{background:var(--green);border-color:var(--green);color:white}.btn-primary:hover{background:#224b36;color:white}.link-btn{border:0;background:none;color:var(--green);text-decoration:underline;text-underline-offset:3px;padding:.35rem .1rem;font-size:.8rem;min-height:38px}.toolbar .last{margin-left:auto}.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:24px;align-items:start}.controls{display:grid;gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}.card-head{display:flex;gap:12px;align-items:center;margin-bottom:8px}.letter{width:30px;height:30px;border-radius:50%;background:var(--pale);display:grid;place-items:center;font-size:.8rem;font-weight:750;flex-shrink:0}.card h2{font-size:1.12rem;line-height:1.3}.sub{font-size:.84rem;color:var(--muted);margin-bottom:16px}.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}.amount-line{display:flex;align-items:center;gap:6px}.unit{color:var(--muted);font-size:.88rem}.badge{display:inline-flex;align-items:center;font-size:.71rem;font-weight:700;line-height:1.3;border-radius:5px;padding:4px 6px;background:var(--pale);color:var(--green);margin-top:7px}.badge.own{background:var(--own-bg);color:var(--own)}.field-note{font-size:.76rem;color:var(--muted);line-height:1.4;margin-top:7px}.ingredient-row{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}.ingredient-row:first-child{border-top:0;margin-top:0;padding-top:0}.row-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:3px}.remove{color:#744b3e}.b-foot{border-top:1px solid var(--line);margin-top:16px;padding-top:13px}.b-foot .small{margin-top:8px}.small{font-size:.8rem;color:var(--muted)}.empty{padding:10px 0;font-size:.88rem;color:var(--muted)}.simple-field{padding-top:14px;margin-top:14px;border-top:1px solid var(--line)}.line-label{font-size:.9rem;font-weight:600;padding-top:10px}.sticky{position:sticky;top:18px}.summary{background:#eef1e9}.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-bottom:1px solid #cad4c6;padding-bottom:18px;margin:10px 0 18px}.stat-label{font-size:.78rem;color:var(--muted)}.stat-number{font-size:1.8rem;font-weight:650;line-height:1.3;font-variant-numeric:tabular-nums;letter-spacing:-.03em}.stat-note{font-size:.73rem;color:var(--muted);margin-top:3px}.ingredient-list{list-style:none;padding:0;margin:0}.ingredient-list li{display:flex;justify-content:space-between;gap:12px;padding:.48rem 0;border-bottom:1px solid #dbe2d7;font-size:.9rem;align-items:baseline}.ingredient-list li:last-child{border:0}.ingredient-list .qty{white-space:nowrap;font-weight:650;font-variant-numeric:tabular-nums}.summary .btn{width:100%;margin-top:16px}.note-box{margin-top:16px;border:1px solid #ded5b8;background:var(--note);border-radius:12px;padding:14px;font-size:.83rem}.note-box p+p{margin-top:9px}.inline-msg{font-size:.8rem;color:var(--muted);padding-top:10px}.recipe{margin-top:32px;padding:28px 30px}.recipe-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.recipe h2{font:500 1.9rem/1.2 Georgia,"Times New Roman",serif;margin:.25rem 0 .5rem}.recipe-title-sub{font-size:.9rem;color:var(--muted);max-width:660px}.recipe-meta{margin:18px 0;padding:12px 0;border-block:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 24px;font-size:.86rem}.recipe-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:35px}.recipe h3{font-size:1rem;margin-bottom:12px}.recipe .ingredient-list li{font-size:.86rem}.seasoning{margin-top:22px}.steps{list-style:none;padding:0;margin:0;counter-reset:step}.steps li{counter-increment:step;display:grid;grid-template-columns:27px minmax(0,1fr);gap:12px;margin-bottom:20px;break-inside:avoid}.steps li:before{content:counter(step);background:var(--pale);border-radius:50%;width:27px;height:27px;display:grid;place-items:center;font-size:.78rem;font-weight:750}.steps h4{font-size:.95rem;margin:0 0 5px}.steps p{font-size:.9rem;line-height:1.6}.recipe-notes{font-size:.83rem;padding:14px 16px;margin-top:20px;border-radius:10px;background:var(--pale)}.recipe-notes p+p{margin-top:8px}.fineprint{margin-top:20px;font-size:.8rem;color:var(--muted)}details{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:14px 18px;margin-top:18px}summary{font-size:.88rem;font-weight:650;cursor:pointer}details p{font-size:.84rem;color:var(--muted);margin-top:12px}details ul{padding-left:20px;color:var(--muted);font-size:.82rem}details li{margin:.5rem 0}footer{margin-top:22px;font-size:.77rem;color:var(--muted);line-height:1.55}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);max-width:min(94vw,600px);padding:13px 18px;border-radius:10px;background:#233b30;color:white;z-index:20;box-shadow:0 8px 24px #0002;font-size:.9rem}.toast:empty{display:none}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.copy-dialog{max-width:720px;width:calc(100% - 28px);border:1px solid var(--line);border-radius:16px;padding:24px;color:var(--ink);background:var(--paper)}.copy-dialog::backdrop{background:#17291f88}.copy-dialog p{margin:10px 0;font-size:.9rem}.copy-dialog textarea{width:100%;height:45vh;border:1px solid var(--line);padding:12px;font-size:.85rem;color:var(--ink);background:white;border-radius:8px}.copy-dialog .toolbar{margin-bottom:0}.skip{position:absolute;left:-9999px}.skip:focus{left:10px;top:10px;background:white;z-index:40;padding:10px}noscript{display:block;border:2px solid var(--red);padding:20px;background:#fff}.invalid-status{color:var(--red);font-size:.85rem;margin-top:8px}.invalid-status:empty{display:none}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.sticky{position:static}.recipe-layout{grid-template-columns:1fr;gap:28px}.recipe-ingredients{max-width:none}.summary{margin-top:0}.recipe-heading{display:block}.recipe-heading .btn{margin-top:12px}}
+@media(max-width:480px){.wrap{padding:18px 14px 34px}.top{margin-bottom:18px;gap:6px}.eyebrow{font-size:.65rem}.card{padding:17px}.recipe{padding:20px 17px}.row{gap:9px;grid-template-columns:minmax(0,1fr) 110px}input[type=number]{width:87px}select{font-size:.9rem;padding-left:.5rem;padding-right:.25rem}.toolbar{gap:8px}.toolbar .last{margin-left:0}.toolbar .btn{font-size:.82rem;padding:.5rem .65rem}.row-bottom{align-items:flex-start}.stats{gap:12px}.stat-number{font-size:1.6rem}.intro{font-size:.95rem}.recipe h2{font-size:1.65rem}.recipe-meta{gap:8px 14px}.version{font-size:.7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{@page{margin:17mm}body{background:white;color:#111;font-size:10.5pt}.wrap{max-width:none;margin:0;padding:0}header,.no-print,.controls,.layout,details,footer,.toast,.skip,dialog{display:none!important}.recipe{margin:0;padding:0;border:0;box-shadow:none;background:white}.recipe-heading .btn{display:none}.recipe h2{font-size:24pt}.recipe-layout{display:block}.recipe-ingredients{margin-bottom:20px}.recipe .ingredient-list{max-width:440px}.recipe .ingredient-list li{padding:3px 0;font-size:10pt}.recipe .seasoning{margin-top:14px}.steps p{font-size:10.5pt}.steps li{break-inside:avoid}.recipe-notes,.fineprint{font-size:9pt}.recipe-meta{margin:12px 0}.recipe-notes{background:none;border:1px solid #aaa}.steps li:before{background:none;border:1px solid #888}.recipe .eyebrow{color:#444}}
+
+/* Version 0.3 additions. A single page owns these styles; embed via iframe, not raw CMS paste. */
+button,input,select,textarea,summary,a{outline-offset:4px}textarea:focus-visible{outline:3px solid #9b642c}
+textarea{width:100%;min-height:135px;resize:vertical;border:1px solid #aab8ac;border-radius:9px;padding:12px;background:#fff;color:var(--ink)}
+input[type=text].water-input{width:100px;font-variant-numeric:tabular-nums}
+.field-error{color:var(--red);font-size:.78rem;margin-top:6px;line-height:1.4}.field-error:empty{display:none}
+[aria-invalid=true]{border:2px solid var(--red)}
+.profile-note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.user-notes{border-top:1px solid var(--line);margin-top:20px;padding-top:16px;break-inside:avoid}
+.user-notes p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.9rem;line-height:1.6}
+[hidden]{display:none!important}
+.privacy-note{margin-top:10px;font-size:.78rem;color:var(--muted)}
+.notes-count{font-size:.75rem;color:var(--muted);text-align:right;margin:5px 0}
+.recipe-title-sub,.ingredient-list li span,.note-box p{overflow-wrap:anywhere}
+.ingredient-list li .qty{flex-shrink:0}
+.field-unit-input{scroll-margin-top:18px}
+#invalid-status{position:sticky;top:0;z-index:5;background:var(--paper);border-left:3px solid var(--red);padding:10px 15px;margin-bottom:14px}
+#invalid-status:empty{display:none}
+.skip:focus{color:var(--ink)}
+.link-btn{min-height:44px}
+.method-subtitle{margin-top:18px;font-size:.95rem}
+.save-note{margin:12px 4px 0}.controls-hint{margin:0 4px}.recipe-actions{margin:0}.seasoning-note{margin-top:10px}
+@media(max-width:480px){.row{grid-template-columns:minmax(0,1fr) 112px}.amount-line{gap:4px}input[type=number]{width:87px}input[type=text].water-input{width:87px}.row-bottom{flex-wrap:wrap}.ingredient-list li{align-items:flex-start}.recipe-actions{margin-top:12px}}
+@media print{.user-notes p{font-size:10pt}.user-notes h3{font-size:11pt}.recipe-meta{font-size:10pt}.fineprint{font-size:9pt}.recipe-notes{break-inside:auto}.user-notes{break-inside:auto}}
+
+.no-js .layout,.no-js .toolbar button,.no-js .recipe-actions{display:none!important}
+
+/* v0.3.1: spoon quantities can include short usage notes; keep narrow screens readable. */
+#garlic-tsp{width:110px;font-variant-numeric:tabular-nums}
+.seasoning .ingredient-list li .qty{flex:0 1 60%;min-width:0;white-space:normal;text-align:right}
+@media(max-width:480px){#garlic-tsp{width:87px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#valmis-ohje">Siirry valmistusohjeeseen</a>
+<div class="wrap">
+<header>
+ <div class="top"><span class="eyebrow">Joustava resepti / arjen keittiö</span><span class="version">Kokeiluversio 0.3.4</span></div>
+ <h1>Kasvissosekeitto</h1>
+ <p class="intro">Valitse pääkasvis ja sen määrä. Sovita ehdotus kaupan valikoimaan ja jääkaapin sisältöön. Grammamäärät ja ajat ovat suuntaviivoja — ruokaa saa tehdä oman tuntuman mukaan.</p>
+ <div class="principle"><span class="dot" aria-hidden="true"></span><p><strong>Oma määrä pysyy. Ehdotus mukautuu.</strong> Itse kirjoittamasi kasvis-, valkosipulimurska- ja vesimäärät eivät muutu muiden valintojen mukana. Kasvispainot tarkoittavat kuorittuja ja puhdistettuja aineksia.</p></div>
+ <div class="toolbar">
+  <a class="btn btn-primary" href="#valmis-ohje">Valmistusohje ↓</a>
+  <button class="btn" type="button" id="save" disabled>Tallenna valinnat</button>
+  <button class="btn" type="button" id="undo" disabled>Kumoa muutos</button>
+  <button class="link-btn last" type="button" id="reset" disabled>Aloita alusta</button>
+ </div>
+</header>
+<noscript>Muuntaminen tarvitsee JavaScriptin. Alla voit lukea tämän tiedoston valmistusohjeen ilman sitä. Tallennus ja valintojen muuttaminen eivät ole käytettävissä.</noscript>
+<main>
+ <div id="invalid-status" class="invalid-status no-print" role="alert"></div>
+ <div class="layout no-print">
+  <div class="controls" id="controls" role="region" aria-label="Reseptin valinnat"></div>
+  <aside class="sticky" aria-label="Valintojen yhteenveto">
+   <div class="card summary"><span class="eyebrow">Tämä keitto</span><div id="summary"></div><a class="btn btn-primary" href="#valmis-ohje">Näytä koko valmistusohje ↓</a></div>
+   <div id="notices"></div>
+   <p class="small save-note">Ei automaattista tallennusta. <strong>Tallenna valinnat</strong> lataa uuden HTML-tiedoston, joka sisältää myös muistiinpanosi ja avautuu samoilla valinnoilla. Pelkkä selaimen sulkeminen ei tallenna muutoksia.</p>
+  </aside>
+ </div>
+ <article class="card recipe" id="valmis-ohje" tabindex="-1" aria-label="Valittu resepti"><span class="eyebrow">Oletusyhdistelmä / 0.3.4</span><h2>Porkkana ja lanttu · sosekeitto</h2><p>Provencelaisen yrttinen</p><h3>Ainekset</h3><ul class="ingredient-list"><li><span>Porkkana</span><span class="qty">550 g</span></li><li><span>Lanttu</span><span class="qty">250 g</span></li><li><span>Keltasipuli</span><span class="qty">150 g</span></li><li><span>Peruna</span><span class="qty">175 g</span></li><li><span>Valkosipulimurska (oletus: Valkoliekki, 70 % valkosipulia)</span><span class="qty">noin 2 ½ tl</span></li><li><span>Vesi aluksi</span><span class="qty">7 dl</span></li></ul><div class="seasoning"><h3>Maustamisen lähtöehdotus</h3><ul class="ingredient-list"><li><span>Rypsi- tai oliiviöljy</span><span class="qty">noin 2 rkl</span></li><li><span>Herbes de Provence</span><span class="qty">aloita noin 3 tl</span></li><li><span>Laakerinlehti (valinnainen)</span><span class="qty">1–2 kpl</span></li><li><span>Mustapippuri, jauhettu</span><span class="qty">oman maun mukaan</span></li><li><span>Dijon-sinappi</span><span class="qty">aloita noin 1 ¼ tl</span></li><li><span>Väkiviinaetikka 10 %</span><span class="qty">tarvittaessa aluksi noin muutama tippa</span></li><li><span>Suola</span><span class="qty">oman maun mukaan; huomioi kasvisliemen suola</span></li></ul><p class="small seasoning-note">Yrttien, savupaprikan, sinapin, etikan, öljyn ja valkosipulimurskan määrät ovat keittiömittoina (1 tl = 5 ml, 1 rkl = 15 ml). Suola ja mustapippuri lisätään oman maun mukaan. Maustemäärät ovat lähtöehdotuksia.</p></div><h3>Valmistus</h3><ol class="steps"><li><div><h4>Valmistele valitut kasvikset</h4><p>Valitse kattila tai kasari, johon kaikki raa&#x27;at kasvikset mahtuvat kannen alle ja jossa pystyt myös sekoittamaan. Kuori porkkana ja lanttu. Leikkaa ne noin 1–2 cm paloiksi. Kuori ja leikkaa peruna noin 1–2 cm paloiksi. Pidä peruna erillään ruskistettavista kasviksista; se lisätään vasta nesteeseen. Kuori ja hienonna keltasipuli.</p></div></li><li><div><h4>Rakenna paahteinen pohja</h4><p>Kuumenna osa öljystä leveässä kattilassa tai kasarissa. Ruskista keltasipuli keskilämmöllä kullanruskeaksi, suuntaa antavasti 10–15 minuuttia. Siirrä hetkeksi sivuun. Lisää öljyä tarpeen mukaan. Ruskista porkkana ja lanttu tarvittaessa useassa erässä. Mitoita jokainen erä niin, että palat mahtuvat paistoastian pohjalle yhteen kerrokseen eivätkä ole päällekkäin. Eriä voi olla niin monta kuin tarvitaan. Anna osaan pinnoista muodostua selvä ruskea, paahteinen väri. Vältä polttamista ja siirrä valmiit erät sivuun.</p></div></li><li><div><h4>Lisää valitun maustelinjan mausteet ja vesi</h4><p>Laske lämpöä. Jos astia on vielä hyvin kuuma, siirrä se hetkeksi pois levyltä ennen mausteiden lisäämistä. Tarkista ensin, onko astian pohjassa aivan mustia tai kitkerän palaneita jäämiä. Jos on, poista ne tai jatka puhtaassa kattilassa; älä sekoita niitä keittoon. Kokoa porkkana, lanttu ja keltasipuli kattilaan. Lisää valkosipulimurska ja mustapippuri sekä noin puolet Herbes de Provence -yrteistä. Sekoita lyhyesti miedolla lämmöllä, polttamatta mausteita. Kaada kattilaan aloitusvesi (7 dl). Jos astian pohjassa on ruskeita paistojäämiä, voit irrottaa ne lisättyyn veteen lastalla. Kaikkiin astioihin niitä ei synny. Lisää peruna. Lisää halutessasi 1–2 laakerinlehteä; ne poistetaan ennen soseuttamista. Veden voi korvata miedolla kasvisliemellä. Älä lisää silloin suolaa vielä.</p></div></li><li><div><h4>Kypsennä aidosti pehmeäksi</h4><p>Laita kansi päälle ja kuumenna hiljaiseen kiehumiseen. Hauduta suuntaa antavasti 25–40 minuuttia kiehumisen alkamisesta. Pidä kansi päällä kypsennyksen ajan. Kääntele välillä, jotta myös päällimmäiset kasvikset kypsyvät tasaisesti. Lisää tarvittaessa hieman vettä, jotta pohjalla on koko ajan nestettä. Kasvisten ei tarvitse peittyä kokonaan: nesteen yläpuolelle jäävät osat kypsyvät kannen alla höyryssä. Kypsennys päättyy vasta, kun kaikki kasvikset murtuvat helposti haarukalla painaen — ei kellon perusteella.</p></div></li><li><div><h4>Soseuta ja päätä lopullinen sakeus</h4><p>Poista mahdolliset laakerinlehdet. Ota kattila pois kuumalta levyltä. Käytä sauvasekoitinta oman laitteesi kuumia ruokia koskevan ohjeen mukaan. Pidä teräosa pinnan alla ja pysäytä kone ennen nostamista, jotta kuuma keitto ei roisku. Soseuta tasaiseksi. Perunan vuoksi vältä tarpeettoman pitkää soseuttamista. Lisää vettä pienissä erissä, kunnes rakenne on sinulle sopiva.</p></div></li><li><div><h4>Viimeistele maistamalla</h4><p>Lisää loput yrteistä maistaen ja anna niiden pehmetä lämpimässä keitossa muutama minuutti. Lisää aluksi noin 1 ¼ tl Dijon-sinappia. Lisää tarvittaessa aluksi noin muutama tippa 10-prosenttista elintarvike-etikkaa. Määrä koskee nimenomaan 10 % etikkaa. Säädä pienin lisäyksin. Lisää mustapippuria ja suolaa oman maun mukaan. Ota huomioon käyttämäsi kasvisliemen, fondin ja muiden suolaisten ainesten sisältämä suola. Maista ennen lisäsuolaa. Tarjoa esimerkiksi leivän kanssa.</p></div></li></ol><p class="fineprint">Mausteissa on Dijon-sinappia. Tarkista käyttämäsi liemen, mausteseosten ja murskan ainesosat pakkauksista; malli ei tarkista erityisruokavalioita.</p><p class="fineprint">Määrät ja ajat ovat suuntaa-antavia. Porkkana–lanttu- ja kukkakaali–porkkana–juuriselleriyhdistelmistä on myönteistä kotikokeilua; muita yhdistelmiä ei ole järjestelmällisesti testattu.</p></article>
+</main>
+<details class="no-print">
+ <summary>Mihin ehdotukset perustuvat?</summary>
+ <p><strong>Keittomalli antaa lähtöehdotuksen, ei tarkkaa ihannetta tai kaikkien yhdistelmien toimivuustakuuta.</strong> Määräehdotusta ei tarvitse täyttää. Voit jättää B-korin tyhjäksi tai antaa perunalle, sipulille ja valkosipulimurskalle määräksi nolla.</p>
+ <p>B-korin lähtöehdotus on porkkanalla noin 45 %, kukkakaalilla 40 %, valkokaalilla 50 %, lantulla 55 % ja bataatilla 55 % pääkasviksen painosta. Luvut ovat suunnitteluarvioita, eivät kokeella vahvistettuja korvaussuhteita. Palsternakkaa, juuriselleriä, naurista ja täydentävää bataattia ehdotetaan maltillisemmin; omaa määrääsi ei rajoiteta makusuosituksilla.</p>
+ <p>Uudet B-korin kasvikset jakavat suositeltua määrää, mutta kolmannelle kasvikselle ehdotetaan aina pieni käyttökelpoinen määrä (tavallisessa erässä noin 100 g). Se voi kasvattaa keittoerää, eikä käyttäjän itse valitsemia määriä pienennetä.</p>
+ <p>Sipulia ehdotetaan noin 18 % A- ja B-korin yhteispainosta. Valkosipulimurskalle ehdotetaan karkeasti 3 tl A- ja B-korin kiloa kohti ja määrä pyöristetään käytännölliseksi lusikkamääräksi. Perunan ehdotus on ilman bataattia noin 22–27 % samasta pohjasta, hieman suurempi kaalien osuuden kasvaessa. Bataatti jo itsessään sakeuttaa: sen osuuden kasvaessa perunan määräsuositusta vähennetään, tarvittaessa nollaan. Kasvismäärät pyöristetään tavallisesti 25 grammaan. Itse syöttämäsi määrät säilyvät sellaisinaan.</p>
+ <p>Aloitusveden ehdotus on tavallisesti noin 6 dl kasviskiloa kohti. Kun vähintään noin 40 % A- ja B-korin painosta on kukka- tai valkokaalia, ehdotus on noin 5 dl/kg. Muulloin bataatin ollessa vähintään 30 % kasvispohjasta ehdotus on noin 5,5 dl/kg. Vesi pyöristetään puoleen desilitraan. Tämä karkea porras on säilytetty versiosta 0.2; se ei ole fysikaalinen raja tai tarkka nesteentarpeen malli. Oma vesimäärä ohittaa ehdotuksen. Vettä saa ja pitää lisätä tarvittaessa jo kypsennyksen aikana. Bataatti pehmenee usein muita juureksia nopeammin: se voidaan ruskistaa lyhyesti ja lisätä myöhemmin, jos keitossa on myös hitaammin kypsyviä juureksia.</p>
+ <p>Yrtit, savupaprika, valkosipulimurska, sinappi, etikka ja öljy esitetään tavallisina keittiömittoina (tl = 5 ml, rkl = 15 ml) tai hyvin pienissä määrissä ripauksena tai tippoina. Laakerinlehti annetaan kappaleina ja poistetaan ennen soseuttamista. Suola ja mustapippuri lisätään oman maun mukaan. Jos käytät kasvislientä, fondia tai muita suolaisia aineksia, huomioi niiden suola. Maustelinjojen määrät ovat pyöristettyjä lähtöehdotuksia.</p>
+ <p><strong>Valmistuskokeen havainto:</strong> porkkana–lanttupohjainen, yrttinen keitto oli tekijänsä mielestä maultaan ja rakenteeltaan onnistunut. Saanto oli noin 1 600 g; vettä käytettiin 700 g ennen mahdollista lisävettä. Herbes de Provence paransi makua. Kaikkien kasvisten toteutuneita painoja ja yrttimäärää ei vahvistettu. Myös kukkakaali–porkkana–juurisellerikeitto ilman perunaa ja savuisen paahteinen maustelinja onnistuivat kotikokeessa: runsaasti makua ja sopiva rakenne. Käyttäjä poikkesi määrissä ja ajoissa vapaasti; tarkkaa toteumaa ei rekonstruoitu. Bataatti on uusi, kokeilematon valinta.</p>
+ <h2 class="method-subtitle">Taustalähteet</h2>
+ <p>Lähteet tukevat yksittäisiä valmistus- ja tuotehuomioita. Niistä ei ole johdettu tämän mallin kasvisryhmien laskentasuhteita tai uusia maustemääriä.</p>
+ <ul>
+  <li><a href="https://www.k-ruoka.fi/reseptit/kukkakaalikeitto" target="_blank" rel="noopener noreferrer">K-Ruoka: kukkakaalikeitto</a> — kukkakaalin lisääminen perunaa myöhemmin.</li>
+  <li><a href="https://www.valkoliekki.fi/" target="_blank" rel="noopener noreferrer">Valkoliekki: tuotetiedot</a> — käytetty murska sisältää valmistajan mukaan 70 % valkosipulia. Tarkista aina oman pakkauksesi tiedot.</li>
+  <li><a href="https://www.martat.fi/ruoka/ruoanvalmistus/ruoka-aineiden-mitat-ja-painot/" target="_blank" rel="noopener noreferrer">Martat: mitat ja painot</a> — mittalusikat ja tilavuusmittojen likimääräisyys.</li>
+ </ul>
+</details>
+<details class="no-print">
+ <summary>Käyttö, tallentaminen ja yksityisyys</summary>
+ <p>Voit muuttaa määrää numerokentässä ja vahvistaa sen Enterillä tai siirtymällä seuraavaan kenttään. <strong>Oma määrä</strong> säilyy. <strong>Palauta ehdotus</strong> ottaa laskennan takaisin käyttöön kyseiselle ainekselle. Viimeisimmän muutoksen voi kumota.</p>
+ <p><strong>Tallenna valinnat</strong> tekee itsenäisen HTML-tiedoston. Avaa se selaimessa: valinnat ja muistiinpanot ovat mukana myös ilman verkkoyhteyttä. <strong>Kopioi ohje</strong> kopioi samat määrät, mausteet, vaiheet ja muistiinpanot tekstinä. Jos selain estää automaattisen kopioinnin, teksti avautuu käsin kopioitavaksi.</p>
+ <p>Tämä reseptisovellus ei lähetä valintoja tai muistiinpanoja verkkoon, eikä käytä evästeitä, selaimen pysyvää tallennusta, analytiikkaa tai ulkoisia kirjastoja. Verkkosivulla julkaistuna sivun lataaminen on tavallinen verkkopyyntö. Mahdollinen ympäröivä sivusto ja sen palvelin toimivat erikseen; tämä kuvaus koskee vain reseptisovellusta.</p>
+ <p>Muistiinpanot ovat tavallista tekstiä. Ne kulkevat tallennuksen, kopioinnin ja tulosteen mukana. Tarkista ne ennen ohjeen jakamista. Lähdelinkit avautuvat ulkopuolisille sivuille vain painettaessa.</p>
+</details>
+<footer class="no-print">Dynaaminen kasvissosekeitto · versio 0.3.4. Oma määrä pysyy; todellinen maku, kypsyys ja rakenne ratkaisevat. Malli ei laske aterian ravitsemuksellista täydellisyyttä eikä varmista erityisruokavalioita.</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="live-status" class="sr-only" role="status" aria-live="polite"></div>
+<dialog class="copy-dialog" id="copy-dialog" aria-labelledby="copy-title"><h2 id="copy-title">Kopioi valmistusohje</h2><p>Selain ei sallinut automaattista kopiointia. Valitse teksti ja kopioi tavalliseen tapaan. Mukana ovat myös mahdolliset omat muistiinpanosi.</p><textarea id="copy-text" readonly aria-label="Resepti tekstinä"></textarea><div class="toolbar"><button type="button" class="btn btn-primary" id="select-text">Valitse kaikki</button><button type="button" class="btn" id="close-copy">Sulje</button></div></dialog>
+<script type="application/json" id="initial-state">null</script>
+<script id="soup-model">/* Kasvissosekeitto 0.3.4 — pure, inspectable recipe model.
+ * Ratios and seasoning amounts are starting suggestions, not verified equivalences.
+ * No DOM, network, storage or user tracking in this module.
+ */
+(function (root) {
+'use strict';
+const VERSION = '0.3.4';
+const VEG = {
+ carrot:{name:'Porkkana',acc:'porkkana',part:'porkkanaa',prep:'root',weight:2},
+ cauliflower:{name:'Kukkakaali',acc:'kukkakaali',part:'kukkakaalia',prep:'cauliflower',weight:2},
+ cabbage:{name:'Valkokaali',acc:'valkokaali',part:'valkokaalia',prep:'cabbage',weight:2},
+ swede:{name:'Lanttu',acc:'lanttu',part:'lanttua',prep:'root',weight:2},
+ sweetpotato:{name:'Bataatti',acc:'bataatti',part:'bataattia',prep:'sweet',weight:1.5,cap:.45},
+ kohlrabi:{name:'Kyssäkaali',acc:'kyssäkaali',part:'kyssäkaalia',prep:'root',weight:2},
+ parsnip:{name:'Palsternakka',acc:'palsternakka',part:'palsternakkaa',prep:'root',weight:1,cap:.25},
+ celeriac:{name:'Juuriselleri',acc:'juuriselleri',part:'juuriselleriä',prep:'root',weight:1,cap:.14},
+ turnip:{name:'Nauris',acc:'nauris',part:'naurista',prep:'root',weight:1,cap:.35}
+};
+const PRIMARY = {
+ carrot:{ratio:.45,other:'swede',recommended:['swede','cauliflower','kohlrabi'],tip:'Paahteinen, porkkanapohjainen lähtökohta. Yrttisyys ja pieni happolisä ovat ehdotus makeuden vastapainoksi.'},
+ cauliflower:{ratio:.40,other:'carrot',recommended:['carrot','kohlrabi','parsnip'],tip:'Kukkakaali lisätään kovia juureksia myöhemmin. Yksi kukkakaali–porkkana–juurisellerikeitto onnistui ilman perunaa; muut suhteet ovat vielä kokeilemattomia.'},
+ cabbage:{ratio:.50,other:'carrot',recommended:['carrot','swede','celeriac'],tip:'Valkokaalipohja on kokeilematon. Kaali tarvitsee ohuen suikaloinnin ja kunnollisen pehmennyksen; aivan sileää rakennetta ei luvata.'},
+ swede:{ratio:.55,other:'carrot',recommended:['carrot','cauliflower','kohlrabi'],tip:'Tämä tekee tarkoituksella lanttupainotteisen keiton. Pääkasviksena lanttu on tässä mallissa vielä kokeilematon.'},
+ sweetpotato:{ratio:.55,other:'cauliflower',recommended:['cauliflower','carrot','celeriac'],tip:'Bataatti makeuttaa ja tekee soseesta täyteläistä ilman perunaa. Sen määräsuhteet ovat vielä kokeilemattomia; kasvismäärät ovat suuntaviivoja.'}
+};
+const ONIONS = {onion:'Keltasipuli',red_onion:'Punasipuli',leek:'Purjo'};
+const MAX_GRAMS = 20000;
+const MAX_NOTES = 2000;
+const MAX_WATER = 50000;
+const MAX_GARLIC_TSP = 4000; // Technical input limit, not a culinary recommendation.
+const LEGACY_GARLIC_G_PER_TSP = 5; // Approximation, not a measured Valkoliekki density.
+const clone = obj => JSON.parse(JSON.stringify(obj));
+const escapeHtml = text => String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => new Intl.NumberFormat('fi-FI',{maximumFractionDigits:1}).format(n);
+const roundTo = (n,step) => Math.round(n/step)*step;
+const roundVeg = n => roundTo(n,n>=100?25:n>=30?10:5);
+const join = arr => arr.length<2?(arr[0]||''):arr.slice(0,-1).join(', ')+' ja '+arr.at(-1);
+const grams = n => fmt(n)+' g';
+const fmtDecimal = n => new Intl.NumberFormat('fi-FI',{maximumFractionDigits:2}).format(n);
+// Practical volume equivalents. Densities are averages/assumptions, not product guarantees.
+// See MITTAMUUNNOKSET.md for sources and uncertainty. Quantified seasonings use volume; salt/pepper use taste.
+const G_PER_TSP = Object.freeze({thyme:1,marjoram:.6,provencal:1,paprika:2.3,mustard:5,vinegar:5,oil:4.5});
+const MEASURE_NOTE='Yrttien, savupaprikan, sinapin, etikan, öljyn ja valkosipulimurskan määrät ovat keittiömittoina (1 tl = 5 ml, 1 rkl = 15 ml). Suola ja mustapippuri lisätään oman maun mukaan. Maustemäärät ovat lähtöehdotuksia.';
+function fraction(n){
+ const whole=Math.floor(n),quarter=Math.round((n-whole)*4);
+ if(Math.abs(n*4-Math.round(n*4))>1e-8)return fmtDecimal(n);
+ return quarter?(whole?fmt(whole)+' ':'')+['','¼','½','¾'][quarter]:fmt(whole);
+}
+function tspText(n){return fraction(n)+' tl';}
+function spoonMeasure(gramsValue,kind){
+ const tsp=gramsValue/G_PER_TSP[kind];
+ if(kind==='oil'&&tsp>=3){
+  return fraction(Math.max(.5,roundTo(tsp/3,.5)))+' rkl';
+ }
+ if(tsp<.25){
+  // No special 1 ml spice measure: keep very small additions deliberately qualitative.
+  return kind==='vinegar'?'muutama tippa':'ripaus';
+ }
+ const rounded=Math.max(.25,roundTo(tsp,.25));
+ if(rounded>=6){
+  const tbsp=Math.floor(rounded/3),rest=rounded-tbsp*3;
+  return fmt(tbsp)+' rkl'+(rest?' + '+tspText(rest):'');
+ }
+ return tspText(rounded);
+}
+function garlicSuggestion(ab){
+ const equivalent=Math.max(1,Math.round(ab*.015))/LEGACY_GARLIC_G_PER_TSP;
+ return Math.max(.25,roundTo(equivalent,equivalent>=1?.5:.25));
+}
+function validTsp(n){return Number.isFinite(n)&&n>=0&&n<=MAX_GARLIC_TSP&&Math.abs(n*100-Math.round(n*100))<1e-7;}
+
+
+const PROFILES = {
+ provencal: {name:'Provencelaisen yrttinen', short:'Yrttinen', description:'Herbes de Provence, pieni sinappilisä ja hallittu happo. Oletuksena aiemman keittokokeen maustesuunnan perusteella; määrät ovat ehdotuksia.', herbs:[['Herbes de Provence',0.0025]], mustard:0.005, vinegar:0.001},
+ smoky: {name:'Savuisen paahteinen', short:'Savuinen', description:'Mieto savupaprika ja timjami. Savuisuus ei tarkoita chilin poltetta. Yksi onnistunut käytännön keittokokeilu; tarkkoja toteutuneita maustemääriä ei vahvistettu.', herbs:[['Kuivattu timjami',0.001]], paprika:0.0015, mustard:0.004, vinegar:0.001},
+ mustard: {name:'Sinappisen aromaattinen', short:'Sinappinen', description:'Dijon-sinappi, timjami ja meirami. Lisää etikkaa vasta sinapin maistamisen jälkeen. Uusi, vielä keittiössä kokeilematon maustelinja.', herbs:[['Kuivattu timjami',0.0012],['Kuivattu meirami',0.0008]], mustard:0.012, vinegar:0.0005}
+};
+function defaults(){return {schema:4,primary:{id:'carrot',grams:550},b:[{uid:'b1',ingredient:'swede',autoChoice:true,own:null}],onion:{id:'onion',own:null},garlic:{own:null},potato:{own:null},water:{own:null},profile:'provencal',userNotes:'',nextId:2};}
+function isAmount(n,min=0){return Number.isInteger(n)&&n>=min&&n<=MAX_GRAMS;}
+function isOwn(n){return n===null||isAmount(n);}
+function validState(s){
+ return !!s&&s.schema===4&&!!s.primary&&Object.hasOwn(PRIMARY,s.primary.id)&&isAmount(s.primary.grams,1)
+ &&Array.isArray(s.b)&&s.b.length<=3&&s.b.every(r=>r&&/^b\d+$/.test(r.uid)&&Object.hasOwn(VEG,r.ingredient)&&typeof r.autoChoice==='boolean'&&isOwn(r.own))
+ &&new Set(s.b.map(r=>r.uid)).size===s.b.length&&new Set(s.b.map(r=>r.ingredient)).size===s.b.length
+ &&s.onion&&Object.hasOwn(ONIONS,s.onion.id)&&isOwn(s.onion.own)&&s.garlic&&(s.garlic.own===null||validTsp(s.garlic.own))&&s.potato&&isOwn(s.potato.own)
+ &&s.water&&(s.water.own===null||(Number.isInteger(s.water.own)&&s.water.own>=50&&s.water.own<=MAX_WATER&&s.water.own%10===0))
+ &&Object.hasOwn(PROFILES,s.profile)&&typeof s.userNotes==='string'&&s.userNotes.length<=MAX_NOTES
+ &&Number.isInteger(s.nextId)&&s.nextId>=2&&s.nextId<1000000&&s.b.every(r=>Number(r.uid.slice(1))<s.nextId);
+}
+function normalizeState(input){
+ if(!input||typeof input!=='object')return null;
+ let s=input;
+ if(s.schema===2)s={...s,schema:3,water:{own:null},profile:'provencal',userNotes:''};
+ if(s.schema===3){
+  if(!s.garlic||!isOwn(s.garlic.own))return null;
+  s={...s,schema:4,garlic:{own:s.garlic.own===null?null:s.garlic.own/LEGACY_GARLIC_G_PER_TSP}};
+ }
+ if(!validState(s))return null;
+ // Only copy known data fields. Never merge untrusted objects into application objects.
+ return {schema:4,primary:{id:s.primary.id,grams:s.primary.grams},b:s.b.map(r=>({uid:r.uid,ingredient:r.ingredient,autoChoice:r.autoChoice,own:r.own})),onion:{id:s.onion.id,own:s.onion.own},garlic:{own:s.garlic.own},potato:{own:s.potato.own},water:{own:s.water.own},profile:s.profile,userNotes:s.userNotes,nextId:s.nextId};
+}
+function allocateB(s){
+ const target=roundVeg(s.primary.grams*PRIMARY[s.primary.id].ratio);
+ const unit=target>=100?25:5;
+ const fixed=s.b.reduce((sum,r)=>sum+(r.own??0),0);
+ const auto=s.b.filter(r=>r.own===null);
+ const amounts=Object.fromEntries(s.b.map(r=>[r.uid,r.own??0]));
+ let remaining=Math.max(0,target-fixed);
+ const caps=Object.fromEntries(auto.map(r=>[r.uid,VEG[r.ingredient].cap?Math.max(unit,roundTo(s.primary.grams*VEG[r.ingredient].cap,unit)):Infinity]));
+ // The third B item receives a useful starter amount, even if the earlier
+ // user-set amounts already exhaust the suggested B basket. Existing OWN
+ // quantities are left untouched; the total batch may grow.
+ let thirdStarter=0;
+ if(s.b.length===3 && s.b[2].own===null){
+   const third=s.b[2], cap=caps[third.uid];
+   const base=Math.max(5,roundVeg(Math.min(100,s.primary.grams*.22)));
+   thirdStarter=Math.min(base,Number.isFinite(cap)?cap:base);
+   amounts[third.uid]=thirdStarter;
+   caps[third.uid]=thirdStarter; // Keep the initial third-vegetable suggestion modest.
+   remaining=Math.max(0,remaining-thirdStarter);
+ }
+ // Distribute remaining budget among automatic rows, honoring individual caps.
+ // Do not overwrite a user quantity or silently raise previously chosen amounts.
+ while(remaining>=unit){
+   const candidates=auto.filter(r=>amounts[r.uid]+unit<=caps[r.uid]);
+   if(!candidates.length)break;
+   candidates.sort((a,b)=>amounts[a.uid]/VEG[a.ingredient].weight-amounts[b.uid]/VEG[b.ingredient].weight);
+   amounts[candidates[0].uid]+=unit;remaining-=unit;
+ }
+ return {target,amounts,fixed,thirdStarter,extra:Math.max(0,Object.values(amounts).reduce((a,b)=>a+b,0)-target)};
+}
+function derive(s){
+ const b=allocateB(s), byId={};
+ const put=(id,n)=>{if(n>0)byId[id]=(byId[id]||0)+n;};
+ put(s.primary.id,s.primary.grams);
+ s.b.forEach(r=>put(r.ingredient,b.amounts[r.uid]));
+ const bTotal=s.b.reduce((sum,r)=>sum+b.amounts[r.uid],0), ab=s.primary.grams+bTotal;
+ const brassicas=(byId.cauliflower||0)+(byId.cabbage||0);
+ const sweet=byId.sweetpotato||0;
+ // Sweet potato thickens the soup on its own; do not automatically stack much potato on top.
+ const potatoProposal=ab*.22+brassicas*.05-sweet*.55;
+ const suggested={onion:roundVeg(ab*.18),garlic:garlicSuggestion(ab),potato:Math.max(0,roundVeg(potatoProposal))};
+ const onion=s.onion.own??suggested.onion, garlic=s.garlic.own??suggested.garlic, potato=s.potato.own??suggested.potato;
+ const total=ab+onion+potato, waterFactor=brassicas/ab>=.4?.5:sweet/ab>=.3?.55:.6;
+ suggested.water=Math.max(50,roundTo(total*waterFactor,50));
+ const water=s.water.own??suggested.water;
+ const profile=PROFILES[s.profile];
+ const herbs=profile.herbs.map(([name,ratio])=>({name,grams:Math.max(.5,roundTo(total*ratio,.5))}));
+ const oil=Math.max(1,roundTo(total*.022,total>=300?5:1));
+ const mustard=Math.max(1,roundTo(total*profile.mustard,1));
+ const vinegar=Math.max(.5,roundTo(total*profile.vinegar,.5));
+ const paprika=profile.paprika?Math.max(.5,roundTo(total*profile.paprika,.5)):0;
+ return {b,bTotal,ab,byId,suggested,onion,garlic,potato,total,water,waterFactor,oil,herbs,mustard,vinegar,paprika};
+}
+function notices(s,d){
+ const out=[];
+ if(s.primary.id==='cabbage')out.push('Valkokaalipohja on kokeilematon yhdistelmä. Odota ennen soseutusta, että kaali on aidosti pehmeää; aivan sileää rakennetta ei luvata.');
+ if(s.primary.id==='swede')out.push('Lantun maku saa tässä olla pääosassa. Lanttupohjan suhde on vielä kokeilematon, ei sama kuin porkkana–lanttupohjassa.');
+ if(d.byId.sweetpotato)out.push('Bataatti tuo makeutta ja sakeutta. Sen voi hyvin soseuttaa ilman perunaa. Määrät ovat kokeilemattomia lähtöehdotuksia, eivät tarkkoja korvaussuhteita.');
+ const duplicate=s.b.find(r=>r.ingredient===s.primary.id&&d.b.amounts[r.uid]>0);
+ if(duplicate)out.push(VEG[s.primary.id].name+' on sekä A- että B-korissa. Omat määrät säilyvät ja ne on yhdistetty ainesluetteloon: '+grams(d.byId[s.primary.id])+'.');
+ if(d.b.extra>0)out.push('B-kori ylittää yhteisen lähtöehdotuksen noin '+grams(d.b.extra)+'. Kolmannen kasviksen käyttökelpoinen ehdotus tai omat määrät voivat kasvattaa keittoerää; mitään itse valitsemaasi määrää ei pienennetä.');
+ if((d.byId.celeriac||0)/d.ab>.2)out.push('Juuriselleriä on paljon suhteessa muuhun kasvispohjaan. Varaudu selleripainotteiseen makuun; oma määräsi ei muutu.');
+ if((d.byId.parsnip||0)/d.ab>.25)out.push('Palsternakkaa on melko suuri osuus. Sen makeus ja aromi voivat korostua; tämä on makuvalinta, ei virhe.');
+ if(d.potato===0)out.push('Peruna on jätetty pois. Arvioi sakeus soseuttamisen jälkeen ja lisää loppuvettä maltilla.');
+ else if(d.potato/d.total>.35)out.push('Perunan osuus on suuri. Keitosta tulee perunapainotteinen; soseuta vain sen verran kuin on tarpeen.');
+ if(s.water.own!==null){
+  out.push('Aloitusvesi on oma valintasi ('+fmt(d.water/100)+' dl). Se pysyy myös erän muuttuessa. Nykyisen yhdistelmän automaattinen ehdotus olisi noin '+fmt(d.suggested.water/100)+' dl.');
+  if(d.water<d.total*.25)out.push('Omaa aloitusvettä on vähän suhteessa kasviksiin. Se ei välttämättä riitä kannen alla kypsentämiseen: tarkkaile pohjaa ja lisää vettä tarvittaessa jo ennen soseuttamista.');
+  if(d.water>d.total*.9)out.push('Omaa aloitusvettä on runsaasti. Keitto voi jäädä tavoiteltua juoksevammaksi; vettä voi pitää aluksi osan sivussa.');
+ }
+ if(d.total>1800)out.push('Erä on suuri. Varaa väljä kattila ja ruskista useammassa erässä. Kypsennysaika ei kasva samassa suhteessa grammamäärään.');
+ if(d.total<350)out.push('Erä on hyvin pieni. Käytä pientä astiaa ja varmista, että sauvasekoittimen teräosa peittyy. Maustemäärien pyöristys korostuu: aloita erityisen pienillä lisäyksillä.');
+ return out;
+}
+function buildRecipe(s,d=derive(s)){
+ const ids=Object.keys(d.byId), roots=ids.filter(id=>VEG[id].prep==='root');
+ const hardBrown=ids.filter(id=>VEG[id].prep==='root'||id==='cabbage');
+ const hasSweet=!!d.byId.sweetpotato, hasCauli=!!d.byId.cauliflower, hasCabbage=!!d.byId.cabbage;
+ // Sweet potato softens faster than hard roots; after optional browning, add it late when there is a slow component.
+ const hasEarly=roots.length>0||hasCabbage||d.potato>0;
+ const lateSweet=hasSweet&&hasEarly, lateCauli=hasCauli&&hasEarly;
+ const earlyBrown=[...hardBrown,...(hasSweet&&!lateSweet?['sweetpotato']:[])];
+ const hasRoast=hardBrown.length>0||hasSweet||(d.onion>0&&s.onion.id!=='leek');
+ const onionName=ONIONS[s.onion.id], onionAcc=onionName.toLowerCase();
+ const names=ids.map(id=>VEG[id].acc), profile=PROFILES[s.profile];
+ const title=names.length<=3?join(names.map((n,i)=>i===0?n[0].toUpperCase()+n.slice(1):n))+' · sosekeitto':'Kasvissosekeitto';
+ const ingredients=ids.map(id=>({name:VEG[id].name,amount:grams(d.byId[id])}));
+ if(d.onion)ingredients.push({name:onionName,amount:grams(d.onion)});
+ if(d.potato)ingredients.push({name:'Peruna',amount:grams(d.potato)});
+ if(d.garlic)ingredients.push({name:'Valkosipulimurska (oletus: Valkoliekki, 70 % valkosipulia)',amount:(s.garlic.own===null?'noin ':'')+tspText(d.garlic)});
+ ingredients.push({name:'Vesi aluksi',amount:fmt(d.water/100)+' dl'+(s.water.own!==null?' · oma määrä':'')});
+ const measures={oil:spoonMeasure(d.oil,'oil'),mustard:spoonMeasure(d.mustard,'mustard'),vinegar:spoonMeasure(d.vinegar,'vinegar'),paprika:d.paprika?spoonMeasure(d.paprika,'paprika'):null};
+ const herbKey=name=>name==='Kuivattu timjami'?'thyme':name==='Kuivattu meirami'?'marjoram':'provencal';
+ const seasonings=[{name:'Rypsi- tai oliiviöljy',amount:'noin '+measures.oil},...d.herbs.map(h=>({name:h.name,amount:'aloita noin '+spoonMeasure(h.grams,herbKey(h.name))})),{name:'Laakerinlehti (valinnainen)',amount:'1–2 kpl'}];
+ if(d.paprika)seasonings.push({name:'Savupaprika, mieto',amount:'aloita noin '+measures.paprika});
+ seasonings.push({name:'Mustapippuri, jauhettu',amount:'oman maun mukaan'},
+  {name:'Dijon-sinappi',amount:'aloita noin '+measures.mustard},
+  {name:'Väkiviinaetikka 10 %',amount:'tarvittaessa aluksi noin '+measures.vinegar},
+  {name:'Suola',amount:'oman maun mukaan; huomioi kasvisliemen suola'});
+ const steps=[], prep=[];
+ prep.push('Valitse kattila tai kasari, johon kaikki raa\'at kasvikset mahtuvat kannen alle ja jossa pystyt myös sekoittamaan.');
+ const peel=roots.map(id=>VEG[id].acc);
+ if(peel.length)prep.push('Kuori '+join(peel)+'. Leikkaa '+(peel.length>1?'ne':'se')+' noin 1–2 cm paloiksi.');
+ if(hasSweet)prep.push('Kuori bataatti ja paloittele noin 1–2 cm paloiksi. Bataatti pehmenee yleensä kovia juureksia nopeammin.'+(lateSweet?' Pidä bataatti erillään myöhempää lisäystä varten.':''));
+ if(d.potato)prep.push('Kuori ja leikkaa peruna noin 1–2 cm paloiksi. Pidä peruna erillään ruskistettavista kasviksista; se lisätään vasta nesteeseen.');
+ if(hasCabbage)prep.push('Suikaloi valkokaali ohuesti ja poista puumainen kanta.');
+ if(hasCauli)prep.push('Jaa kukkakaali pieniksi kukinnoiksi ja viipaloi pehmeä varsi ohuesti. Poista mahdollinen puumainen osa.'+(lateCauli?' Pidä kukkakaali erillään myöhempää lisäystä varten.':''));
+ if(d.onion)prep.push(s.onion.id==='leek'?'Halkaise purjo, huuhdo multa lehtien välistä ja viipaloi.':'Kuori ja hienonna '+onionAcc+'.');
+ steps.push({title:'Valmistele valitut kasvikset',text:prep.join(' ')});
+ if(hardBrown.length||hasSweet||d.onion){
+  const roast=[];
+  if(d.onion&&s.onion.id!=='leek')roast.push('Kuumenna osa öljystä leveässä kattilassa tai kasarissa. Ruskista '+onionAcc+' keskilämmöllä kullanruskeaksi, suuntaa antavasti 10–15 minuuttia. Siirrä hetkeksi sivuun.');
+  if(hardBrown.length)roast.push((d.onion&&s.onion.id!=='leek'?'Lisää öljyä tarpeen mukaan. ':'Kuumenna osa öljystä leveässä kattilassa tai kasarissa. ')+'Ruskista '+join(hardBrown.map(id=>VEG[id].acc))+' tarvittaessa useassa erässä. Mitoita jokainen erä niin, että palat mahtuvat paistoastian pohjalle yhteen kerrokseen eivätkä ole päällekkäin. Eriä voi olla niin monta kuin tarvitaan. Anna osaan pinnoista muodostua selvä ruskea, paahteinen väri. Vältä polttamista ja siirrä valmiit erät sivuun.');
+  if(hasSweet)roast.push((hardBrown.length||(d.onion&&s.onion.id!=='leek')?'Lisää tarvittaessa tilkka öljyä. ':'Kuumenna hieman öljyä kasarissa. ')+'Ruskista bataatti halutessasi keskilämmöllä. Jos ruskistat, paista tarvittaessa useassa erässä niin, että palat mahtuvat pohjalle yhteen kerrokseen. Lopeta, kun bataatti saa paikoin väriä; vältä palamista.'+(lateSweet?' Siirrä se erilleen odottamaan myöhempää lisäystä.':' Pidä se kattilassa tai siirrä hetkeksi syrjään.'));
+  if(d.onion&&s.onion.id==='leek')roast.push((hardBrown.length||hasSweet?'Laske lämpöä ja lisää purjo.':'Kuumenna osa öljystä ja lisää purjo.')+' Pehmennä purjo sekoitellen; älä tavoittele tummaa ruskistusta.');
+  steps.push({title:hasRoast?'Rakenna paahteinen pohja':'Pehmennä purjo',text:roast.join(' ')});
+ }
+ let start=(hardBrown.length||hasSweet||d.onion)?'Laske lämpöä. Jos astia on vielä hyvin kuuma, siirrä se hetkeksi pois levyltä ennen mausteiden lisäämistä. ':'Kuumenna öljy kattilassa miedolla lämmöllä. ';
+ if(hasRoast)start+='Tarkista ensin, onko astian pohjassa aivan mustia tai kitkerän palaneita jäämiä. Jos on, poista ne tai jatka puhtaassa kattilassa; älä sekoita niitä keittoon. ';
+ if(earlyBrown.length||d.onion)start+='Kokoa '+join([...earlyBrown.map(id=>VEG[id].acc),...(d.onion?[onionAcc]:[])])+' kattilaan. ';
+ start+='Lisää '+(d.garlic?'valkosipulimurska ja ':'')+'mustapippuri sekä noin puolet '+(s.profile==='provencal'?'Herbes de Provence -yrteistä':s.profile==='smoky'?'timjamista':'timjamista ja meiramista')+'. Sekoita lyhyesti miedolla lämmöllä, polttamatta mausteita. ';
+ // A single, atomic instruction: exactly one initial water addition, in every profile.
+ const waterQty=fmt(d.water/100)+' dl';
+ if(d.paprika)start+='Lisää savupaprika, sekoita muutaman sekunnin ajan ja kaada heti perään aloitusvesi ('+waterQty+'). ';
+ else start+='Kaada kattilaan aloitusvesi ('+waterQty+'). ';
+ if(hasRoast)start+='Jos astian pohjassa on ruskeita paistojäämiä, voit irrottaa ne lisättyyn veteen lastalla. Kaikkiin astioihin niitä ei synny. ';
+ if(d.potato)start+='Lisää peruna. ';
+ start+='Lisää halutessasi 1–2 laakerinlehteä; ne poistetaan ennen soseuttamista. ';
+ if(hasCauli&&!lateCauli)start+='Lisää kukkakaali nyt. ';
+ start+='Veden voi korvata miedolla kasvisliemellä. Älä lisää silloin suolaa vielä.';
+ steps.push({title:'Lisää valitun maustelinjan mausteet ja vesi',text:start});
+ let cook='Laita kansi päälle ja kuumenna hiljaiseen kiehumiseen. ';
+ const late=[...(lateSweet?['bataatti']:[]),...(lateCauli?['kukkakaali']:[])];
+ if(late.length){
+  if(roots.length||hasCabbage){
+   const slow=[...roots.map(id=>VEG[id].acc),...(hasCabbage?['valkokaali']:[])];
+   cook+='Hauduta aluksi suuntaa antavasti 15–25 minuuttia. Ennen '+join(late.map(x=>x==='bataatti'?'bataatin':'kukkakaalin'))+' lisäämistä '+join(slow)+(slow.length>1?' saavat olla jo lähes pehmeitä. ':' saa olla jo lähes pehmeää. ');
+  }else cook+='Kypsennä perunaa ensin suuntaa antavasti 8–12 minuuttia. ';
+  cook+='Lisää '+join(late)+'. Laita kansi takaisin ja kuumenna uudelleen hiljaiseen kiehumiseen. Tarkista kypsyys noin 10–15 minuutin kuluttua kiehumisen palaamisesta ja jatka tarvittaessa pidempään. ';
+ }else if(hasCauli&&hasSweet)cook+='Tarkista kukkakaalin ja bataatin kypsyys noin 10–20 minuutin kuluttua kiehumisen alkamisesta ja jatka tarvittaessa pidempään. ';
+ else if(hasCauli)cook+='Tarkista kukkakaalin kypsyys noin 10–15 minuutin kuluttua kiehumisen alkamisesta ja jatka tarvittaessa pidempään. ';
+ else if(hasSweet&&!hasEarly)cook+='Tarkista bataatin kypsyys noin 10–20 minuutin kuluttua kiehumisen alkamisesta ja jatka tarvittaessa pidempään. ';
+ else cook+='Hauduta suuntaa antavasti 25–40 minuuttia kiehumisen alkamisesta. ';
+ cook+='Pidä kansi päällä kypsennyksen ajan. Kääntele välillä, jotta myös päällimmäiset kasvikset kypsyvät tasaisesti. Lisää tarvittaessa hieman vettä, jotta pohjalla on koko ajan nestettä. Kasvisten ei tarvitse peittyä kokonaan: nesteen yläpuolelle jäävät osat kypsyvät kannen alla höyryssä. Kypsennys päättyy vasta, kun kaikki kasvikset'+(hasCauli?', myös kukkakaalin varsipalat,':'')+' murtuvat helposti haarukalla painaen — ei kellon perusteella.';
+ steps.push({title:late.length?'Lisää '+join(late)+' myöhemmin':'Kypsennä aidosti pehmeäksi',text:cook});
+ let blend='Poista mahdolliset laakerinlehdet. Ota kattila pois kuumalta levyltä. Käytä sauvasekoitinta oman laitteesi kuumia ruokia koskevan ohjeen mukaan. Pidä teräosa pinnan alla ja pysäytä kone ennen nostamista, jotta kuuma keitto ei roisku. Soseuta tasaiseksi. ';
+ if(d.potato)blend+='Perunan vuoksi vältä tarpeettoman pitkää soseuttamista. ';
+ blend+='Lisää vettä pienissä erissä, kunnes rakenne on sinulle sopiva.';
+ steps.push({title:'Soseuta ja päätä lopullinen sakeus',text:blend});
+ let finish='Lisää loput yrteistä maistaen ja anna niiden pehmetä lämpimässä keitossa muutama minuutti. Lisää aluksi noin '+measures.mustard+' Dijon-sinappia. ';
+ if(s.profile==='mustard')finish+='Maista sinapin tuoma happamuus ennen muuta happoa. ';
+ finish+='Lisää tarvittaessa aluksi noin '+measures.vinegar+' 10-prosenttista elintarvike-etikkaa. Määrä koskee nimenomaan 10 % etikkaa. ';
+ if(d.paprika)finish+='Arvioi savuisuus maistamalla; savupaprikan voimakkuus vaihtelee. ';
+ finish+='Säädä pienin lisäyksin. Lisää mustapippuria ja suolaa oman maun mukaan. Ota huomioon käyttämäsi kasvisliemen, fondin ja muiden suolaisten ainesten sisältämä suola. Maista ennen lisäsuolaa. Tarjoa esimerkiksi leivän kanssa.';
+ steps.push({title:'Viimeistele maistamalla',text:finish});
+ const ingredientNote='Mausteissa on Dijon-sinappia.'+(d.byId.celeriac?' Kasvispohjassa on myös juuriselleriä.':'')+' Tarkista käyttämäsi liemen, mausteseosten ja murskan ainesosat pakkauksista; malli ei tarkista erityisruokavalioita.';
+ return {title,profile:s.profile,profileName:profile.name,profileDescription:profile.description,ingredients,seasonings,steps,measureNote:MEASURE_NOTE,notes:notices(s,d),userNotes:s.userNotes,ingredientNote,total:d.total,water:d.water,waterOwn:s.water.own!==null,provenance:'Määrät ja ajat ovat suuntaa-antavia. Porkkana–lanttu- ja kukkakaali–porkkana–juuriselleriyhdistelmistä on myönteistä kotikokeilua; muita yhdistelmiä ei ole järjestelmällisesti testattu.'};
+}
+function recipeText(r){
+ return ['KASVISSOSEKEITTO · DYNAAMINEN RESEPTI '+VERSION,r.title,r.profileName,'',
+ 'Kasviksia '+grams(r.total)+' (ilman murskaa). Painot puhdistettuina.',
+ 'Aloitusvesi '+fmt(r.water/100)+' dl'+(r.waterOwn?' · oma määrä.': ' · lähtöehdotus.')+' Lopullinen määrä rakenteen mukaan.','',
+ 'AINEKSET',...r.ingredients.map(i=>i.name+': '+i.amount),'',
+ r.profileName.toLocaleUpperCase('fi-FI')+' – LÄHTÖEHDOTUS',...r.seasonings.map(i=>i.name+': '+i.amount),'',r.measureNote,'',
+ 'VALMISTUS',...r.steps.flatMap((st,i)=>[(i+1)+'. '+st.title,st.text,'']),
+ ...(r.notes.length?['HUOMIOT',...r.notes.map(n=>'• '+n),'']:[]),
+ r.ingredientNote,'',
+ ...(r.userNotes.trim()?['OMAT MUISTIINPANOT (eivät muuta reseptiä)',r.userNotes,'']:[]),
+ 'Seuraavalla lämmityskerralla arvioi sakeus lämpimänä ja lisää vettä vain tarvittaessa.','',r.provenance].join('\n');
+}
+const API={VERSION,VEG,PRIMARY,ONIONS,PROFILES,MAX_GRAMS,MAX_WATER,MAX_NOTES,MAX_GARLIC_TSP,defaults,validState,normalizeState,derive,buildRecipe,recipeText,clone,escapeHtml,fmt,fmtDecimal,grams,join,tspText,spoonMeasure};
+if(typeof module==='object'&&module.exports)module.exports=API;
+else root.SoupCore=Object.freeze(API);
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="soup-app">/* Kasvissosekeitto 0.3.4 — browser UI. No remote requests or persistent browser storage. */
+(function () {
+'use strict';
+const {VERSION,VEG,PRIMARY,ONIONS,PROFILES,MAX_GRAMS,MAX_WATER,MAX_NOTES,MAX_GARLIC_TSP,defaults,normalizeState,validState,derive,buildRecipe,recipeText,clone,escapeHtml,fmt,fmtDecimal,grams}=window.SoupCore;
+const $=id=>document.getElementById(id);
+document.documentElement.classList.remove('no-js');
+let state=defaults(), history=[], currentRecipe, toastTimer, initialWarning='', notesGroup=false;
+const dirtyFields=new Set();
+const errors=new Map();
+try{
+ const embedded=JSON.parse($('initial-state').textContent);
+ const loaded=normalizeState(embedded);
+ if(loaded)state=loaded;
+ else if(embedded!==null)initialWarning='Tallennettuja valintoja ei voitu lukea. Näytetään oletusyhdistelmä, ei tallennettuja määriä.';
+}catch(_){initialWarning='Tallennettu valintatieto on vaurioitunut. Näytetään oletusyhdistelmä.';}
+function patchHtml(host, html){
+ const template=document.createElement('template');template.innerHTML=html;
+ function compatible(a,b){return a&&a.nodeType===b.nodeType&&(a.nodeType!==1||(a.tagName===b.tagName&&a.id===b.id));}
+ function children(parent,wanted){
+   const nodes=Array.from(wanted.childNodes);
+   nodes.forEach((next,i)=>{
+     let old=parent.childNodes[i];
+     if(!compatible(old,next)){
+       const matching=next.nodeType===1&&next.id?Array.from(parent.childNodes).slice(i+1).find(n=>compatible(n,next)):null;
+       if(matching){parent.insertBefore(matching,old||null);old=matching;}
+       else {const fresh=next.cloneNode(true);if(old)parent.replaceChild(fresh,old);else parent.appendChild(fresh);return;}
+     }
+     if(next.nodeType===3){if(old.data!==next.data)old.data=next.data;return;}
+     if(next.nodeType!==1)return;
+     for(const attr of Array.from(old.attributes))if(!next.hasAttribute(attr.name))old.removeAttribute(attr.name);
+     for(const attr of Array.from(next.attributes))if(old.getAttribute(attr.name)!==attr.value)old.setAttribute(attr.name,attr.value);
+     if(next.tagName==='INPUT'){
+       if(old.value!==next.value)old.value=next.value;
+       old.checked=next.checked;
+     }else if(next.tagName==='TEXTAREA'){
+       if(old.value!==next.value)old.value=next.value;
+       if(old.textContent!==next.textContent)old.textContent=next.textContent;
+     }else{
+       children(old,next);
+       if(next.tagName==='SELECT'&&old.value!==next.value)old.value=next.value;
+     }
+   });
+   while(parent.childNodes.length>nodes.length)parent.lastChild.remove();
+ }
+ children(host,template.content);
+}
+function badge(own){return '<span class="badge'+(own!==null?' own':'')+'">'+(own!==null?'Oma määrä · pysyy':'Ehdotus · mukautuu')+'</span>';}
+function numInput(id,value,label,min=0){return '<label for="'+id+'">'+label+'</label><div class="amount-line"><input id="'+id+'" class="field-unit-input" type="number" min="'+min+'" max="'+MAX_GRAMS+'" step="1" inputmode="numeric" value="'+value+'" aria-label="'+label+' grammoina" aria-describedby="'+id+'-error"><span class="unit">g</span></div><p class="field-error" id="'+id+'-error"></p>';}
+function waterInput(value){return '<label for="water-dl">Aloitusveden määrä</label><div class="amount-line"><input id="water-dl" class="water-input field-unit-input" type="text" inputmode="decimal" autocomplete="off" value="'+fmt(value/100)+'" aria-label="Aloitusveden määrä desilitroina" aria-describedby="water-dl-error water-help"><span class="unit">dl</span></div><p class="field-error" id="water-dl-error"></p>';}
+function garlicInput(value){return '<label for="garlic-tsp">Murskan määrä</label><div class="amount-line"><input id="garlic-tsp" class="field-unit-input" type="text" inputmode="decimal" autocomplete="off" value="'+fmtDecimal(value)+'" aria-label="Valkosipulimurskan määrä teelusikkoina" aria-describedby="garlic-tsp-error garlic-help"><span class="unit">tl</span></div><p class="field-error" id="garlic-tsp-error"></p>';}
+function selectOptions(items,selected,labelFn){return items.map(id=>'<option value="'+id+'"'+(selected===id?' selected':'')+'>'+escapeHtml(labelFn(id))+'</option>').join('');}
+function bOptions(row){
+ const taken=state.b.filter(r=>r.uid!==row.uid).map(r=>r.ingredient);
+ const rec=PRIMARY[state.primary.id].recommended;
+ const ordered=[...rec,...Object.keys(VEG).filter(id=>!rec.includes(id))].filter(id=>!taken.includes(id));
+ return ordered.map(id=>'<option value="'+id+'"'+(id===row.ingredient?' selected':'')+'>'+escapeHtml(VEG[id].name+(rec.includes(id)?' · ehdotus':''))+'</option>').join('');
+}
+function renderControls(d){
+ let html='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">A</span><h2>Pääkasvis</h2></div><p class="sub">Tämä on valintojen lähtökohta. Anna se määrä, jonka aiot käyttää.</p><div class="row"><div><label for="primary-id">Pääkasvis</label><select id="primary-id">'+selectOptions(Object.keys(PRIMARY),state.primary.id,id=>VEG[id].name)+'</select></div><div>'+numInput('primary-grams',state.primary.grams,'Pääkasviksen määrä',1)+'</div></div><p class="field-note">'+PRIMARY[state.primary.id].tip+'</p></section>';
+ html+='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">B</span><h2>Täydentävät kasvikset</h2></div><p class="sub">Valitse 0–3 kasvista. Kolmannelle ehdotetaan omaa pientä aloitusmäärää, vaikka B-kori olisi täynnä. Itse asettamiasi määriä ei pienennetä.</p><div id="b-rows">';
+ if(!state.b.length)html+='<p class="empty">Ei täydentäviä kasviksia. Sekin käy.</p>';
+ state.b.forEach((r,i)=>{
+  html+='<div class="ingredient-row" id="'+r.uid+'-row"><div class="row"><div><label for="'+r.uid+'-id">Täydentävä kasvis '+(i+1)+'</label><select id="'+r.uid+'-id" data-b="'+r.uid+'">'+bOptions(r)+'</select><p class="field-note">'+(r.autoChoice?'Kasvis vaihtuu pääkasviksen mukana, kunnes teet oman valinnan.':'Valitsemasi kasvis säilyy pääkasvista vaihtaessa.')+'</p></div><div>'+numInput(r.uid+'-grams',d.b.amounts[r.uid],VEG[r.ingredient].name+' — määrä')+badge(r.own)+'</div></div><div class="row-bottom"><button class="link-btn remove" type="button" data-remove="'+r.uid+'">Poista '+VEG[r.ingredient].name.toLowerCase()+'</button>'+(r.own!==null?'<button class="link-btn" type="button" data-auto-b="'+r.uid+'">Palauta määräehdotus</button>':'')+'</div></div>';
+ });
+ html+='</div><div class="b-foot"><button type="button" class="btn" id="add-b"'+(state.b.length>=3?' disabled':'')+'>+ Lisää kasvis</button><p class="small">B-korissa nyt <strong>'+grams(d.bTotal)+'</strong>. Lähtöehdotus noin '+grams(d.b.target)+' — sitä ei tarvitse täyttää.</p></div></section>';
+ html+='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">C</span><h2>Sipuli ja valkosipuli</h2></div><p class="sub">Ehdotukset seuraavat A- ja B-korin yhteismäärää. Oma määrä voi olla myös nolla.</p><div class="row"><div><label for="onion-id">Sipuli</label><select id="onion-id">'+selectOptions(Object.keys(ONIONS),state.onion.id,id=>ONIONS[id])+'</select></div><div>'+numInput('onion-grams',d.onion,'Sipulin määrä')+badge(state.onion.own)+'</div></div>'+(state.onion.own!==null?'<button class="link-btn" type="button" data-auto="onion">Palauta sipulin ehdotus</button>':'');
+ html+='<div class="simple-field"><div class="row"><div class="line-label">Valkosipulimurska</div><div>'+garlicInput(d.garlic)+badge(state.garlic.own)+'</div></div>'+(state.garlic.own!==null?'<button class="link-btn" type="button" data-auto="garlic">Palauta murskan ehdotus</button>':'')+'<p class="field-note" id="garlic-help">Anna määrä teelusikkoina, esimerkiksi 2,5. Määräehdotus koskee 70 % valkosipulia sisältävää Valkoliekki-murskaa. Muun tuotteen voimakkuus ja suola voivat poiketa. Lusikkamäärä on arvio, ei tuotteesta mitattu tarkka muunnos.</p></div></section>';
+ html+='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">D</span><h2>Peruna</h2></div><p class="sub">Rakenteen tueksi, ei pakolliseksi täytteeksi. Määrä 0 jättää perunan pois myös työohjeesta.</p><div class="row"><div class="line-label">Peruna</div><div>'+numInput('potato-grams',d.potato,'Perunan määrä')+badge(state.potato.own)+'</div></div>'+(state.potato.own!==null?'<button class="link-btn" type="button" data-auto="potato">Palauta perunan ehdotus</button>':'')+'</section><p class="small controls-hint">Muokattu määrä tulee voimaan, kun poistut kentästä tai painat Enter. Kirjoittamasi määrä säilyy; palautuspainike ottaa automaattisen ehdotuksen takaisin käyttöön.</p>';
+
+ html+='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">E</span><h2>Vesi</h2></div><p class="sub" id="water-help">Aloitusarvio kannen alla kypsentämiseen, ei lopullinen tavoite. Oma määrä pysyy, vaikka muuttaisit keittoerää.</p><div class="row"><div><div class="line-label">Automaattinen ehdotus</div><p class="field-note">Nyt noin '+fmt(d.suggested.water/100)+' dl</p></div><div>'+waterInput(d.water)+badge(state.water.own)+'</div></div>'+(state.water.own!==null?'<button class="link-btn" type="button" data-auto="water">Palauta veden ehdotus</button>':'')+'<p class="field-note">Voit kirjoittaa esimerkiksi 7 tai 7,5. Lisää vettä tarvittaessa jo kypsennyksen aikana ja säädä sakeus soseutuksen jälkeen.</p></section>';
+ html+='<section class="card"><div class="card-head"><span class="letter" aria-hidden="true">F</span><h2>Maustaminen</h2></div><label for="profile-id">Maustelinja</label><select id="profile-id" aria-describedby="profile-help">'+selectOptions(Object.keys(PROFILES),state.profile,id=>PROFILES[id].name)+'</select><p id="profile-help" class="profile-note">'+escapeHtml(PROFILES[state.profile].description)+'</p><p class="field-note">Vaihto muuttaa mausteluetteloa ja työvaiheita, ei omia kasvis- tai vesimääriäsi. Mausta lopuksi maistamalla.</p></section>';
+ html+='<section class="card"><div class="card-head"><h2>Omat muistiinpanot</h2></div><label for="user-notes">Vapaa havainto tai muistutus</label><textarea id="user-notes" rows="4" maxlength="'+MAX_NOTES+'" aria-describedby="notes-help notes-privacy" placeholder="Esimerkiksi: lanttu korostui hieman; muuten hyvä.">'+escapeHtml(state.userNotes)+'</textarea><p class="notes-count" id="notes-count">'+state.userNotes.length+' / '+MAX_NOTES+'</p><p class="small" id="notes-help">Muistiinpano ei muuta laskentaa tai valmistusohjeen vaiheita.</p><p class="privacy-note" id="notes-privacy">Tallennettu HTML, kopioitu ohje ja tuloste sisältävät myös muistiinpanosi. Niitä ei lähetetä palvelimelle. Muista tämä, jos jaat tiedoston.</p></section>';
+ patchHtml($('controls'),html);
+}
+function listHtml(items){return '<ul class="ingredient-list">'+items.map(i=>'<li><span>'+escapeHtml(i.name)+'</span><span class="qty">'+escapeHtml(i.amount)+'</span></li>').join('')+'</ul>';}
+function render(){
+ const d=derive(state);currentRecipe=buildRecipe(state,d);
+ renderControls(d);
+ $('summary').innerHTML='<div class="stats"><div><div class="stat-label">Kasviksia yhteensä</div><div class="stat-number">'+grams(d.total)+'</div><div class="stat-note">Raakapaino, ilman murskaa</div></div><div><div class="stat-label">Aloitusvesi</div><div class="stat-number">'+fmt(d.water/100)+' dl</div><div class="stat-note">'+(state.water.own!==null?'Oma määrä · pysyy':'Lähtöehdotus')+'</div></div></div>'+listHtml(currentRecipe.ingredients.filter(i=>i.name!=='Vesi aluksi'))+'<p class="inline-msg"><strong>'+escapeHtml(currentRecipe.profileName)+'</strong><br>Kasvisten yhteispaino ei ole valmiin keiton saanto.</p>';
+ $('notices').innerHTML=currentRecipe.notes.length?'<div class="note-box"><strong>Huomio tähän yhdistelmään</strong>'+currentRecipe.notes.map(n=>'<p>'+escapeHtml(n)+'</p>').join('')+'</div>':'';
+ patchHtml($('valmis-ohje'),'<div class="recipe-heading"><div><span class="eyebrow">Valittu valmistusohje / '+VERSION+'</span><h2>'+escapeHtml(currentRecipe.title)+'</h2><p class="recipe-title-sub"><strong>'+escapeHtml(currentRecipe.profileName)+'.</strong> Paksuhko kasvissosekeitto esimerkiksi leivän rinnalle. Ohje vastaa hyväksyttyjä valintoja.</p></div><div class="toolbar no-print recipe-actions"><button type="button" class="btn btn-primary" id="copy">Kopioi ohje</button><button type="button" class="btn" id="print">Tulosta</button></div></div><div class="recipe-meta"><span><strong>'+grams(d.total)+'</strong> kasviksia</span><span>Aloitusvesi <strong>'+fmt(d.water/100)+' dl</strong>'+(state.water.own!==null?' · oma määrä':' · ehdotus')+'</span><span>Painot puhdistettuina</span></div><div class="recipe-layout"><div class="recipe-ingredients"><h3>Ainekset</h3>'+listHtml(currentRecipe.ingredients)+'<div class="seasoning"><h3>'+escapeHtml(currentRecipe.profileName)+'</h3>'+listHtml(currentRecipe.seasonings)+'<p class="small seasoning-note">'+escapeHtml(currentRecipe.measureNote)+'</p><p class="small seasoning-note">'+escapeHtml(currentRecipe.ingredientNote)+'</p></div></div><div><h3>Valmistus</h3><ol class="steps">'+currentRecipe.steps.map(st=>'<li><div><h4>'+escapeHtml(st.title)+'</h4><p>'+escapeHtml(st.text)+'</p></div></li>').join('')+'</ol></div></div>'+(currentRecipe.notes.length?'<div class="recipe-notes">'+currentRecipe.notes.map(n=>'<p>'+escapeHtml(n)+'</p>').join('')+'</div>':'')+'<section id="recipe-user-notes" class="user-notes"'+(state.userNotes.trim()?'':' hidden')+'><h3>Omat muistiinpanot</h3><p id="recipe-user-notes-text"></p></section><p class="fineprint">Seuraavalla lämmityskerralla arvioi sakeus lämpimänä ja lisää vettä vain tarvittaessa.</p><p class="fineprint">'+escapeHtml(currentRecipe.provenance)+'</p>');
+ // User text is never parsed as HTML. This also applies to exported files.
+ $('recipe-user-notes-text').textContent=state.userNotes;
+ $('undo').disabled=history.length===0;
+ $('save').disabled=false;$('reset').disabled=false;
+ renderErrors();
+}
+function renderErrors(){
+ document.querySelectorAll('.field-error').forEach(el=>el.textContent='');
+ document.querySelectorAll('#controls input').forEach(el=>{el.removeAttribute('aria-invalid');el.setCustomValidity('');});
+ for(const [id,message] of errors){
+  const field=$(id),hint=$(id+'-error');
+  if(field){field.setAttribute('aria-invalid','true');field.setCustomValidity(message);}
+  if(hint)hint.textContent=message;
+ }
+ $('invalid-status').textContent=errors.size?'Korjaa merkitty määrä. Valmistusohjeessa on edelleen edellinen hyväksytty määrä; tallennus, kopiointi ja tulostus odottavat korjausta.':'';
+}
+function notify(text){$('toast').textContent=text;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{$('toast').textContent='';},5500);}
+function pushHistory(){history.push(clone(state));if(history.length>30)history.shift();}
+function commit(fn,message){
+ const next=clone(state);fn(next);
+ if(!validState(next))throw new Error('Invalid state transition');
+ if(JSON.stringify(next)===JSON.stringify(state))return;
+ pushHistory();state=next;notesGroup=false;render();
+ const d=derive(state);$('live-status').textContent=message+' Kasviksia '+grams(d.total)+', aloitusvettä '+fmt(d.water/100)+' dl.';
+}
+function preserveFocus(id){const el=$(id);if(el)el.focus({preventScroll:true});}
+function readAmount(el){
+ const raw=el.value.trim();
+ if(el.id==='garlic-tsp'){
+  const n=Number(raw.replace(',','.'));
+  if(!/^\d+(?:[.,]\d{1,2})?$/.test(raw)||!Number.isFinite(n)||n<0||n>MAX_GARLIC_TSP)return {error:'Anna 0–'+fmt(MAX_GARLIC_TSP)+' tl, enintään kahdella desimaalilla (esimerkiksi 2,5 tai 0,25).'};
+  return {value:n};
+ }
+ if(el.id==='water-dl'){
+  const normalized=raw.replace(',','.');
+  const dl=Number(normalized);
+  if(!/^\d+(?:[.,]\d)?$/.test(raw)||!Number.isFinite(dl)||dl<.5||dl>MAX_WATER/100)return {error:'Anna 0,5–'+fmt(MAX_WATER/100)+' dl, enintään yhdellä desimaalilla (esimerkiksi 7,5).'};
+  return {value:Math.round(dl*100)};
+ }
+ const value=Number(raw),min=Number(el.min||0);
+ if(raw===''||!Number.isInteger(value)||value<min||value>MAX_GRAMS)return {error:'Anna kokonaisluku '+min+'–'+MAX_GRAMS+' g.'};
+ return {value};
+}
+function applyAmount(s,id,value){
+ if(id==='primary-grams')s.primary.grams=value;
+ else if(id==='water-dl')s.water.own=value;
+ else if(id==='onion-grams')s.onion.own=value;
+ else if(id==='garlic-tsp')s.garlic.own=value;
+ else if(id==='potato-grams')s.potato.own=value;
+ else{const r=s.b.find(r=>id===r.uid+'-grams');if(r){r.own=value;r.autoChoice=false;}}
+}
+function flushPending(focusError=false){
+ const changes=[];
+ for(const id of dirtyFields){
+  const el=$(id);if(!el)continue;
+  const result=readAmount(el);
+  if(result.error)errors.set(id,result.error);
+  else {errors.delete(id);el.setCustomValidity('');changes.push([id,result.value]);}
+ }
+ renderErrors();
+ if(errors.size){if(focusError){const first=$(errors.keys().next().value);if(first)first.focus();}return false;}
+ if(changes.length){dirtyFields.clear();commit(s=>changes.forEach(([id,n])=>applyAmount(s,id,n)),'Oma määrä otettu käyttöön.');}
+ return true;
+}
+function handlePrimary(id){
+ commit(s=>{
+  s.primary.id=id;const next=PRIMARY[id].other;
+  s.b.forEach(r=>{if(r.autoChoice&&r.own===null&&!s.b.some(other=>other.uid!==r.uid&&other.ingredient===next))r.ingredient=next;});
+ },'Pääkasvis vaihdettu. Omat määrät säilyvät.');
+ preserveFocus('primary-id');
+}
+function oldSelectValue(el){
+ if(el.id==='primary-id')return state.primary.id;
+ if(el.id==='onion-id')return state.onion.id;
+ if(el.id==='profile-id')return state.profile;
+ if(el.dataset.b)return state.b.find(r=>r.uid===el.dataset.b)?.ingredient;
+ return el.value;
+}
+$('controls').addEventListener('input',e=>{
+ const el=e.target;
+ if(el.matches('input[type=number],#water-dl,#garlic-tsp')){
+  el.setCustomValidity('');errors.delete(el.id);dirtyFields.add(el.id);renderErrors();
+ }else if(el.id==='user-notes'){
+  if(!notesGroup){pushHistory();notesGroup=true;}
+  state.userNotes=el.value.slice(0,MAX_NOTES);
+  currentRecipe.userNotes=state.userNotes;
+  $('recipe-user-notes-text').textContent=state.userNotes;
+  $('recipe-user-notes').hidden=!state.userNotes.trim();
+  $('notes-count').textContent=state.userNotes.length+' / '+MAX_NOTES;
+  $('undo').disabled=false;
+ }
+});
+$('controls').addEventListener('focusout',e=>{
+ if(e.target.matches('input[type=number],#water-dl,#garlic-tsp')&&dirtyFields.has(e.target.id))flushPending();
+ if(e.target.id==='user-notes')notesGroup=false;
+});
+$('controls').addEventListener('change',e=>{
+ const el=e.target;
+ if(el.matches('input[type=number],#water-dl,#garlic-tsp')){if(dirtyFields.has(el.id))flushPending();return;}
+ if(el.tagName!=='SELECT')return;
+ const value=el.value;
+ if(!flushPending(true)){el.value=oldSelectValue(el);return;}
+ if(el.id==='primary-id')handlePrimary(value);
+ else if(el.id==='onion-id'){commit(s=>s.onion.id=value,'Sipulilaji vaihdettu.');preserveFocus('onion-id');}
+ else if(el.id==='profile-id'){commit(s=>s.profile=value,'Maustelinja vaihdettu.');preserveFocus('profile-id');}
+ else if(el.dataset.b){const uid=el.dataset.b;commit(s=>{const r=s.b.find(r=>r.uid===uid);r.ingredient=value;r.autoChoice=false;},'Täydentävä kasvis valittu.');preserveFocus(uid+'-id');}
+});
+$('controls').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('input[type=number],#water-dl,#garlic-tsp')){e.preventDefault();if(flushPending(true))e.target.blur();}});
+$('controls').addEventListener('click',e=>{
+ const btn=e.target.closest('button');if(!btn||!flushPending(true))return;
+ if(btn.id==='add-b'){
+  if(state.b.length>=3)return;
+  const options=[...PRIMARY[state.primary.id].recommended,...Object.keys(VEG)];
+  const id=options.find(id=>id!==state.primary.id&&!state.b.some(r=>r.ingredient===id));
+  const uid='b'+state.nextId;
+  commit(s=>{s.b.push({uid,ingredient:id,autoChoice:false,own:null});s.nextId++;},state.b.length===2?'Kolmannelle kasvikselle annettiin pieni lähtömäärä. Keittoerä voi kasvaa.':'Täydentävä kasvis lisätty. Ehdotukset mukautuvat.');preserveFocus(uid+'-id');
+ }else if(btn.dataset.remove){const uid=btn.dataset.remove;commit(s=>s.b=s.b.filter(r=>r.uid!==uid),'Kasvis poistettu.');preserveFocus('add-b');}
+ else if(btn.dataset.autoB){const uid=btn.dataset.autoB;commit(s=>s.b.find(r=>r.uid===uid).own=null,'Määräehdotus palautettu. Kasvisvalinta säilyy.');preserveFocus(uid+'-grams');}
+ else if(btn.dataset.auto){const key=btn.dataset.auto;commit(s=>s[key].own=null,'Automaattinen määräehdotus palautettu.');preserveFocus(key==='water'?'water-dl':key==='garlic'?'garlic-tsp':key+'-grams');}
+});
+$('undo').addEventListener('click',()=>{
+ if(history.length){state=history.pop();notesGroup=false;dirtyFields.clear();errors.clear();render();notify('Edellinen muutos kumottu.');}
+});
+$('reset').addEventListener('click',()=>{
+ if(confirm('Palautetaanko oletusyhdistelmä? Nykyiset valinnat ja muistiinpanot korvataan. Muutoksen voi kumota.')){
+  dirtyFields.clear();errors.clear();commit(s=>Object.assign(s,defaults()),'Oletusyhdistelmä palautettu.');render();notify('Oletusyhdistelmä palautettu.');
+ }
+});
+async function copyRecipe(){
+ if(!flushPending(true))return;
+ const text=recipeText(currentRecipe);
+ try{
+  if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
+  await navigator.clipboard.writeText(text);notify('Ohje ja mahdolliset omat muistiinpanot kopioitu.');
+ }catch(_){
+  $('copy-text').value=text;
+  if(typeof $('copy-dialog').showModal==='function')$('copy-dialog').showModal();else $('copy-dialog').setAttribute('open','');
+  $('copy-text').focus();$('copy-text').select();
+ }
+}
+document.addEventListener('click',e=>{
+ const id=e.target.closest('button')?.id;
+ if(id==='copy')copyRecipe();
+ if(id==='print'&&flushPending(true))window.print();
+});
+$('select-text').addEventListener('click',()=>{$('copy-text').focus();$('copy-text').select();});
+$('close-copy').addEventListener('click',()=>{
+ if(typeof $('copy-dialog').close==='function')$('copy-dialog').close();else $('copy-dialog').removeAttribute('open');
+ preserveFocus('copy');
+});
+function exportHtml(){
+ // Self-contained export; serializes data, not user-authored HTML or executable text.
+ const copy=document.documentElement.cloneNode(true);
+ // Website navigation and indexing metadata do not belong to a personal file.
+ copy.querySelectorAll('[data-soup-site-only],link[rel="canonical"],link[rel="sitemap"]').forEach(el=>el.remove());
+ copy.classList.add('no-js');
+ copy.querySelector('#initial-state').textContent=JSON.stringify(state).replace(/[<>&\u2028\u2029]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));
+ ['toast','live-status','invalid-status'].forEach(id=>copy.querySelector('#'+id).textContent='');
+ copy.querySelectorAll('.field-error').forEach(el=>el.textContent='');
+ copy.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));
+ copy.querySelector('#copy-dialog').removeAttribute('open');copy.querySelector('#copy-text').textContent='';
+ copy.querySelector('#user-notes').textContent=state.userNotes;
+ copy.querySelector('#undo').setAttribute('disabled','');
+ return '<!doctype html>\n'+copy.outerHTML;
+}
+$('save').addEventListener('click',()=>{
+ if(!flushPending(true))return;
+ const blob=new Blob([exportHtml()],{type:'text/html;charset=utf-8'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='kasvissosekeitto-v'+VERSION+'-valinnat.html';document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),10000);
+ notify('Tallennettava HTML sisältää valintasi ja omat muistiinpanosi.');
+});
+render();
+if(initialWarning){$('invalid-status').textContent=initialWarning;notify(initialWarning);}
+// Inspectable API for deterministic tests and later integration. No background tasks.
+window.SoupModel=Object.freeze({...window.SoupCore,getState:()=>clone(state),getRecipe:()=>clone(currentRecipe),exportHtml,setState:input=>{
+ const normalized=normalizeState(input);if(!normalized)throw new Error('Invalid recipe state');
+ state=normalized;history=[];notesGroup=false;dirtyFields.clear();errors.clear();render();
+}});
+})();
+</script>
+</body>
+</html>

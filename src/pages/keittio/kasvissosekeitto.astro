@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import standalone from '../../recipes/kasvissosekeitto/index.html?raw';
+
+// This trusted build artifact retains inline CSS/JS so downloaded selections
+// keep working offline. User notes are handled by the application's text APIs.
+const style = standalone.match(/<style id="soup-style">[\s\S]*?<\/style>/)?.[0];
+const originalBody = standalone.match(/<body>([\s\S]*?)<\/body>/)?.[1];
+if (!style || !originalBody || !originalBody.includes('<div class="wrap">')) {
+  throw new Error('Unexpected vegetable soup release structure. Recheck the integration.');
+}
+const navigation = `<nav class="toolbar no-print" aria-label="Murupolku" data-soup-site-only>
+  <a href="/">Etusivu</a><span aria-hidden="true">/</span>
+  <a href="/keittio/">Keittiö</a><span aria-hidden="true">/</span>
+  <span aria-current="page">Kasvissosekeitto</span>
+</nav>`;
+const attribution = '<p>Codex sovitti reseptisovelluksen wennström.fi-sivustolle ja tarkisti sen teknistä toimintaa. Ohjelmistotestit eivät ole ruoanvalmistuskokeita.</p>';
+const body = originalBody
+  .replace('<div class="wrap">', `<div class="wrap">${navigation}`)
+  .replace('</footer>', `${attribution}</footer>`);
+---
+
+<PageLayout
+  title="Kasvissosekeitto · dynaaminen resepti 0.3.4 · wennström.fi"
+  description="Valitse kasvikset, säädä määrät ja muodosta oma kasvissosekeiton ohje. Omat määrät säilyvät; reseptin voi kopioida, tulostaa ja tallentaa."
+  htmlClass="no-js"
+>
+  <Fragment slot="head" set:html={style} />
+  <Fragment set:html={body} />
+</PageLayout>

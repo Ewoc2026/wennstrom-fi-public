@@ -16,6 +16,12 @@ Sivusto sisältää keskusteluesimerkkejä, syvätutkimusohjeen ja Keittiö-osio
 
 Mittaussivu käyttää alkuperäistä SVG-kuvaajaa. Sen voi suurentaa sivulla tai avata erikseen. Mittausdataa sisältävä CSV ei kuulu julkaistaviin tiedostoihin.
 
+The dynamic vegetable soup page is at `/keittio/kasvissosekeitto/`. It uses the
+v0.3.4 application's inline assets so downloaded selections remain self-contained.
+See [integration and source regeneration](src/recipes/kasvissosekeitto/INTEGRATION.md)
+before editing the application or testing its offline export. Codex prepared this
+website adaptation and its local technical checks.
+
 Codex toteutti Keittiö-osion sivuston tekijän toimittamasta luonnoksesta ja kuvaajasta sekä täydensi tämän README:n kehitysohjeet. Sivulla erotetaan mittaustulokset, tulkinta ja avoimet kysymykset.
 
 ## Paikallinen kehitys
